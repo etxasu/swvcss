@@ -12,16 +12,16 @@ header {
     font-family: 'Open Sans', sans-serif !important
 }
 .headerContainer {
-    height: 30px
+    height: 65px
 }
 .headerContainer .lessonTitle {
     position: absolute;
-    left: 300px;
+    left: 275px;
     margin-top: 10px;
     color: #3686FF;
     font-family: 'Open Sans', sans-serif;
     font-weight: 100;
-    font-size: 72px
+    font-size: 24px
 }
 .headerContainer .wrapper {
     float: none;
