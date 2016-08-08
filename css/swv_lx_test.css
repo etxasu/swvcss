@@ -18,10 +18,10 @@ header {
     position: absolute;
     left: 300px;
     margin-top: 10px;
-    color: #FF00EE;
+    color: #3686FF;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
-    font-size: 24px
+    font-size: 72px
 }
 .headerContainer .wrapper {
     float: none;
