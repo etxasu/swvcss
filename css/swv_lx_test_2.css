@@ -12,13 +12,13 @@ header {
     font-family: 'Open Sans', sans-serif !important
 }
 .headerContainer {
-    height: 65px
+    height: 30px
 }
 .headerContainer .lessonTitle {
     position: absolute;
-    left: 150px;
-    margin-top: 0px;
-    color: #FF00EE;
+    left: 300px;
+    margin-top: 10px;
+    color: #3686FF;
     font-family: 'Open Sans', sans-serif;
     font-weight: 100;
     font-size: 72px
