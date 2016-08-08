@@ -5,7 +5,7 @@
 }
 .skin-default .mainView:before {
     height: 65px;
-    background-color: #fff;
+    /*background-color: #fff;*/
     border-bottom: 3px solid #363636
 }
 header {
