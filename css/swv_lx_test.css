@@ -3,7 +3,7 @@
     background-color: #363636;
     font-family: 'Open Sans', sans-serif
 }
-.skin-default .mainView:before {
+/*.skin-default .mainView:before {
     height: 65px;
     background-color: #363636;
     border-bottom: 3px solid #3686FF
