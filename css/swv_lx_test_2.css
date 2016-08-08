@@ -15,7 +15,7 @@
     height: 65px
 }*/
 .headerContainer .lessonTitle {
-    position: absolute;
+    position: fixed;
     left: 250px;
     margin-top: 5px;
     margin-bottom: 10px;
