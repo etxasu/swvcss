@@ -6,7 +6,7 @@
 .skin-default .mainView:before {
     height: 65px;
     background-color: #fff;
-    border-bottom: 3px solid #1c1c1c
+    border-bottom: 3px solid #FF00EE
 }
 header {
     font-family: 'Open Sans', sans-serif !important
@@ -16,7 +16,7 @@ header {
 }
 .headerContainer .lessonTitle {
     position: absolute;
-    left: 275px;
+    left: 250px;
     margin-top: 10px;
     color: #3686FF;
     font-family: 'Open Sans', sans-serif;
