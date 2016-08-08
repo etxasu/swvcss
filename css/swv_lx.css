@@ -4,7 +4,7 @@
     font-family: 'Open Sans', sans-serif
 }
 .skin-default .mainView:before {
-    height: 65px;
+    height: 66px;
     background-color: #fff;
     border-bottom: 3px solid #1c1c1c
 }
