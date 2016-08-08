@@ -12,7 +12,7 @@ header {
     font-family: 'Open Sans', sans-serif !important
 }
 .headerContainer {
-    height: 65px
+    height: 300px
 }
 .headerContainer .lessonTitle {
     position: absolute;
