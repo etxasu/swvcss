@@ -5,8 +5,8 @@
 }
 .skin-default .mainView:before {
     height: 65px;
-    background-color: #fff;
-    border-bottom: 3px solid #363636
+    background-color: #363636;
+    border-bottom: 3px solid #3686FF
 }
 header {
     font-family: 'Open Sans', sans-serif !important
