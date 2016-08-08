@@ -427,6 +427,6 @@ header .name {
     min-width: 40px!important
 }
 .headerContainer .lessonTitle {
-    color: #FF00EE!important;
+    color: #3686FF!important;
     padding-left: 0!important
 }
