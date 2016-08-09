@@ -402,8 +402,6 @@ aside.minimized .navigationToggle:focus {
 .vft iframe#vft {
     width: 90% !important;
     height: 90% !important;
-	bottom: -10px
-	right: -10px
 }
 .vft .checkContainer,
 .vft .feedbackContainer {
