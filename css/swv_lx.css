@@ -4,7 +4,7 @@
     font-family: 'Open Sans', sans-serif
 }
 .skin-default .mainView:before {
-    height: 65px;
+    height: 32px;
     background-color: #fff;
     border-bottom: 3px solid #1c1c1c
 }
@@ -12,7 +12,7 @@ header {
     font-family: 'Open Sans', sans-serif !important
 }
 .headerContainer {
-    height: 65px
+    height: 32px
 }
 .headerContainer .lessonTitle {
     position: absolute;
@@ -37,8 +37,8 @@ header {
     font-weight: 600
 }
 .headerContainer .wrapper .nameScoreButtonWrapper .optionsToggle {
-    width: 65px;
-    height: 65px;
+    width: 32px;
+    height: 32px;
     background: transparent !important;
     color: #3686ff;
     border: none;
@@ -89,15 +89,15 @@ header {
     position: absolute !important
 }
 aside {
-    width: 235px;
+    width: 0px;
     background: none;
-    border: none
+    border: nones
 }
 aside .title {
     display: none
 }
 aside .history {
-    width: 1px;
+    width: 0px;
     background-color: #fff;
     top: 68px;
     z-index: 1000
@@ -149,8 +149,8 @@ aside .navigationToggle {
     background-color: #f1f1ef
 }
 aside.minimized {
-    height: 65px;
-    width: 65px;
+    height: 32px;
+    width: 32px;
     display: block;
     background-image: none;
     overflow: hidden
@@ -164,8 +164,8 @@ aside.minimized .navigationToggle {
 aside .navigationToggle,
 aside.minimized .navigationToggle {
     display: block !important;
-    width: 65px;
-    height: 65px;
+    width: 32px;
+    height: 32px;
     border: none !important;
     border-right: solid 1px #f1f1ef !important
 }
@@ -400,7 +400,7 @@ aside.minimized .navigationToggle:focus {
 .vft .stageContainer .content {
     margin: auto;
 	width: 100% !important;
-    height: calc(100% - 65px) !important;
+    height: calc(100% - 32px) !important;
     top: -10px
 }
 .vft iframe#vft {
