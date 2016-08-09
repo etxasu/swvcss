@@ -392,6 +392,7 @@ aside.minimized .navigationToggle:focus {
     display: block
 }
 .vft .stageContainer {
+	margin: auto;
     width: 100% !important;
     height: 100% !important;
     top: -10px
