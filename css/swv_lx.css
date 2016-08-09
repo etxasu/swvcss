@@ -399,7 +399,7 @@ aside.minimized .navigationToggle:focus {
 }
 .vft .stageContainer .content {
     width: 100% !important;
-    height: calc !important;
+    height: 100% !important;
     top: -10px
 }
 .vft iframe#vft {
