@@ -392,18 +392,20 @@ aside.minimized .navigationToggle:focus {
     display: block
 }
 .vft .stageContainer {
-    width: 100% !important;
+    width: calc(100% - 65px) !important;
+    height: calc(100% - 65px) !important;
+    top: -10px
+	bottom: -10px
+}
+.vft .stageContainer .content {
+    width: calc(100% - 65px) !important;
     height: calc(100% - 65px) !important;
     top: -10px
 }
-.vft .stageContainer .content {
-    width: 100%!important;
-    height: 100%!important;
-    top: -10px
-}
 .vft iframe#vft {
-    width: 100% !important;
-    height: 100% !important
+    width: 95% !important;
+    height: 95% !important;
+	bottom: -10px
 }
 .vft .checkContainer,
 .vft .feedbackContainer {
