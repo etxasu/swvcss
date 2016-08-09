@@ -398,8 +398,8 @@ aside.minimized .navigationToggle:focus {
 	bottom: -10px
 }
 .vft .stageContainer .content {
-    width: calc(100% - 65px) !important;
-    height: calc(100% - 65px) !important;
+    width: 100% !important;
+    height: calc !important;
     top: -10px
 }
 .vft iframe#vft {
