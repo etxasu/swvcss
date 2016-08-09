@@ -402,6 +402,8 @@ aside.minimized .navigationToggle:focus {
     top: -10px
 }
 .vft iframe#vft {
+	display: block;
+    margin: auto;
     width: 100% !important;
     height: calc(100% -65px) !important;
 	bottom: -20px
