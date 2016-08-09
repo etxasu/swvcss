@@ -392,8 +392,6 @@ aside.minimized .navigationToggle:focus {
     display: block
 }
 .vft .stageContainer {
-    width: 100% !important;
-    height: 100% !important;
     top: -10px
 }
 .vft .stageContainer .content {
@@ -402,9 +400,10 @@ aside.minimized .navigationToggle:focus {
     top: -10px
 }
 .vft iframe#vft {
-    width: 100% !important;
-    height: 100% !important;
+    width: 90% !important;
+    height: 90% !important;
 	bottom: -10px
+	right: -10px
 }
 .vft .checkContainer,
 .vft .feedbackContainer {
