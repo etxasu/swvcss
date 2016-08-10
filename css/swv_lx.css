@@ -89,7 +89,7 @@ header {
     position: absolute !important
 }
 aside {
-    width: 0px;
+    width: 255px;
     background: none;
     border: nones
 }
@@ -97,7 +97,7 @@ aside .title {
     display: none
 }
 aside .history {
-    width: 0px;
+    width: 255px;
     background-color: #fff;
     top: 68px;
     z-index: 1000
