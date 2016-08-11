@@ -21,7 +21,7 @@ header {
     color: #0066ff;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
-    font-size: 12px
+    font-size: 20px
 }
 .headerContainer .wrapper {
     float: none;
@@ -99,7 +99,7 @@ aside .title {
 aside .history {
     width: 255px;
     background-color: #fff;
-    top: 68px;
+    top: 32px;
     z-index: 1000
 }
 aside .history:before {
@@ -430,7 +430,5 @@ header .name {
     opacity: 0!important;
     min-width: 40px!important
 }
-.headerContainer .lessonTitle {
-    color: #FF00EE!important;
-    padding-left: 0!important
+
 }
