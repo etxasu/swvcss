@@ -30,7 +30,7 @@ header {
 }
 .headerContainer .wrapper .nameScoreButtonWrapper .name,
 .headerContainer .wrapper .nameScoreButtonWrapper .score {
-    margin-top: 12px;
+    margin-top: 6px;
     color: #1c1c1c
 }
 .headerContainer .wrapper .nameScoreButtonWrapper .name {
@@ -182,7 +182,7 @@ aside.minimized .navigationToggle::before {
     text-align: center;
     text-transform: uppercase;
     background: url('https://d1rpkia8qpfj4t.cloudfront.net/repo/styles/templates/magnum/img/history.png') 14px center no-repeat;
-    height: 60px
+    height: 32px
 }
 aside .navigationToggle:focus,
 aside.minimized .navigationToggle:focus {
