@@ -227,7 +227,7 @@ aside.minimized .navigationToggle:focus {
 .checkContainer .buttonContainer .checkBtn {
     line-height: 42px;
     padding: 0;
-    min-width: 150px;
+    min-width: 100px;
 	position: absolute;
 	left: 50%;
     background: #1c1c1c !important
@@ -238,9 +238,9 @@ aside.minimized .navigationToggle:focus {
     text-transform: uppercase;
     outline: 0;
     padding-bottom: 0;
-    width: 150px;
+    width: 100px;
     height: 48px;
-    min-width: 150px;
+    min-width: 100px;
     font-family: 'Open Sans', sans-serif !important
 }
 .checkContainer .buttonContainer .correctFeedback {
