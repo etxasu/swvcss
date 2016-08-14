@@ -221,10 +221,43 @@ aside.minimized .navigationToggle:focus {
 
 .checkContainer {	
 	position: absolute !important;
-	bottom: 100px !important;
-	right: 1px !important;
+	bottom: 300px !important;
+	right: 300px !important;
 }
 
+.checkContainer .buttonContainer {
+  	top: 26px;
+    right: 0;
+    width: 100px;
+    height: 42px
+}
+.checkContainer .buttonContainer .checkBtn {
+    line-height: 42px;
+    padding: 0;
+    min-width: 100px;
+    background: #1c1c1c !important
+}
+.checkContainer .buttonContainer .checkBtn,
+.checkContainer .buttonContainer .closeFeedbackBtn {
+    font-size: 17px;
+    text-transform: uppercase;
+    outline: 0;
+    padding-bottom: 0;
+    width: 100px;
+    height: 48px;
+    min-width: 100px;
+    font-family: 'Open Sans', sans-serif !important
+}
+.checkContainer .buttonContainer .correctFeedback {
+    width: 100px;
+    line-height: 50px;
+    padding: 0;
+    min-width: 100px;
+    background: #47be9e !important
+}
+.checkContainer .buttonContainer::after {
+    display: none
+}
 .feedbackContainer .bottomContainer {
     bottom: -25px;
     right: -1px
@@ -289,41 +322,6 @@ aside.minimized .navigationToggle:focus {
     font-weight: 300;
     font-size: 14px!important;
     line-height: 1.3em !important
-
-.checkContainer .buttonContainer {
-  	top: 26px;
-    right: 0;
-    width: 100px;
-    height: 42px
-}
-.checkContainer .buttonContainer .checkBtn {
-    line-height: 42px;
-    padding: 0;
-    min-width: 100px;
-    background: #1c1c1c !important
-}
-.checkContainer .buttonContainer .checkBtn,
-.checkContainer .buttonContainer .closeFeedbackBtn {
-    font-size: 17px;
-    text-transform: uppercase;
-    outline: 0;
-    padding-bottom: 0;
-    width: 100px;
-    height: 48px;
-    min-width: 100px;
-    font-family: 'Open Sans', sans-serif !important
-}
-.checkContainer .buttonContainer .correctFeedback {
-    width: 100px;
-    line-height: 50px;
-    padding: 0;
-    min-width: 100px;
-    background: #47be9e !important
-}
-.checkContainer .buttonContainer::after {
-    display: none
-}
-
 }
 #stage-stage .content {
     border: none !important
