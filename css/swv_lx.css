@@ -220,7 +220,10 @@ aside.minimized .navigationToggle:focus {
 }
 
 .checkContainer {
-	text-align: center;
+	position:relative;
+	margin-top: -64px;
+	height: 64px;
+	clear:both;
 }
 
 .checkContainer .buttonContainer {
