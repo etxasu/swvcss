@@ -415,17 +415,6 @@ aside.minimized .navigationToggle:focus {
     height: 100% !important;
 	
 }
-.vft .checkContainer,
-.vft .feedbackContainer {
-    top: -45px !important;
-    width: 90% !important
-}
-.vft .checkContainer .buttonContainer {
-    top: -42px !important
-}
-.vft .feedbackContainer .bottomContainer {
-    bottom: 42px !important
-}
 header .optionsPanel .option.logoutOption {
     display: none!important
 }
