@@ -229,13 +229,13 @@ aside.minimized .navigationToggle:focus {
   	top: 26px;
     right: 0;
     width: 100px;
-    height: 42px
+    height: 38px
 }
 .checkContainer .buttonContainer .checkBtn {
-    line-height: 42px;
+    line-height: 38px;
     padding: 0;
     min-width: 100px;
-    background: #1c1c1c !important
+    background: #404E60FF !important
 }
 .checkContainer .buttonContainer .checkBtn,
 .checkContainer .buttonContainer .closeFeedbackBtn {
@@ -244,7 +244,7 @@ aside.minimized .navigationToggle:focus {
     outline: 0;
     padding-bottom: 0;
     width: 100px;
-    height: 48px;
+    height: 38px;
     min-width: 100px;
     font-family: 'Open Sans', sans-serif !important
 }
