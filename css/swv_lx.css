@@ -218,11 +218,13 @@ aside.minimized .navigationToggle:focus {
 #stage-stage .content input[type='checkbox']:checked+label {
     background-image: url('https://d1rpkia8qpfj4t.cloudfront.net/repo/styles/templates/magnum/img/checkbox-active.png')
 }
+
+.checkContainer {
+	text-align: center;
+}
+
 .checkContainer .buttonContainer {
-    position: fixed;
-	margin-right: auto;
-	margin-left: auto;
-	top: 26px;
+  	top: 26px;
     right: 0;
     width: 150px;
     height: 42px
