@@ -244,10 +244,10 @@ aside.minimized .navigationToggle:focus {
     font-family: 'Open Sans', sans-serif !important
 }
 .checkContainer .buttonContainer .correctFeedback {
-    width: 150px;
+    width: 100px;
     line-height: 50px;
     padding: 0;
-    min-width: 150px;
+    min-width: 100px;
     background: #47be9e !important
 }
 .checkContainer .buttonContainer::after {
