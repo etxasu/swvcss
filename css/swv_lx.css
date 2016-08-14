@@ -407,7 +407,7 @@ aside.minimized .navigationToggle:focus {
 
 .vft .checkContainer,
 .vft .feedbackContainer {
-	width: calc(50% - 200px) !important;
+	width: calc(50% - 300px) !important;
 }
 
 .vft .stageContainer .content {
