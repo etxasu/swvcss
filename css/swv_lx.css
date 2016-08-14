@@ -237,6 +237,11 @@ aside.minimized .navigationToggle:focus {
     min-width: 100px;
     background: #1F262F !important
 }
+
+.checkContainer .buttonContainer .checkBtn:hover {
+    background: #404E60FF !important
+}
+
 .checkContainer .buttonContainer .checkBtn,
 .checkContainer .buttonContainer .closeFeedbackBtn {
     font-size: 17px;
@@ -250,7 +255,7 @@ aside.minimized .navigationToggle:focus {
 }
 .checkContainer .buttonContainer .correctFeedback {
     width: 100px;
-    line-height: 50px;
+    line-height: 42px;
     padding: 0;
     min-width: 100px;
     background: #47be9e !important
