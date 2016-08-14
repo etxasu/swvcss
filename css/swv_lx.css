@@ -228,8 +228,6 @@ aside.minimized .navigationToggle:focus {
     line-height: 42px;
     padding: 0;
     min-width: 100px;
-	position: absolute;
-	left: 50%;
     background: #1c1c1c !important
 }
 .checkContainer .buttonContainer .checkBtn,
