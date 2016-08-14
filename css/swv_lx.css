@@ -407,6 +407,7 @@ aside.minimized .navigationToggle:focus {
 
 .vft .checkContainer,
 .vft .feedbackContainer {
+	position: absolute;
 	width: calc(50%) !important;
 }
 
