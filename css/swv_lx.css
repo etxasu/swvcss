@@ -221,8 +221,8 @@ aside.minimized .navigationToggle:focus {
 
 .checkContainer {	
 	position: absolute !important;
-	bottom: 300px !important;
-	right: 300px !important;
+	bottom: 200px !important;
+	right: 500px !important;
 }
 
 .checkContainer .buttonContainer {
