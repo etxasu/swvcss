@@ -221,7 +221,7 @@ aside.minimized .navigationToggle:focus {
 
 .checkContainer {	
 	position: absolute !important;
-	left: 50%;
+	right: 50%;
 	bottom: -64px;
 	height: 64px;
 }
