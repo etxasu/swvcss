@@ -414,8 +414,14 @@ aside.minimized .navigationToggle:focus {
     height: 100% !important;
 }	
 	
-.vft .checkContainer,
-.vft .feedbackContainer {
+.vft .checkContainer {
+	position: absolute;
+	width: 0% !important;
+	height: 0% !important;
+	bottom: 133px !important;
+}
+
+vft .feedbackContainer {
 	position: absolute;
 	width: 0% !important;
 	height: 0% !important;
