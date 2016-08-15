@@ -406,7 +406,6 @@ aside.minimized .navigationToggle:focus {
 	margin: auto;
     width: 100% !important;
     height: 100% !important;
-    top: -10px
 }
 
 
@@ -421,7 +420,6 @@ aside.minimized .navigationToggle:focus {
     margin: auto;
 	width: 100% !important;
     height: calc(100%) !important;
-    top: -10px
 }
 .vft iframe#vft {
 	margin: auto;
