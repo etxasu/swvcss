@@ -12,8 +12,8 @@ header {
     font-family: 'Open Sans', sans-serif !important
 }
 .headerContainer {
-    height: 32px
-	z-index: 200
+    height: 32px;
+	z-index: 200;
 }
 .headerContainer .lessonTitle {
     position: absolute;
@@ -222,8 +222,6 @@ aside.minimized .navigationToggle:focus {
 
 .checkContainer {	
 	position: absolute !important;
-	bottom: 133px !important;
-	right: -700px !important;
 }
 
 .checkContainer .buttonContainer {
