@@ -280,7 +280,7 @@ aside.minimized .navigationToggle:focus {
     right: 151px;
     width: 284px;
     height: 150px;
-    background: #fff;
+    background: #aaa;
     outline: 0;
     border: 1px solid #f1f1ef
 }
