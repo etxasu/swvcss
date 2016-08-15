@@ -167,7 +167,7 @@ aside.minimized .navigationToggle {
     width: 32px;
     height: 32px;
     border: none !important;
-    border-right: solid 1px #f1f1ef !important
+    /*border-right: solid 1px #f1f1ef !important*/
 }
 aside .navigationToggle::before,
 aside.minimized .navigationToggle::before {
@@ -410,7 +410,7 @@ aside.minimized .navigationToggle:focus {
 .vft .stageContainer .content {
     margin: auto;
 	width: 100% !important;
-    height: calc(100%) !important;
+    height: 100% !important;
 }	
 	
 .vft .checkContainer,
@@ -423,9 +423,7 @@ aside.minimized .navigationToggle:focus {
 
 .vft iframe#vft {
     width: 100% !important;
-    height: 100% !important;
-	top: 6px;
-	
+    height: 100% !important;	
 }
 header .optionsPanel .option.logoutOption {
     display: none!important
