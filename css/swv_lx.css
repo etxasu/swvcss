@@ -414,6 +414,7 @@ aside.minimized .navigationToggle:focus {
 	position: absolute;
 	width: 0% !important;
 	height: 0% !important;
+	bottom: 133px !important;
 }
 
 .vft .stageContainer .content {
