@@ -427,7 +427,8 @@ aside.minimized .navigationToggle:focus {
 .vft iframe#vft {
 	margin: auto;
     width: 100% !important;
-    height: calc(100% - 32px) !important;
+    height: 100% !important;
+	top: -32px;
 	
 }
 header .optionsPanel .option.logoutOption {
