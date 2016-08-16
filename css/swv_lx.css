@@ -394,7 +394,7 @@ aside.minimized .navigationToggle:focus {
 	bottom: 0px;
 }
 .feedbackContainer .bottomContainer {
-    top: -200px;
+    top: -180px;
 }
 
 .feedbackContainer .bottomContainer #stage-feedback {
