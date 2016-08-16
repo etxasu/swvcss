@@ -476,12 +476,14 @@ aside.minimized .navigationToggle:focus {
 .simIFrame iframe#simIFrame {
     width: 100% !important;
     height: 100% !important;
+	top: 0%;
+	left: 0%;
 }
 
 .simIFrame .centerStage {
   position: absolute !important;
-  top: 0% !important;
-  left: 0% !important;
+  top: 100% !important;
+  left: 100% !important;
   transform: translate(-50%, -50%) !important;
 }
 
