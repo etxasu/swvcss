@@ -476,7 +476,7 @@ aside.minimized .navigationToggle:focus {
   transform: translate(-50%, -50%) !important;
 }
 
-.simIFrame .centerStage .anchored {
+.simIFrame .anchored {
   position: inherit !important;
   margin-left: auto;
   margin-right: auto;
