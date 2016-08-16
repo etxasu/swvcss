@@ -371,7 +371,7 @@ aside.minimized .navigationToggle:focus {
     z-index: 1004
 }
 .mainView .feedbackContainer .bottomContainer {
-    bottom: 200px;
+    top: 0px;
     right: 0px;
 }
 .mainView .feedbackContainer .bottomContainer .toggleFeedbackBtn {
