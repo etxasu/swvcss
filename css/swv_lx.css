@@ -478,6 +478,8 @@ aside.minimized .navigationToggle:focus {
 
 .simIFrame .anchorCenterStage {
   position: inherit !important;
+  top: 50% !important;
+  left: 50% !important;
 }
 
 
