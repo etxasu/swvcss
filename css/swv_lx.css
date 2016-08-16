@@ -449,7 +449,7 @@ aside.minimized .navigationToggle:focus {
     height: 100% !important;
 }	
 	
-.centerStage .stageContainer #stage-stage .content {
+.simIFrame .stageContainer #stage-stage .content {
     position: absolute !important;
     top: 50% !important;
     left: 50% !important;
