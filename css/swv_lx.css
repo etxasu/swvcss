@@ -468,6 +468,16 @@ aside.minimized .navigationToggle:focus {
 .simIFrame iframe#simIFrame {
     width: 100% !important;
     height: 100% !important;
+}
+
+.centerStage {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+
 
 header .optionsPanel .option.logoutOption {
     display: none!important
