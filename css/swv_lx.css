@@ -263,14 +263,14 @@ aside.minimized .navigationToggle:focus {
     display: none
 }
 .feedbackContainer .bottomContainer {
-    bottom: 250px;
+    bottom: 25px;
     right: -1px
 }
 .feedbackContainer .bottomContainer #stage-feedback {
     box-shadow: none
 }
 .feedbackContainer .bottomContainer #stage-feedback .content {
-    background: #fff;
+    background: #ccff22;
     padding: 25px 0 25px 25px;
     min-height: 180px !important
 }
