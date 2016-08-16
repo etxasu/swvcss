@@ -476,6 +476,13 @@ aside.minimized .navigationToggle:focus {
   transform: translate(-50%, -50%) !important;
 }
 
+.simIFrame .anchorCenterStage {
+  position: relative !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
 
 header .optionsPanel .option.logoutOption {
     display: none!important
