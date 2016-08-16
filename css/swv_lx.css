@@ -422,10 +422,7 @@ aside.minimized .navigationToggle:focus {
 }
 
 vft .feedbackContainer {
-	position: absolute;
-	width: 0% !important;
-	height: 0% !important;
-	bottom: 133px !important;
+	background: #000 !important; 
 }
 
 .vft iframe#vft {
