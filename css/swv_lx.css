@@ -298,9 +298,9 @@ aside.minimized .navigationToggle:focus {
     content: "Feedback";
     display: block;
     position: absolute;
-    bottom: 0px;
+    bottom: 100px;
     left: 0;
-    width: 100%;
+    width: 100px;
     height: 42px;
     padding-left: 15px;
     font-size: 17px;
