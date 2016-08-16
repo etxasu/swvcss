@@ -272,11 +272,11 @@ aside.minimized .navigationToggle:focus {
 .feedbackContainer .bottomContainer #stage-feedback .content {
     background: #ccff22;
     padding: 25px 0 25px 25px;
-    min-height: 180px !important
+    min-height: 1080px !important
 }
 .feedbackContainer .bottomContainer .toggleFeedbackBtn {
     position: absolute;
-    bottom: 1000px;
+    bottom: 0px;
     right: 0px;
     width: 100px;
     height: 42px;
