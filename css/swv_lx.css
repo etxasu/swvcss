@@ -435,6 +435,40 @@ aside.minimized .navigationToggle:focus {
     width: 100% !important;
     height: 100% !important;	
 }
+
+
+.simIFrame .stageContainer {
+	margin: auto;
+    width: 100% !important;
+    height: 100% !important;
+	top: -20px;
+}
+
+.simIFrame .stageContainer .content {
+    margin: auto;
+	width: 100% !important;
+    height: 100% !important;
+}	
+	
+.simIFrame .checkContainer {
+	position: absolute;
+	width: 0% !important;
+	height: 0% !important;
+	bottom: 133px !important;
+}
+
+.simIFrame .feedbackContainer {
+	position: absolute;
+	width: 0% !important;
+	height: 0% !important;
+	bottom: 638px !important;
+	left: 350px !important;
+}
+
+.simIFrame iframe#simIFrame {
+    width: 100% !important;
+    height: 100% !important;
+
 header .optionsPanel .option.logoutOption {
     display: none!important
 }
