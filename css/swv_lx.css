@@ -371,13 +371,13 @@ aside.minimized .navigationToggle:focus {
     z-index: 1004
 }
 .mainView .feedbackContainer .bottomContainer {
-    top: -200px;
+    top: -170px;
     right: 0px;
 }
 .mainView .feedbackContainer .bottomContainer .toggleFeedbackBtn {
     width: 150px;
     height: 48px;
-    bottom: -48px;
+    bottom: 480px;
     right: 150px
 }
 .mainView .feedbackCo1ntainer #stage-feedback {
