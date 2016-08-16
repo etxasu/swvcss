@@ -377,7 +377,7 @@ aside.minimized .navigationToggle:focus {
 .mainView .feedbackContainer .bottomContainer .toggleFeedbackBtn {
     width: 150px;
     height: 48px;
-    bottom: 150px;
+    bottom: 145px;
     right: 140px
 }
 .mainView .feedbackCo1ntainer #stage-feedback {
