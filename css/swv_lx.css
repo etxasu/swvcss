@@ -482,8 +482,8 @@ aside.minimized .navigationToggle:focus {
 
 .simIFrame .centerStage {
   position: absolute !important;
-  top: 0% !important;
-  left: 0% !important;
+  top: 50% !important;
+  left: 50% !important;
   transform: translate(-50%, -50%) !important;
 }
 
