@@ -469,11 +469,10 @@ aside.minimized .navigationToggle:focus {
     height: 100% !important;
 }
 
-.vft .centerStage {
+.simIFrame .centerStage {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 
