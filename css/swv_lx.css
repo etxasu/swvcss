@@ -452,9 +452,6 @@ aside.minimized .navigationToggle:focus {
 	
 .simIFrame .stageContainer #stage-stage .content {
     position: absolute !important;
-	top: 0% !important;
-    left: 0% !important;
-	margin: auto !important;
 }	
 	
 .simIFrame .checkContainer {
