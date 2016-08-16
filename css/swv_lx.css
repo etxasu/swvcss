@@ -480,7 +480,8 @@ aside.minimized .navigationToggle:focus {
   position: inherit !important;
   margin-left: auto;
   margin-right: auto;
-
+  top: 50% !important;
+  left: 50% !important;
 }
 
 
