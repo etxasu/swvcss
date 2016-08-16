@@ -484,7 +484,7 @@ aside.minimized .navigationToggle:focus {
   position: absolute !important;
   top: 0% !important;
   left: 0% !important;
-  transform: translate(-40%, -40%) !important;  
+  transform: translate(-50%, -50%) !important;  
   
 }
 
