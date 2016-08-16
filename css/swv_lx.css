@@ -476,8 +476,8 @@ aside.minimized .navigationToggle:focus {
 .simIFrame iframe#simIFrame {
     width: 100% !important;
     height: 100% !important;
-	top: 50%;
-	left: 50%;
+	top: 0%;
+	left: 0%;
 }
 
 .simIFrame .centerStage {
