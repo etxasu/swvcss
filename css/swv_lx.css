@@ -263,7 +263,7 @@ aside.minimized .navigationToggle:focus {
     display: none
 }
 .feedbackContainer .bottomContainer {
-    bottom: -25px;
+    bottom: 25px;
     right: -1px
 }
 .feedbackContainer .bottomContainer #stage-feedback {
@@ -277,10 +277,10 @@ aside.minimized .navigationToggle:focus {
 .feedbackContainer .bottomContainer .toggleFeedbackBtn {
     position: absolute;
     bottom: 250px;
-    right: 300px !important;
+    right: 300px;
     width: 100px;
     height: 50px;
-    background: #ff11aa;
+    background: #ff0000;
     outline: 0;
     border: 1px solid #f1f1ef
 }
@@ -414,15 +414,12 @@ aside.minimized .navigationToggle:focus {
     height: 100% !important;
 }	
 	
-.vft .checkContainer {
+.vft .checkContainer,
+.vft .feedbackCo1ntainer {
 	position: absolute;
 	width: 0% !important;
 	height: 0% !important;
 	bottom: 133px !important;
-}
-
-vft .feedbackContainer {
-	background: #000 !important; 
 }
 
 .vft iframe#vft {
