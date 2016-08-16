@@ -426,8 +426,8 @@ aside.minimized .navigationToggle:focus {
 	position: absolute;
 	width: 0% !important;
 	height: 0% !important;
-	bottom: 700px !important;
-	left: 200px !important;
+	bottom: 638px !important;
+	left: 300px !important;
 }
 
 .vft iframe#vft {
