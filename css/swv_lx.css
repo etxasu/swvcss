@@ -396,7 +396,8 @@ aside.minimized .navigationToggle:focus {
     border-color: #e1e1e1
 }
 .feedbackContainer .bottomContainer #stage-feedback .content {
-    background: #ffe1e1
+    background: #ffe1e1;
+	top: 200px;
 }
 .headerContainer {
     display: block
