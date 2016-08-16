@@ -391,7 +391,7 @@ aside.minimized .navigationToggle:focus {
 }
 .feedbackContainer .bottomContainer .toggleFeedbackBtn {
     border-color: #e1e1e1!important;
-	bottom: 0px;
+	bottom: 100px;
 }
 .feedbackContainer .bottomContainer {
     top: -180px;
