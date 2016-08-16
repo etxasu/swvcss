@@ -392,12 +392,15 @@ aside.minimized .navigationToggle:focus {
 .feedbackContainer .bottomContainer .toggleFeedbackBtn {
     border-color: #e1e1e1!important
 }
+.feedbackContainer .bottomContainer {
+    top: 400px;
+}
+
 .feedbackContainer .bottomContainer #stage-feedback {
     border-color: #e1e1e1
 }
 .feedbackContainer .bottomContainer #stage-feedback .content {
     background: #e1e1e1;
-	top: 200px;
 }
 .headerContainer {
     display: block
