@@ -401,6 +401,7 @@ aside.minimized .navigationToggle:focus {
 .headerContainer {
     display: block
 }
+
 .vft .stageContainer {
 	margin: auto;
     width: 100% !important;
@@ -415,7 +416,7 @@ aside.minimized .navigationToggle:focus {
 }	
 	
 .vft .checkContainer,
-.vft .feedbackCo1ntainer {
+.vft .feedbackContainer {
 	position: absolute;
 	width: 0% !important;
 	height: 0% !important;
