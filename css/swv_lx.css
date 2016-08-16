@@ -276,7 +276,7 @@ aside.minimized .navigationToggle:focus {
 }
 .feedbackContainer .bottomContainer .toggleFeedbackBtn {
     position: absolute;
-    bottom: 0px;
+    bottom: 100px;
     right: 0px;
     width: 100px;
     height: 50px;
