@@ -13441,27 +13441,35 @@ define('api/snapshot/Transporter',['jquery',
          * Trigger a check event from the sim
          */
         this.triggerCheck = function(handlers) {
-            if (checkTriggered) {
-                throw new Error("You have already triggered a check event");
+            if (checkTriggered)
+            {
+                // derp
+
+                window.alert("Please read and close the feedback window before proceeding.");
+
+                //console.log("You have already triggered a check event. Event not triggered.");
+                // throw new Error("You have already triggered a check event");
             }
+            else
+            {
+                checkTriggered = true;
 
-            checkTriggered = true;
+                handlers = handlers || {};
 
-            handlers = handlers || {};
+                if (handlers.complete) {
+                    self.addCheckCompleteListener(handlers.complete, true);
+                }
 
-            if (handlers.complete) {
-                self.addCheckCompleteListener(handlers.complete, true);
-            }
+                var triggerCheckMsg = new SimCapiMessage({
+                    type: SimCapiMessage.TYPES.CHECK_REQUEST,
+                    handshake: handshake
+                });
 
-            var triggerCheckMsg = new SimCapiMessage({
-                type: SimCapiMessage.TYPES.CHECK_REQUEST,
-                handshake: handshake
-            });
+                pendingMessages.forValueChange.push(triggerCheckMsg);
 
-            pendingMessages.forValueChange.push(triggerCheckMsg);
-
-            //Ensure that there are no more set value calls to be able to send the message.
-            self.notifyValueChange();
+                //Ensure that there are no more set value calls to be able to send the message.
+                self.notifyValueChange();
+            }            
         };
 
         /*
@@ -14401,6 +14409,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 
     window.SendMessageToUnity = function (burpie) 
     {
+        
         Transporter.triggerCheck();
         SendMessage("CAPI", "TestBrowserSend", burpie);
         //console.log("Received the function");
