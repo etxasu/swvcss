@@ -486,9 +486,10 @@ aside.minimized .navigationToggle:focus {
 }
 
 .simIFrame .instructions {
-  position: fixed !important;
+  position: absolute !important;
   bottom: 50% !important;
   right: 50% !important;
+  color: #ff66ff;
 }
 
 .simIFrame .anchored {
