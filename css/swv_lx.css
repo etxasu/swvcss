@@ -451,8 +451,6 @@ aside.minimized .navigationToggle:focus {
 	
 }	
 .simIFrame .stageContainer .content .instructions {
-  bottom: 50% !important;
-  right: 50% !important;
   color: #ff66ff;
 }
 /*	
