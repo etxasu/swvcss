@@ -443,6 +443,7 @@ aside.minimized .navigationToggle:focus {
 	top: -20px;
 }
 
+/*
 .simIFrame .stageContainer .content {
     margin: auto;
 	width: 100% !important;
