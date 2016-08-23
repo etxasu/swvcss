@@ -486,7 +486,9 @@ aside.minimized .navigationToggle:focus {
 }
 
 .simIFrame .instructions {
-  position: absolute !important;
+  position: fixed !important;
+  width: 40%;
+  height: 20%;
   bottom: 50% !important;
   right: 50% !important;
   color: #ff66ff;
