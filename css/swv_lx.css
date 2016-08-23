@@ -440,6 +440,7 @@ aside.minimized .navigationToggle:focus {
 	margin: auto;
     width: 100%;
     height: 100%;
+	top: -20px;
 }
 
 
@@ -451,6 +452,8 @@ aside.minimized .navigationToggle:focus {
 }	
 .simIFrame .stageContainer .content .instructions 
 {
+	width: 50%;
+	height: 50%;
     color: #ff66ff;
 }
 /*	
