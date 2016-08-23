@@ -449,7 +449,11 @@ aside.minimized .navigationToggle:focus {
     height: 100% !important;
 	
 }	
-
+.simIFrame .stageContainer .content .instructions {
+  bottom: 50% !important;
+  right: 50% !important;
+  color: #ff66ff;
+}
 /*	
 .simIFrame .stageContainer #stage-stage .content {
     position: absolute !important;
@@ -483,15 +487,6 @@ aside.minimized .navigationToggle:focus {
   position: fixed !important;
   top: 0% !important;
   left: 0% !important; 
-}
-
-#stage-stage .content .instructions {
-  position: fixed !important;
-  width: 40%;
-  height: 20%;
-  bottom: 50% !important;
-  right: 50% !important;
-  color: #ff66ff;
 }
 
 .simIFrame .anchored {
