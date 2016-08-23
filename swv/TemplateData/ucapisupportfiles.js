@@ -13448,7 +13448,7 @@ define('api/snapshot/Transporter',['jquery',
                 console.log("Please read and close the feedback window before proceeding.");
 
                 //console.log("You have already triggered a check event. Event not triggered.");
-                // throw new Error("You have already triggered a check event");
+                //throw new Error("You have already triggered a check event");
             }
             else
             {
@@ -14408,7 +14408,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
     };
 
     window.SendMessageToUnity = function (burpie) 
-    {   
+    {
         Transporter.triggerCheck();
         SendMessage("CAPI", "TestBrowserSend", burpie);
         //console.log("Received the function");
