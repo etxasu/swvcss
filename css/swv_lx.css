@@ -487,8 +487,8 @@ aside.minimized .navigationToggle:focus {
 
 .simIFrame .instructions {
   position: fixed !important;
-  bottom: 0% !important;
-  right: 0% !important;
+  bottom: 50% !important;
+  right: 50% !important;
 }
 
 .simIFrame .anchored {
