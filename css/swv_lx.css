@@ -477,8 +477,13 @@ aside.minimized .navigationToggle:focus {
 	/*bottom: 133px !important;*/
 }
 
-.simIFrame .checkContainer .buttonContainer{
-	position: absolute !important;
+.simIFrame .checkContainer .buttonContainer {
+	height: 5.3vh !important;
+	width: 8.3vw !important;
+	/*bottom: 133px !important;*/
+}
+
+.simIFrame .checkContainer .buttonContainer .checkBtn {
 	height: 5.3vh !important;
 	width: 8.3vw !important;
 	/*bottom: 133px !important;*/
