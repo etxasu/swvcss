@@ -14417,6 +14417,12 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
         //console.log("Received the function");
     }
 
+    window.TestStateChange = function (burpie)
+    {
+        SendMessage("Scene Controller", "SetNextInteractableState", burpie);
+        //console.log("Received the function");
+    }
+
     var initialized = false;
 
     window.receiveExposeFromUnity = function (name, type, value, allowedValues)
