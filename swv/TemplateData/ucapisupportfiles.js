@@ -13142,7 +13142,8 @@ define('api/snapshot/Transporter',['jquery',
          * Can listen to check complete event
          *
          */
-        this.addCheckCompleteListener = function(listener, once) {
+        this.addCheckCompleteListener = function (listener, once)
+        {
             callback.check.complete.push({
                 handler: listener,
                 once: once
@@ -13293,6 +13294,7 @@ define('api/snapshot/Transporter',['jquery',
             handleCheckResponse('complete', message);
 
             checkTriggered = false;
+            SendMessage("Scene Controller", "SetNextInteractableState", true);
         };
 
         /*
@@ -13456,7 +13458,8 @@ define('api/snapshot/Transporter',['jquery',
 
                 handlers = handlers || {};
 
-                if (handlers.complete) {
+                if (handlers.complete)
+                {
                     self.addCheckCompleteListener(handlers.complete, true);
                 }
 
@@ -14409,8 +14412,8 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 
     window.SendMessageToUnity = function (burpie) 
     {
-        Controller.triggerCheck();
-        SendMessage("CAPI", "TestBrowserSend", burpie);
+        Transporter.triggerCheck();
+        SendMessage("Scene Controller", "SetNextInteractableState", burpie);
         //console.log("Received the function");
     }
 
