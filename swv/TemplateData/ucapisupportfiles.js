@@ -14417,10 +14417,10 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
         //console.log("Received the function");
     }
 
-    window.TestStateChange = function (burpie)
+    window.TestStateChange = function ()
     {
-        SendMessage("Scene Controller", "SetNextInteractableState", burpie);
-        //console.log("Received the function");
+        console.log("Received the function");
+        SendMessage("Scene Controller", "SetNextInteractableState");
     }
 
     var initialized = false;
