@@ -465,10 +465,10 @@ aside.minimized .navigationToggle:focus {
 }	
 */
 .simIFrame .checkContainer {
-	position: absolute;
-	width: 0% !important;
-	height: 0% !important;
-	bottom: 133px !important;
+	/*position: absolute;*/
+	bottom: 10% !important;
+	right: 10% !important;
+	/*bottom: 133px !important;*/
 }
 
 .simIFrame .feedbackContainer {
