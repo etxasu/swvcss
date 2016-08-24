@@ -467,7 +467,7 @@ aside.minimized .navigationToggle:focus {
 .simIFrame .checkContainer {
 	position: absolute !important;
 	height: 3% !important;
-	width: 90% !important;
+	width: 95% !important;
 	bottom: 10% !important;
 	right: 10% !important;
 	/*bottom: 133px !important;*/
