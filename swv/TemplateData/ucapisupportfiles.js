@@ -14409,7 +14409,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 
     window.SendMessageToUnity = function (burpie) 
     {
-        Transporter.triggerCheck();
+        Controller.triggerCheck();
         SendMessage("CAPI", "TestBrowserSend", burpie);
         //console.log("Received the function");
     }
