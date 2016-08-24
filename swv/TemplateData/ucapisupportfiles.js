@@ -13294,7 +13294,6 @@ define('api/snapshot/Transporter',['jquery',
             handleCheckResponse('complete', message);
 
             checkTriggered = false;
-            SendMessage("Scene Controller", "SetNextInteractableState", true);
         };
 
         /*
@@ -13474,6 +13473,12 @@ define('api/snapshot/Transporter',['jquery',
                 self.notifyValueChange();
             }            
         };
+
+        /*
+         *  Gets the current value of checkTrigger and reports it to an outside entity. In this context, Unity.
+         */
+
+        this.checkEventState = function () { return checkTriggered }
 
         /*
          * Send a VALUE_CHANGE message to the viewer with a dump of the model.
@@ -14417,10 +14422,17 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
         //console.log("Received the function");
     }
 
-    window.TestStateChange = function ()
+    window.CheckEventState = function ()
     {
-        console.log("Received the function");
-        SendMessage("Scene Controller", "SetNextInteractableState");
+        if (Transporter.checkEventState == false)
+        {
+            console.log("Trap state finished");
+            SendMessage("Scene Controller", "SetNextInteractableState");
+        }
+        else
+        {
+            console.log("Trap state in progress");
+        }
     }
 
     var initialized = false;
