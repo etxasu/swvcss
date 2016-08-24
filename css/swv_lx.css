@@ -455,6 +455,12 @@ aside.minimized .navigationToggle:focus {
 	top: 60% !important;
 	left: 40% !important;
 }
+
+.simIFrame .stageContainer .content .guide 
+{
+	bottom: 10% !important;
+	right: 10% !important;
+}
 /*	
 .simIFrame .stageContainer #stage-stage .content {
     position: absolute !important;
