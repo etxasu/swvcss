@@ -14415,11 +14415,9 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
         }
     };
 
-    window.OpenExternalAsset = function(linkSource, _x, _y)
+    window.OpenExternalAsset = function(url, _x, _y)
     {
-        var url = Pointer_stringify(linkSource);
-
-        window.open(url, "SWV Asset", "width=_x, height=_y");
+        window.open(url, "SWV Asset", "width=854, height=480");
     }
 
     window.SendMessageToUnity = function (burpie) 
