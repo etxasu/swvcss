@@ -14415,6 +14415,13 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
         }
     };
 
+    window.OpenExternalAsset = function(linkSource, _x, _y)
+    {
+        var url = Pointer_stringify(link);
+
+        window.open(url, "SWV Asset", "width=_x, height=_y");
+    }
+
     window.SendMessageToUnity = function (burpie) 
     {
         Transporter.triggerCheck();
