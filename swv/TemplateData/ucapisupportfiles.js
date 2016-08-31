@@ -13576,6 +13576,10 @@ define('api/snapshot/Transporter',['jquery',
 
         // Helper to send message to viewer
         this.sendMessage = function(message) {
+            if(!listeningForMessage) {
+                listeningForMessage = true;
+                window.addEventListener('message', messageEventHandler);
+            }
             // window.parent can be itself if it's not inside an iframe
             if (isInIframe()) {
                 window.parent.postMessage(JSON.stringify(message), '*');
@@ -13609,11 +13613,15 @@ define('api/snapshot/Transporter',['jquery',
 
         };
 
+        var listeningForMessage = false;
         // we have to wait until the dom is ready to attach anything or sometimes the js files
         // haven't finished loading and crap happens.
         $(document).ready(function() {
             // attach event listener for messages received from the viewer
-            window.addEventListener('message', messageEventHandler);
+            if(!listeningForMessage) {
+                listeningForMessage = true;
+                window.addEventListener('message', messageEventHandler);
+            }
         });
     };
 
@@ -14423,7 +14431,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
     window.SendMessageToUnity = function (burpie) 
     {
         Transporter.triggerCheck();
-        SendMessage("Scene Controller", "SetNextInteractableState");
+        //SendMessage("Scene Controller", "SetNextInteractableState");
         //console.log("Received the function");
     }
 
