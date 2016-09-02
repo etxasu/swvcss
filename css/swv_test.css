@@ -223,7 +223,8 @@ aside.minimized .navigationToggle:focus {
     background-image: url('https://d1rpkia8qpfj4t.cloudfront.net/repo/styles/templates/magnum/img/checkbox-active.png')
 }
 
-.checkContainer {	
+.checkContainer {
+	display: none !important;	
 	position: absolute !important;
 }
 
