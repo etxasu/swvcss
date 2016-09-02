@@ -90,6 +90,7 @@ header {
     position: absolute !important
 }
 aside {
+	display: none !important;
     width: 255px;
     background: none;
     border: nones
