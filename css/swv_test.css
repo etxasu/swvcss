@@ -85,6 +85,7 @@ header {
     color: #fff
 }
 .navigationContainer {
+	display: none !important;
     top: 0px;
     width: auto;
     position: absolute !important
