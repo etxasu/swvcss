@@ -1,30 +1,30 @@
 ﻿@import url(//fonts.googleapis.com/css?family=Open+Sans:300,400,600);
 .skin-default {
-    background-color: #363636;
+    background-color: #f1f1ef;
     font-family: 'Open Sans', sans-serif
 }
-/*.skin-default .mainView:before {
+.skin-default .mainView:before {
     height: 65px;
-    background-color: #363636;
-    border-bottom: 3px solid #3686FF
+    background-color: #fff;
+    border-bottom: 3px solid #1c1c1c
 }
-/*header {
+header {
     font-family: 'Open Sans', sans-serif !important
 }
 .headerContainer {
+	display: none !important;
     height: 65px
-}*/
-.headerContainer .lessonTitle {
-    position: fixed;
-    left: 550px;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    color: #3686FF;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 100;;
-    font-size: 24px
 }
-/*.headerContainer .wrapper {
+.headerContainer .lessonTitle {
+    position: absolute;
+    left: 90px;
+    margin-top: 10px;
+    color: #1c1c1c;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 18px
+}
+.headerContainer .wrapper {
     float: none;
     position: absolute;
     right: 0
@@ -41,7 +41,7 @@
     width: 65px;
     height: 65px;
     background: transparent !important;
-    color: #3686ff;
+    color: #1c1c1c;
     border: none;
     outline: none
 }
@@ -371,11 +371,11 @@ aside.minimized .navigationToggle:focus {
     bottom: -47px;
     right: 150px
 }
-.mainView .feedbackCo1ntainer #stage-feedback {
+.mainView .feedbackContainer #stage-feedback {
     border-bottom: 1px solid #e1e1e1
 }
 .skin-default {
-    background-color: #000
+    background-color: #fff
 }
 #stage-stage .content {
     border: 1px solid #000!important
@@ -427,7 +427,7 @@ header .name {
     opacity: 0!important;
     min-width: 40px!important
 }
-/*.headerContainer .lessonTitle {
-    color: #3686FF!important;
+.headerContainer .lessonTitle {
+    color: #C0C0C0!important;
     padding-left: 0!important
-}*/
+}
