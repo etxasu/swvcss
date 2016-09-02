@@ -12,6 +12,7 @@ header {
     font-family: 'Open Sans', sans-serif !important
 }
 .headerContainer {
+	display: none;
     height: 32px;
 	z-index: 200;
 }
