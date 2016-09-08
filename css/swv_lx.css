@@ -406,7 +406,7 @@ aside.minimized .navigationToggle:focus {
 .vft .stageContainer {
 	margin: auto;
     width: 100% !important;
-    height: 100% !important;
+    height: calc(100% - 20px) !important;
 	top: -20px;
 }
 
@@ -439,8 +439,7 @@ aside.minimized .navigationToggle:focus {
 .simIFrame .stageContainer {
 	margin: auto;
     width: 100% !important;
-    height: 100% !important;
-	top: -20px;
+    calc(100% - 20px)
 	bottom: -20px;
 }
 
