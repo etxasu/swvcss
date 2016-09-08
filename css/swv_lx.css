@@ -441,6 +441,7 @@ aside.minimized .navigationToggle:focus {
     width: 100% !important;
     height: 100% !important;
 	top: -20px;
+	bottom: -20px;
 }
 
 
