@@ -222,7 +222,6 @@ aside.minimized .navigationToggle:focus {
 
 .checkContainer {	
 	position: absolute !important;
-	bottom: -32px;
 }
 
 .checkContainer .buttonContainer {
@@ -458,8 +457,8 @@ aside.minimized .navigationToggle:focus {
 
 .simIFrame .stageContainer .content .guide 
 {
-	bottom: 10% !important;
-	right: 10% !important;
+	bottom: 0% !important;
+	right: 0% !important;
 }
 /*	
 .simIFrame .stageContainer #stage-stage .content {
@@ -472,20 +471,20 @@ aside.minimized .navigationToggle:focus {
 */
 .simIFrame .checkContainer {
 	position: absolute !important;
-	height: 6% !important;
-	width: 95% !important;
+	height: 0% !important;
+	width: 0% !important;
 	/*bottom: 133px !important;*/
 }
 
 .simIFrame .checkContainer .buttonContainer {
-	height: 5.3vh !important;
-	width: 8.3vw !important;
+	height: 0vh !important;
+	width: 0vw !important;
 	/*bottom: 133px !important;*/
 }
 
 .simIFrame .checkContainer .buttonContainer .checkBtn {
-	height: 5.3vh !important;
-	width: 8.3vw !important;
+	height: 0vh !important;
+	width: 0vw !important;
 	/*bottom: 133px !important;*/
 }
 
@@ -493,8 +492,8 @@ aside.minimized .navigationToggle:focus {
 	position: absolute;
 	width: 0% !important;
 	height: 0% !important;
-	bottom: 638px !important;
-	left: 350px !important;
+	bottom: 0px !important;
+	left: 0px !important;
 }
 
 .simIFrame iframe#simIFrame {
