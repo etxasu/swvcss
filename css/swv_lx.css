@@ -440,7 +440,6 @@ aside.minimized .navigationToggle:focus {
 	margin: auto;
     width: 100% !important;
     height: calc(100% - 20px) !important;
-	bottom: -20px;
 }
 
 
