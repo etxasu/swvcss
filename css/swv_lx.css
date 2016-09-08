@@ -446,7 +446,7 @@ aside.minimized .navigationToggle:focus {
 .simIFrame .stageContainer .content {
     margin: auto;
 	width: 100% !important;
-    height: calc(100% - 20px) !important;
+    height: calc(100% - 64px) !important;
 	
 }	
 .simIFrame .stageContainer .content .instructions 
