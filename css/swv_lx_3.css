@@ -20,8 +20,8 @@ header {
     left: 0px;
     color: #0066ff;
     font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
-    font-size: 14px
+    font-weight: 0;
+    font-size: 0px
 }
 .headerContainer .wrapper {
     float: none;
@@ -34,7 +34,7 @@ header {
     color: #1c1c1c
 }
 .headerContainer .wrapper .nameScoreButtonWrapper .name {
-    font-weight: 600
+    font-weight: 0
 }
 .headerContainer .wrapper .nameScoreButtonWrapper .optionsToggle {
     width: 0px;
