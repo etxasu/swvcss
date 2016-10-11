@@ -406,16 +406,16 @@ aside.minimized .navigationToggle:focus {
 }
 
 .simIFrame .stageContainer {
-    width: 100vw !important;
-    height: 100vh !important;
+    width: 98vw !important;
+    height: 98vh !important;
     left: 0 !important;
     top: -10px !important
 }
 
 
 .simIFrame .stageContainer .content {
-	 width: 100vw !important;
-    height: 100vh !important;
+	 width: 98vw !important;
+    height: 98vh !important;
     left: 0 !important;
     top: -10px !important
 	
