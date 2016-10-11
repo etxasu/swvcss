@@ -110,8 +110,8 @@ aside .history:before {
     border-bottom: 3px solid #f1f1ef;
     background: none;
     width: 0px;
-    padding: 15px 0px 15px 5px;
-    margin-left: 10px;
+    padding: 0px 0px 0px 0px;
+    margin-left: 0px;
     font-family: 'Open Sans', sans-serif !important;
     font-weight: 600
 }
@@ -120,8 +120,8 @@ aside .history .history-element {
     border: none;
     padding-top: 0px;
     padding-bottom: 0px;
-    padding-left: 5px;
-    margin-left: 10px;
+    padding-left: 0px;
+    margin-left: 0px;
     color: #888;
     font-size: 12px;
     border-bottom: 1px solid #e8eaeb;
@@ -314,7 +314,7 @@ aside.minimized .navigationToggle:focus {
     font-family: 'Open Sans', sans-serif !important
 }
 .feedbackContainer .bottomContainer.minimized .toggleFeedbackBtn .icon {
-    background-position: 0 -8px
+    background-position: 0px
 }
 .feedbackContainer #stage-feedback {
     border: 1px solid #f1f1ef;
@@ -405,48 +405,13 @@ aside.minimized .navigationToggle:focus {
     display: block
 }
 
-.vft .stageContainer {
-	margin: auto;
-    width: 100% !important;
-    height: calc(100% - 20px) !important;
-	top: -20px;
-}
-
-.vft .stageContainer .content {
-    margin: auto;
-	width: 100% !important;
-    height: 100% !important;
-}	
-	
-.vft .checkContainer {
-	position: absolute;
-	width: 0% !important;
-	height: 0% !important;
-	bottom: 133px !important;
-}
-
-.vft .feedbackContainer {
-	position: absolute;
-	width: 0% !important;
-	height: 0% !important;
-	bottom: 638px !important;
-	left: 350px !important;
-}
-
-.vft iframe#vft {
-    width: 100% !important;
-    height: 100% !important;	
-}
-
 .simIFrame .stageContainer {
-	margin: auto;
     width: 100% !important;
     height: 100% !important;
 }
 
 
 .simIFrame .stageContainer .content {
-    margin: auto;
 	width: 100% !important;
     height: 100% !important;
 	
@@ -524,7 +489,7 @@ header .score {
 }
 header .name {
     opacity: 0!important;
-    min-width: 40px!important
+    min-width: 0px!important
 }
 
 }
