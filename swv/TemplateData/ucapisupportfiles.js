@@ -13142,8 +13142,7 @@ define('api/snapshot/Transporter',['jquery',
          * Can listen to check complete event
          *
          */
-        this.addCheckCompleteListener = function (listener, once)
-        {
+        this.addCheckCompleteListener = function(listener, once) {
             callback.check.complete.push({
                 handler: listener,
                 once: once
@@ -13442,43 +13441,28 @@ define('api/snapshot/Transporter',['jquery',
          * Trigger a check event from the sim
          */
         this.triggerCheck = function(handlers) {
-            if (checkTriggered)
-            {
-                // derp
-
-                console.log("Please read and close the feedback window before proceeding.");
-
-                //console.log("You have already triggered a check event. Event not triggered.");
-                //throw new Error("You have already triggered a check event");
+            if (checkTriggered) {
+                throw new Error("You have already triggered a check event");
             }
-            else
-            {
-                checkTriggered = true;
 
-                handlers = handlers || {};
+            checkTriggered = true;
 
-                if (handlers.complete)
-                {
-                    self.addCheckCompleteListener(handlers.complete, true);
-                }
+            handlers = handlers || {};
 
-                var triggerCheckMsg = new SimCapiMessage({
-                    type: SimCapiMessage.TYPES.CHECK_REQUEST,
-                    handshake: handshake
-                });
+            if (handlers.complete) {
+                self.addCheckCompleteListener(handlers.complete, true);
+            }
 
-                pendingMessages.forValueChange.push(triggerCheckMsg);
+            var triggerCheckMsg = new SimCapiMessage({
+                type: SimCapiMessage.TYPES.CHECK_REQUEST,
+                handshake: handshake
+            });
 
-                //Ensure that there are no more set value calls to be able to send the message.
-                self.notifyValueChange();
-            }            
+            pendingMessages.forValueChange.push(triggerCheckMsg);
+
+            //Ensure that there are no more set value calls to be able to send the message.
+            self.notifyValueChange();
         };
-
-        /*
-         *  Gets the current value of checkTrigger and reports it to an outside entity. In this context, Unity.
-         */
-
-        this.checkEventState = function () { return checkTriggered }
 
         /*
          * Send a VALUE_CHANGE message to the viewer with a dump of the model.
@@ -13576,10 +13560,6 @@ define('api/snapshot/Transporter',['jquery',
 
         // Helper to send message to viewer
         this.sendMessage = function(message) {
-            if(!listeningForMessage) {
-                listeningForMessage = true;
-                window.addEventListener('message', messageEventHandler);
-            }
             // window.parent can be itself if it's not inside an iframe
             if (isInIframe()) {
                 window.parent.postMessage(JSON.stringify(message), '*');
@@ -13613,15 +13593,11 @@ define('api/snapshot/Transporter',['jquery',
 
         };
 
-        var listeningForMessage = false;
         // we have to wait until the dom is ready to attach anything or sometimes the js files
         // haven't finished loading and crap happens.
         $(document).ready(function() {
             // attach event listener for messages received from the viewer
-            if(!listeningForMessage) {
-                listeningForMessage = true;
-                window.addEventListener('message', messageEventHandler);
-            }
+            window.addEventListener('message', messageEventHandler);
         });
     };
 
@@ -14423,33 +14399,18 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
         }
     };
 
-    window.OpenExternalAsset = function(url, _x, _y)
-    {
-        window.open(url, "SWV Asset", "width=854, height=480");
-    }
-
     window.SendMessageToUnity = function (burpie) 
     {
-        Transporter.triggerCheck();
-        //SendMessage("Scene Controller", "SetNextInteractableState");
+        SendMessage("CAPI", "TestBrowserSend", burpie);
         //console.log("Received the function");
     }
-
-    window.CheckEventState = function ()
-    {
-        if (Transporter.checkEventState == false)
-        {
-            console.log("Trap state finished");
-            SendMessage("Scene Controller", "SetNextInteractableState");
-        }
-        else
-        {
-            console.log("Trap state in progress");
-        }
-    }
+	
+	window.UnityResetLesson = function (doReset)
+	{
+		window.location.href = doReset;		
+	}
 
     var initialized = false;
-
     window.receiveExposeFromUnity = function (name, type, value, allowedValues)
     {
         if (!initialized)
