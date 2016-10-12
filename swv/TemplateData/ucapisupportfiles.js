@@ -14401,7 +14401,8 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 
     window.SendMessageToUnity = function (burpie) 
     {
-        SendMessage("CAPI", "TestBrowserSend", burpie);
+        Transporter.triggerCheck();
+        //SendMessage("Scene Controller", "SetNextInteractableState");
         //console.log("Received the function");
     }
 	
