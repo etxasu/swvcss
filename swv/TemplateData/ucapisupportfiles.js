@@ -13441,8 +13441,9 @@ define('api/snapshot/Transporter',['jquery',
          * Trigger a check event from the sim
          */
         this.triggerCheck = function(handlers) {
-            if (checkTriggered) {
-                throw new Error("You have already triggered a check event");
+            if (checkTriggered)
+            {
+                console.log("Please read and close the feedback window before proceeding.");
             }
 
             checkTriggered = true;
