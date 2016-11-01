@@ -1,4 +1,4 @@
-(function (root, factory) {
+﻿(function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD.
         define([], factory);
@@ -14416,7 +14416,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	{
 	    var _myDoc = document.getElementsByClassName("optionsToggle")[0];
 
-	    console.log(_myDoc.toString());
+	    console.log(_myDoc.length);
 	}
 
     var initialized = false;
