@@ -14414,7 +14414,9 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 
 	window.UnityOpenRestartMenu = function (ph)
 	{
-	    document.getElementById('optionsToggle').click();
+	    var _myDoc = document.getElementsByClassName("optionsToggle")[0];
+
+	    console.log(_myDoc.toString());
 	}
 
     var initialized = false;
