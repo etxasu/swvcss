@@ -14412,6 +14412,11 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 		window.location.href = doReset;		
 	}
 
+	window.UnityOpenRestartMenu = function (ph)
+	{
+	    document.getElementById('optionsToggle').click();
+	}
+
     var initialized = false;
     window.receiveExposeFromUnity = function (name, type, value, allowedValues)
     {
