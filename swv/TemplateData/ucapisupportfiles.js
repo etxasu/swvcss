@@ -1,4 +1,4 @@
-﻿(function (root, factory) {
+(function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD.
         define([], factory);
@@ -14414,9 +14414,10 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 
 	window.UnityOpenRestartMenu = function (ph)
 	{
-	    var _myDoc = document.getElementsByClassName("optionsToggle")[0];
+	    var _myDoc = document.getElementsByClassName("optionsToggle");
 
-	    console.log(_myDoc.length);
+	    SendMessage('SoundBoard', 'DebugJavaScriptData', _myDoc);
+	    //console.log(_myDoc.length);
 	}
 
     var initialized = false;
