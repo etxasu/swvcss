@@ -14414,10 +14414,10 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 
 	window.UnityOpenRestartMenu = function (ph)
 	{
-	    var _myDoc = document.getElementsByClassName("optionsToggle");
+	    var _myDoc = parent.document.getElementsByClassName("optionsToggle");
 
-	    SendMessage('SoundBoard', 'DebugJavaScriptData', _myDoc);
-	    //console.log(_myDoc.length);
+	    //SendMessage('SoundBoard', 'DebugJavaScriptData', _myDoc);
+	    console.log(_myDoc.length);
 	}
 
     var initialized = false;

@@ -42,7 +42,9 @@ header {
     background: transparent !important;
     color: #3686ff;
     border: none;
-    outline: none
+    outline: none;
+    position: relative;
+    z-index: 1000;
 }
 .headerContainer .wrapper .nameScoreButtonWrapper .optionsToggle:hover,
 .headerContainer .wrapper .nameScoreButtonWrapper .optionsToggle.clicked {
