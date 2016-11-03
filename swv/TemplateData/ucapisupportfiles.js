@@ -12801,7 +12801,7 @@ define('api/snapshot/config/apiList', ['require'], function (require) {
 });
 
 
-define(function (require) {
+define('ApiInterface', ['require'], function (require) {
     var apiList = require('api/snapshot/config/apiList');
     var SimCapiMessage = require('api/snapshot/SimCapiMessage');
 
