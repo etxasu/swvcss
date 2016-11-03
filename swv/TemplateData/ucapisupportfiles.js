@@ -12998,15 +12998,18 @@ define('api/snapshot/Transporter',['jquery',
     'api/snapshot/util/uuid',
     'api/snapshot/SimCapiMessage',
     'check',
-    'api/snapshot/SimCapiValue'
-], function($, _, uuid, SimCapiMessage, check, SimCapiValue) {
+    'api/snapshot/SimCapiValue',
+    'api/snapshot/util/domain',
+    'api/snapshot/util/iframe',
+    'api/snapshot/LocalData'
+], function($, _, uuid, SimCapiMessage, check, SimCapiValue, domainUtil, iframeUtil, LocalData) {
 
     $.noConflict();
     _.noConflict();
 
     var Transporter = function(options) {
         // current version of Transporter
-        var version = 0.67;
+        var version = "<%= version %>";
 
         // Ensure that options is initialized. This is just making code cleaner by avoiding lots of
         // null checks
@@ -13023,6 +13026,7 @@ define('api/snapshot/Transporter',['jquery',
         //The list of change listeners
         var changeListeners = [];
         var initialSetupCompleteListeners = [];
+        var handshakeListeners = [];
 
         // Authentication handshake used for communicating to viewer
         var handshake = {
@@ -13051,6 +13055,11 @@ define('api/snapshot/Transporter',['jquery',
             getData: null
         };
 
+        /* can be used to uniquely identify messages */
+        this.lastMessageId = 0;
+        /* can be used to keep track of the success and error callbacks for a given message */
+        this.messageCallbacks = {};
+
         /*
          * Gets/SetsRequest callbacks
          * simId -> { key -> { onSucess -> function, onError -> function } }
@@ -13061,17 +13070,17 @@ define('api/snapshot/Transporter',['jquery',
         /*
          *   Throttles the value changed message to 25 milliseconds
          */
-        var setTimeoutStarted = false;
         var currentTimeout = null;
         var timeoutAmount = 25;
 
+        this.apiInterface = ApiInterface.create(this);
 
         this.getHandshake = function() {
             return handshake;
         };
 
         /*
-         * Helper to route messages to approvidate handlers
+         * Helper to route messages to appropriate handlers
          */
         this.capiMessageHandler = function(message) {
             switch (message.type) {
@@ -13099,8 +13108,17 @@ define('api/snapshot/Transporter',['jquery',
                 case SimCapiMessage.TYPES.SET_DATA_RESPONSE:
                     handleSetDataResponse(message);
                     break;
+                case SimCapiMessage.TYPES.API_CALL_RESPONSE:
+                    this.apiInterface.processResponse(message);
+                    break;
                 case SimCapiMessage.TYPES.INITIAL_SETUP_COMPLETE:
                     handleInitialSetupComplete(message);
+                    break;
+                case SimCapiMessage.TYPES.RESIZE_PARENT_CONTAINER_RESPONSE:
+                    handleResizeParentContainerResponse(message);
+                    break;
+                case SimCapiMessage.TYPES.ALLOW_INTERNAL_ACCESS:
+                    setDomainToShortform();
                     break;
             }
         };
@@ -13156,6 +13174,15 @@ define('api/snapshot/Transporter',['jquery',
             });
         };
 
+        var handshakeComplete = false;
+        this.addHandshakeCompleteListener = function(listener) {
+            if (handshakeComplete) {
+                listener(handshake);
+                return;
+            }
+            handshakeListeners.push(listener);
+        };
+
         /*
          *   @since 0.5
          *   Handles the get data message
@@ -13181,15 +13208,16 @@ define('api/snapshot/Transporter',['jquery',
          */
         var handleSetDataResponse = function(message) {
             if (message.handshake.authToken === handshake.authToken) {
+                var callbacks = setRequests[message.values.simId][message.values.key];
+                delete setRequests[message.values.simId][message.values.key];
                 if (message.values.responseType === 'success') {
-                    setRequests[message.values.simId][message.values.key].onSuccess({
+                    callbacks.onSuccess({
                         key: message.values.key,
                         value: message.values.value
                     });
                 } else if (message.values.responseType === 'error') {
-                    setRequests[message.values.simId][message.values.key].onError(message.values.error);
+                    callbacks.onError(message.values.error);
                 }
-                delete setRequests[message.values.simId][message.values.key];
             }
         };
 
@@ -13204,6 +13232,11 @@ define('api/snapshot/Transporter',['jquery',
 
             onSuccess = onSuccess || function() {};
             onError = onError || function() {};
+
+            if(!iframeUtil.isInIframe() || iframeUtil.isInAuthor()) {
+                LocalData.getData(simId, key, onSuccess);
+                return true;
+            }
 
             var getDataRequestMsg = new SimCapiMessage({
                 type: SimCapiMessage.TYPES.GET_DATA_REQUEST,
@@ -13250,6 +13283,11 @@ define('api/snapshot/Transporter',['jquery',
 
             onSuccess = onSuccess || function() {};
             onError = onError || function() {};
+
+            if(!iframeUtil.isInIframe() || iframeUtil.isInAuthor()) {
+                LocalData.setData(simId, key, value, onSuccess);
+                return true;
+            }
 
             var setDataRequestMsg = new SimCapiMessage({
                 type: SimCapiMessage.TYPES.SET_DATA_REQUEST,
@@ -13306,6 +13344,7 @@ define('api/snapshot/Transporter',['jquery',
             var toBeRemoved = [];
 
             for (var i in callback.check[eventName]) {
+                if(!callback.check[eventName].hasOwnProperty(i)){ continue; }
 
                 callback.check[eventName][i].handler(message);
 
@@ -13315,6 +13354,7 @@ define('api/snapshot/Transporter',['jquery',
             }
 
             for (var r in toBeRemoved) {
+                if(!toBeRemoved.hasOwnProperty(r)){ continue; }
                 callback.check[eventName].splice(callback.check[eventName].indexOf(toBeRemoved[r]), 1);
             }
         };
@@ -13360,6 +13400,7 @@ define('api/snapshot/Transporter',['jquery',
                         } else if (!outgoingMap[key]) {
                             //key hasn't been exposed yet. Could be a dynamic capi property.
                             toBeApplied[key] = capiValue.value;
+                            changed.push(new SimCapiValue({ value: capiValue.value, key: key }));
                         }
                     }
                 });
@@ -13426,10 +13467,16 @@ define('api/snapshot/Transporter',['jquery',
                 self.sendMessage(onReadyMsg);
                 pendingOnReady = false;
 
+                handshakeListeners.forEach(function(listener) {
+                    listener(handshake);
+                });
+                handshakeComplete = true;
+                handshakeListeners = [];
+
                 // send initial value snapshot
                 self.notifyValueChange();
             }
-            if (!isInIframe()) {
+            if (!iframeUtil.isInIframe()) {
                 handleInitialSetupComplete({
                     handshake: handshake
                 });
@@ -13441,9 +13488,8 @@ define('api/snapshot/Transporter',['jquery',
          * Trigger a check event from the sim
          */
         this.triggerCheck = function(handlers) {
-            if (checkTriggered)
-            {
-                console.log("Please read and close the feedback window before proceeding.");
+            if (checkTriggered) {
+                throw new Error("You have already triggered a check event");
             }
 
             checkTriggered = true;
@@ -13463,6 +13509,47 @@ define('api/snapshot/Transporter',['jquery',
 
             //Ensure that there are no more set value calls to be able to send the message.
             self.notifyValueChange();
+        };
+
+        this.requestParentContainerResize = function(options, onSuccess) {
+            onSuccess = onSuccess || function() {};
+            var messageId = ++self.lastMessageId;
+            var message = new SimCapiMessage({
+                type: SimCapiMessage.TYPES.RESIZE_PARENT_CONTAINER_REQUEST,
+                handshake: handshake,
+                values: {
+                    messageId: messageId,
+                    width: options.width,
+                    height: options.height
+                }
+            });
+            this.messageCallbacks[messageId] = {
+                onSuccess: onSuccess
+            };
+            if (!handshake.authToken) {
+                pendingMessages.forHandshake.push(message);
+            } else {
+                self.sendMessage(message);
+            }
+        };
+        var handleResizeParentContainerResponse = function(message) {
+            var messageId = message.values.messageId;
+            var callbacks = self.messageCallbacks[messageId];
+            delete self.messageCallbacks[messageId];
+            if (message.values.responseType === 'success') {
+                callbacks.onSuccess();
+            }
+        };
+        var setDomainToShortform = function() {
+            if (domainUtil.getDomain().indexOf("smartsparrow.com") === -1) { return; }
+            domainUtil.setDomain("smartsparrow.com");
+        };
+        this.requestInternalViewerAccess = function() {
+            var message = new SimCapiMessage({
+                type: SimCapiMessage.TYPES.ALLOW_INTERNAL_ACCESS,
+                handshake: this.getHandshake()
+            });
+            self.sendMessage(message);
         };
 
         /*
@@ -13562,12 +13649,9 @@ define('api/snapshot/Transporter',['jquery',
         // Helper to send message to viewer
         this.sendMessage = function(message) {
             // window.parent can be itself if it's not inside an iframe
-            if (isInIframe()) {
+            if (iframeUtil.isInIframe()) {
                 window.parent.postMessage(JSON.stringify(message), '*');
             }
-        };
-        var isInIframe = function() {
-            return window !== window.parent;
         };
 
         // Calls all the changeListeners
@@ -13589,7 +13673,7 @@ define('api/snapshot/Transporter',['jquery',
                 var message = JSON.parse(event.data);
                 self.capiMessageHandler(message);
             } catch (e) {
-                //silently ignore - occuring in test
+                window.console.log(e);
             }
 
         };
@@ -13601,8 +13685,6 @@ define('api/snapshot/Transporter',['jquery',
             window.addEventListener('message', messageEventHandler);
         });
     };
-
-
 
     var _instance = null;
     var getInstance = function() {
@@ -14414,6 +14496,8 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 
 	window.UnityOpenRestartMenu = function (ph)
 	{
+	    Transporter.requestInternalViewerAccess();
+
 	    var _myDoc = parent.document.getElementsByClassName("optionsToggle");
 
 	    //SendMessage('SoundBoard', 'DebugJavaScriptData', _myDoc);
