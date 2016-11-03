@@ -12766,6 +12766,28 @@ define('api/snapshot/util/uuid',['require'],function(require) {
 
 });
 
+define('api/snapshot/util/domain', ['require'], function (require) {
+    return {
+        getDomain: function () {
+            return document.domain;
+        },
+        setDomain: function (newDomain) {
+            document.domain = newDomain;
+        }
+    };
+});
+
+define('api/snapshot/util/iframe', ['require'], function (require) {
+    return {
+        isInIframe: function () {
+            return window !== window.parent;
+        },
+        isInAuthor: function () {
+            return document.referrer.indexOf('/bronte/author') !== -1;
+        }
+    };
+});
+
 define('api/snapshot/SimCapiMessage',['require'],function(require) {
 
     var SimCapiMessage = function(options) {
