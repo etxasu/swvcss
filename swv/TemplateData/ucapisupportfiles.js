@@ -13148,8 +13148,9 @@ define('api/snapshot/Transporter',['jquery',
     'api/snapshot/SimCapiValue',
     'api/snapshot/util/domain',
     'api/snapshot/util/iframe',
-    'api/snapshot/LocalData'
-], function($, _, uuid, SimCapiMessage, check, SimCapiValue, domainUtil, iframeUtil, LocalData) {
+    'api/snapshot/LocalData',
+    'ApiInterface'
+], function($, _, uuid, SimCapiMessage, check, SimCapiValue, domainUtil, iframeUtil, LocalData, ApiInterface) {
 
     $.noConflict();
     _.noConflict();
