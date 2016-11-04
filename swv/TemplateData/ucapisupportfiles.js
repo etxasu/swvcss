@@ -14657,15 +14657,21 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	}
 
 	window.UnityOpenRestartMenu = function (ph)
-	{
-	    Transporter.requestInternalViewerAccess();    
-
+	{ 
 	    console.log(document.domain.toString());
 
-	    document.domain = "aelp.smartsparrow.com";
+	    //document.domain = "aelp.smartsparrow.com";
 
 	    //SendMessage('SoundBoard', 'DebugJavaScriptData', _myDoc);
 	    window.parent.document.querySelector(".restartBtn").click();
+	}
+
+	window.UnityWantsViewerAccess = function (please)
+	{
+	    if(please)
+	    {
+	        Transporter.requestInternalViewerAccess();
+	    }
 	}
 
     var initialized = false;
