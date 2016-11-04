@@ -13705,14 +13705,19 @@ define('api/snapshot/Transporter',['jquery',
         };
         this.requestInternalViewerAccess = function ()
         {
-            console.log(document.domain.toString());
+            //console.log(document.domain.toString());
             var message = new SimCapiMessage({
                 type: SimCapiMessage.TYPES.ALLOW_INTERNAL_ACCESS,
                 handshake: this.getHandshake()
             });
             self.sendMessage(message);
-            console.log(document.domain.toString());
+            //console.log(document.domain.toString());
         };
+
+        this.TryResetLesson = function ()
+        {
+            window.parent.document.querySelector(".restartBtn").click();
+        }
 
         /*
          * Send a VALUE_CHANGE message to the viewer with a dump of the model.
@@ -14660,13 +14665,13 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	{ 
 	    //console.log(window.parent.document.domain.toString());
 	    document.domain = "smartsparrow.com";
+	    Transporter.TryResetLesson();
 	    //SendMessage('SoundBoard', 'DebugJavaScriptData', _myDoc);
-	    window.parent.document.querySelector(".restartBtn").click();
 	}
 
 	window.UnityWantsViewerAccess = function (please)
 	{
-	    console.log(document.domain.toString());
+	    //console.log(document.domain.toString());
 	    if (document.domain.indexOf("smartsparrow.com") != -1)
 	    {
 	        document.domain = "smartsparrow.com";
