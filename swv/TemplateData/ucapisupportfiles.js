@@ -12773,7 +12773,9 @@ define('api/snapshot/util/domain', ['require'], function (require) {
             return document.domain;
         },
         setDomain: function (newDomain) {
+            console.log(document.domain);
             document.domain = newDomain;
+            console.log(document.domain);
         }
     };
 });
@@ -14645,6 +14647,8 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	window.UnityOpenRestartMenu = function (ph)
 	{
 	    Transporter.requestInternalViewerAccess();    
+
+
 
 	    //SendMessage('SoundBoard', 'DebugJavaScriptData', _myDoc);
 	    window.parent.document.querySelector(".restartBtn").click();
