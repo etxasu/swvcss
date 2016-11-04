@@ -14659,7 +14659,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	window.UnityOpenRestartMenu = function (ph)
 	{ 
 	    //console.log(window.parent.document.domain.toString());
-
+	    document.domain = "smartsparrow.com";
 	    //SendMessage('SoundBoard', 'DebugJavaScriptData', _myDoc);
 	    window.parent.document.querySelector(".restartBtn").click();
 	}
