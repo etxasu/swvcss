@@ -12773,9 +12773,9 @@ define('api/snapshot/util/domain', ['require'], function (require) {
             return document.domain;
         },
         setDomain: function (newDomain) {
-            console.log(document.domain);
+            //console.log(document.domain);
             document.domain = newDomain;
-            console.log(document.domain);
+            //console.log(document.domain);
         }
     };
 });
@@ -13690,9 +13690,15 @@ define('api/snapshot/Transporter',['jquery',
                 callbacks.onSuccess();
             }
         };
-        var setDomainToShortform = function() {
-            if (domainUtil.getDomain().indexOf("smartsparrow.com") === -1) { return; }
+        var setDomainToShortform = function ()
+        {
+            console.log(document.domain.toString());
+            if (domainUtil.getDomain().indexOf("smartsparrow.com") === -1)
+            {
+                return;
+            }
             domainUtil.setDomain("smartsparrow.com");
+            console.log(document.domain.toString());
         };
         this.requestInternalViewerAccess = function() {
             var message = new SimCapiMessage({
