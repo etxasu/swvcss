@@ -13705,13 +13705,13 @@ define('api/snapshot/Transporter',['jquery',
         };
         this.requestInternalViewerAccess = function ()
         {
-            //console.log(document.domain.toString());
+            console.log(document.domain.toString());
             var message = new SimCapiMessage({
                 type: SimCapiMessage.TYPES.ALLOW_INTERNAL_ACCESS,
                 handshake: this.getHandshake()
             });
             self.sendMessage(message);
-            //console.log(document.domain.toString());
+            console.log(document.domain.toString());
         };
 
         /*
