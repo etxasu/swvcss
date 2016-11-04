@@ -14647,7 +14647,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	    Transporter.requestInternalViewerAccess();    
 
 	    //SendMessage('SoundBoard', 'DebugJavaScriptData', _myDoc);
-	    console.log(Transporter.requestInternalViewerAccess());
+	    window.parent.document.querySelector(".restartBtn").click();
 	}
 
     var initialized = false;
