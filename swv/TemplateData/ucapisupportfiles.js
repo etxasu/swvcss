@@ -14658,7 +14658,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 
 	window.UnityOpenRestartMenu = function (ph)
 	{ 
-	    console.log(window.parent.document.domain.toString());
+	    //console.log(window.parent.document.domain.toString());
 
 	    //SendMessage('SoundBoard', 'DebugJavaScriptData', _myDoc);
 	    window.parent.document.querySelector(".restartBtn").click();
@@ -14668,7 +14668,13 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	{
 	    if(please)
 	    {
-	        Transporter.requestInternalViewerAccess();
+	        if (document.domain.indexOf("smartsparrow.com") === -1)
+	        {
+	            document.domain = "smartsparrow.com";
+	            Transporter.requestInternalViewerAccess();
+	            console.log("Requested");
+	        }
+	        console.log("Could not request");
 	    }
 	}
 
