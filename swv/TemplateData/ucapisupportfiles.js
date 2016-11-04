@@ -13638,27 +13638,30 @@ define('api/snapshot/Transporter',['jquery',
          * Trigger a check event from the sim
          */
         this.triggerCheck = function(handlers) {
-            if (checkTriggered) {
-                throw new Error("You have already triggered a check event");
+            if (checkTriggered)
+            {
+                console.log("You have already triggered a check event");
             }
+            else
+            {
+                checkTriggered = true;
 
-            checkTriggered = true;
+                handlers = handlers || {};
 
-            handlers = handlers || {};
+                if (handlers.complete) {
+                    self.addCheckCompleteListener(handlers.complete, true);
+                }
 
-            if (handlers.complete) {
-                self.addCheckCompleteListener(handlers.complete, true);
+                var triggerCheckMsg = new SimCapiMessage({
+                    type: SimCapiMessage.TYPES.CHECK_REQUEST,
+                    handshake: handshake
+                });
+
+                pendingMessages.forValueChange.push(triggerCheckMsg);
+
+                //Ensure that there are no more set value calls to be able to send the message.
+                self.notifyValueChange();
             }
-
-            var triggerCheckMsg = new SimCapiMessage({
-                type: SimCapiMessage.TYPES.CHECK_REQUEST,
-                handshake: handshake
-            });
-
-            pendingMessages.forValueChange.push(triggerCheckMsg);
-
-            //Ensure that there are no more set value calls to be able to send the message.
-            self.notifyValueChange();
         };
 
         this.requestParentContainerResize = function(options, onSuccess) {
@@ -13702,13 +13705,13 @@ define('api/snapshot/Transporter',['jquery',
         };
         this.requestInternalViewerAccess = function ()
         {
-            console.log(document.domain.toString());
+            //console.log(document.domain.toString());
             var message = new SimCapiMessage({
                 type: SimCapiMessage.TYPES.ALLOW_INTERNAL_ACCESS,
                 handshake: this.getHandshake()
             });
             self.sendMessage(message);
-            console.log(document.domain.toString());
+            //console.log(document.domain.toString());
         };
 
         /*
@@ -14657,7 +14660,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	{
 	    Transporter.requestInternalViewerAccess();    
 
-
+	    console.log(document.domain.toString());
 
 	    //SendMessage('SoundBoard', 'DebugJavaScriptData', _myDoc);
 	    window.parent.document.querySelector(".restartBtn").click();
