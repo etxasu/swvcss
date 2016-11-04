@@ -14666,16 +14666,14 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 
 	window.UnityWantsViewerAccess = function (please)
 	{
-	    if(please)
+	    console.log(document.domain.toString());
+	    if (document.domain.indexOf("smartsparrow.com") === -1)
 	    {
-	        if (document.domain.indexOf("smartsparrow.com") === -1)
-	        {
-	            document.domain = "smartsparrow.com";
-	            Transporter.requestInternalViewerAccess();
-	            console.log("Requested");
-	        }
-	        console.log("Could not request");
+	        document.domain = "smartsparrow.com";
+	        Transporter.requestInternalViewerAccess();
+	        console.log("Requested");
 	    }
+	    console.log("Could not request");
 	}
 
     var initialized = false;
