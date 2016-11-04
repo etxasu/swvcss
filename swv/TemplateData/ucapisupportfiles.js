@@ -14662,6 +14662,8 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 
 	    console.log(document.domain.toString());
 
+	    document.domain = "aelp.smartsparrow.com";
+
 	    //SendMessage('SoundBoard', 'DebugJavaScriptData', _myDoc);
 	    window.parent.document.querySelector(".restartBtn").click();
 	}
