@@ -13696,7 +13696,7 @@ define('api/snapshot/Transporter',['jquery',
         var setDomainToShortform = function ()
         {
             //console.log(document.domain.toString());
-            if (domainUtil.getDomain().indexOf("smartsparrow.com") === -1)
+            if (domainUtil.getDomain().indexOf("smartsparrow.com") != -1)
             {
                 return;
             }
@@ -14673,7 +14673,10 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	        Transporter.requestInternalViewerAccess();
 	        console.log("Requested");
 	    }
-	    console.log("Could not request");
+	    else
+	    {
+	        console.log("Could not request");
+	    }
 	}
 
     var initialized = false;
