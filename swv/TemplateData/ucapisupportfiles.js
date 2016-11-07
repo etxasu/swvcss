@@ -14662,10 +14662,11 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	}
 
 	window.UnityOpenRestartMenu = function (ph)
-	{ 
+	{
+	    location.reload(true);
 	    //console.log(window.parent.document.domain.toString());
-	    document.domain = "smartsparrow.com";
-	    Transporter.TryResetLesson();
+	    //document.domain = "smartsparrow.com";
+	    //Transporter.TryResetLesson();
 	    //SendMessage('SoundBoard', 'DebugJavaScriptData', _myDoc);
 	}
 
