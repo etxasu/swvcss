@@ -14714,16 +14714,17 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
     };
 
     function storageSuccess() {
-        console.log("Storage successful");
+        console.log("Storage process successful");
     };
 
     function storageError() {
-        console.log("Storage errored!");
+        console.log("Storage process errored!");
     };
 
     function transmitDataToUnity(value)
     {
         console.log(value);
+        SendMessage("Scene Controller", "TestReception", value);
     }
 
     //
@@ -14736,8 +14737,8 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 
     window.getUnityData = function (simId, key)
     {
-        var _data = Transporter.getDataRequest(simId, key, transmitDataToUnity, storageError);
-        console.log(_data.toString());
+        Transporter.getDataRequest(simId, key, transmitDataToUnity, storageError);
+        //console.log(_data.toString());
     };
 
     // TODO pregenerate for each type and cache
