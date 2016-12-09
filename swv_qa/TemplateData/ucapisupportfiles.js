@@ -14724,7 +14724,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
     function transmitDataToUnity(value)
     {
         console.log(value.toString());
-        SendMessage("Scene Controller", "TestReception", value.value);
+        SendMessage("Scene Controller", "TestReception", value.value.toString());
     }
 
     //
