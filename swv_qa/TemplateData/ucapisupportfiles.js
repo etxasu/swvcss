@@ -14721,6 +14721,11 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
         console.log("Storage errored!");
     };
 
+    function transmitDataToUnity(value)
+    {
+        console.log(value);
+    }
+
     //
     // Utilize the transporter for more permanent storage.
     // JOS: 12/9/2016
@@ -14731,7 +14736,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 
     window.getUnityData = function (simId, key)
     {
-        var _data = Transporter.getDataRequest(simId, key, storageSuccess, storageError);
+        var _data = Transporter.getDataRequest(simId, key, transmitDataToUnity, storageError);
         console.log(_data.toString());
     };
 
