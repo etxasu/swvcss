@@ -14729,10 +14729,10 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
         Transporter.setDataRequest(simId, key, value, storageSuccess, storageError);
     };
 
-    window.getUnityData = function (simId, key, value)
+    window.getUnityData = function (simId, key)
     {
-        Transporter.getDataRequest(simId, key, storageSuccess, storageError);
-        //console.log(_data.toString());
+        var _data = Transporter.getDataRequest(simId, key, storageSuccess, storageError);
+        console.log(_data.toString());
     };
 
     // TODO pregenerate for each type and cache
