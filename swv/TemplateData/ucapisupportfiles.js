@@ -14685,7 +14685,8 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	    }
 	}
 
-    var initialized = false;
+	var initialized = false;
+
     window.receiveExposeFromUnity = function (name, type, value, allowedValues)
     {
         if (!initialized)
@@ -14710,6 +14711,34 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 
         capi.set(name, value);
         adapter.expose(name, capi, descObj);
+    };
+
+    function storageSuccess() {
+        console.log("Storage process successful");
+    };
+
+    function storageError() {
+        console.log("Storage process errored!");
+    };
+
+    function transmitDataToUnity(value)
+    {
+        console.log(value.value.toString());
+        SendMessage("Scene Controller", "UpdateFoundWorlds", value.value.toString());
+    }
+
+    //
+    // Utilize the transporter for more permanent storage.
+    // JOS: 12/9/2016
+    window.storeUnityData = function (simId, key, value)
+    {
+        Transporter.setDataRequest(simId, key, value, storageSuccess, storageError);
+    };
+
+    window.getUnityData = function (simId, key)
+    {
+        Transporter.getDataRequest(simId, key, transmitDataToUnity, storageError);
+        //console.log(_data.toString());
     };
 
     // TODO pregenerate for each type and cache
