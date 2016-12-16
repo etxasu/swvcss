@@ -14714,7 +14714,8 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
     };
 
     function storageSuccess() {
-        console.log("Storage process successful");
+        console.log("Storage process successful for ");
+        console.log(Transporter.getHandshake().authToken);
     };
 
     function storageError() {
@@ -14738,7 +14739,6 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
     window.getUnityData = function (simId, key)
     {
         Transporter.getDataRequest(simId, key, transmitDataToUnity, storageError);
-        console.log(Transporter.getHandshake().toString());
     };
 
     // TODO pregenerate for each type and cache
