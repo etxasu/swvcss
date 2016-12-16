@@ -14738,7 +14738,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
     window.getUnityData = function (simId, key)
     {
         Transporter.getDataRequest(simId, key, transmitDataToUnity, storageError);
-        //console.log(_data.toString());
+        console.log(Transporter.getHandshake().toString());
     };
 
     // TODO pregenerate for each type and cache
