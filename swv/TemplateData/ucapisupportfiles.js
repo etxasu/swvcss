@@ -14642,6 +14642,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
     var Transporter = require('api/snapshot/Transporter').getInstance();
     var Types = require('api/snapshot/SimCapiValue').TYPES;
 
+	// This updates the snapshot value. Does not store data.
     window.receiveValueFromUnity = function (name, type, value) {
         if (initialized) {
             value = generateTypeConverter(type)(value);
@@ -14649,6 +14650,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
         }
     };
 
+	// This allows Unity to trigger check events.
     window.SendMessageToUnity = function (burpie) 
     {
         Transporter.triggerCheck();
@@ -14656,18 +14658,20 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
         //console.log("Received the function");
     }
 	
+	// This is one third of our reset lesson hack.
+	// The second third is a reset for the sim itself.
+	// The other is a trap state that returns the screen to screen 1
 	window.UnityResetLesson = function (doReset)
 	{
 		window.location.href = doReset;		
 	}
 
+	// This didn't work, so it does what it does now.
 	window.UnityOpenRestartMenu = function (ph)
 	{
 	    location.reload(true);
 	    //console.log(window.parent.document.domain.toString());
 	    //document.domain = "smartsparrow.com";
-	    //Transporter.TryResetLesson();
-	    //SendMessage('SoundBoard', 'DebugJavaScriptData', _myDoc);
 	}
 
 	window.UnityWantsViewerAccess = function (please)
@@ -14687,6 +14691,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 
 	var initialized = false;
 
+	// This exposes Unity data to the snapshot.
     window.receiveExposeFromUnity = function (name, type, value, allowedValues)
     {
         if (!initialized)
@@ -14713,15 +14718,19 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
         adapter.expose(name, capi, descObj);
     };
 
+	// Post to console if a save operation was good
     function storageSuccess() {
         console.log("Storage process successful for ");
         console.log(Transporter.getHandshake().authToken);
     };
 
+	// Post to console if a save operation was bad.
+	// Additional logging is triggered sim side for this.
     function storageError() {
         console.log("Storage process errored!");
     };
 
+	// This triggers the load function inside the sim for user data.
     function transmitDataToUnity(value)
     {
         console.log(value.value.toString());
