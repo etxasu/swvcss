@@ -14714,7 +14714,8 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
     };
 
     function storageSuccess() {
-        console.log("Storage process successful");
+        console.log("Storage process successful for ");
+        console.log(Transporter.getHandshake().authToken);
     };
 
     function storageError() {
@@ -14724,7 +14725,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
     function transmitDataToUnity(value)
     {
         console.log(value.value.toString());
-        SendMessage("Scene Controller", "TestReception", value.value.toString());
+        SendMessage("Scene Controller", "UpdateFoundWorlds", value.value.toString());
     }
 
     //
@@ -14738,7 +14739,6 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
     window.getUnityData = function (simId, key)
     {
         Transporter.getDataRequest(simId, key, transmitDataToUnity, storageError);
-        //console.log(_data.toString());
     };
 
     // TODO pregenerate for each type and cache
