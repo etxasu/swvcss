@@ -1,10 +1,10 @@
 ﻿@import url(//fonts.googleapis.com/css?family=Open+Sans:300,400,600);
 .skin-default {
-    background-color: #f1f1ef;
+    background-color: #FF00EE;
     font-family: 'Open Sans', sans-serif
 }
 .skin-default .mainView:before {
-    height: 65px;
+    height: 0px;
     background-color: #fff;
     border-bottom: 3px solid #1c1c1c
 }
@@ -12,16 +12,16 @@ header {
     font-family: 'Open Sans', sans-serif !important
 }
 .headerContainer {
-    height: 65px
+    height: 0px;
+	z-index: 200;
 }
 .headerContainer .lessonTitle {
     position: absolute;
-    left: 90px;
-    margin-top: 10px;
-    color: #1c1c1c;
+    left: 0px;
+    color: #0066ff;
     font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
-    font-size: 18px
+    font-weight: 0;
+    font-size: 0px
 }
 .headerContainer .wrapper {
     float: none;
@@ -30,19 +30,21 @@ header {
 }
 .headerContainer .wrapper .nameScoreButtonWrapper .name,
 .headerContainer .wrapper .nameScoreButtonWrapper .score {
-    margin-top: 12px;
+    margin-top: 0px;
     color: #1c1c1c
 }
 .headerContainer .wrapper .nameScoreButtonWrapper .name {
-    font-weight: 600
+    font-weight: 0
 }
 .headerContainer .wrapper .nameScoreButtonWrapper .optionsToggle {
-    width: 65px;
-    height: 65px;
+    width: 0px;
+    height: 0px;
     background: transparent !important;
-    color: #1c1c1c;
+    color: #3686ff;
     border: none;
-    outline: none
+    outline: none;
+    position: relative;
+    z-index: 1000;
 }
 .headerContainer .wrapper .nameScoreButtonWrapper .optionsToggle:hover,
 .headerContainer .wrapper .nameScoreButtonWrapper .optionsToggle.clicked {
@@ -89,17 +91,17 @@ header {
     position: absolute !important
 }
 aside {
-    width: 235px;
+    width: 0px;
     background: none;
-    border: none
+    border: nones
 }
 aside .title {
     display: none
 }
 aside .history {
-    width: 245px;
+    width: 0px;
     background-color: #fff;
-    top: 68px;
+    top: 0px;
     z-index: 1000
 }
 aside .history:before {
@@ -109,24 +111,24 @@ aside .history:before {
     padding-left: 0px;
     border-bottom: 3px solid #f1f1ef;
     background: none;
-    width: 210px;
-    padding: 15px 0px 15px 5px;
-    margin-left: 10px;
+    width: 0px;
+    padding: 0px 0px 0px 0px;
+    margin-left: 0px;
     font-family: 'Open Sans', sans-serif !important;
     font-weight: 600
 }
 aside .history .history-element {
-    height: 46px;
+    height: 0px;
     border: none;
     padding-top: 0px;
     padding-bottom: 0px;
-    padding-left: 5px;
-    margin-left: 10px;
+    padding-left: 0px;
+    margin-left: 0px;
     color: #888;
     font-size: 12px;
     border-bottom: 1px solid #e8eaeb;
     position: relative;
-    width: 210px;
+    width: 0px;
     font-family: 'Open Sans', sans-serif !important
 }
 aside .history .history-element::after {
@@ -149,8 +151,8 @@ aside .navigationToggle {
     background-color: #f1f1ef
 }
 aside.minimized {
-    height: 65px;
-    width: 65px;
+    height: 0px;
+    width: 0px;
     display: block;
     background-image: none;
     overflow: hidden
@@ -164,10 +166,10 @@ aside.minimized .navigationToggle {
 aside .navigationToggle,
 aside.minimized .navigationToggle {
     display: block !important;
-    width: 65px;
-    height: 65px;
+    width: 0px;
+    height: 0px;
     border: none !important;
-    border-right: solid 1px #f1f1ef !important
+    /*border-right: solid 1px #f1f1ef !important*/
 }
 aside .navigationToggle::before,
 aside.minimized .navigationToggle::before {
@@ -182,7 +184,7 @@ aside.minimized .navigationToggle::before {
     text-align: center;
     text-transform: uppercase;
     background: url('https://d1rpkia8qpfj4t.cloudfront.net/repo/styles/templates/magnum/img/history.png') 14px center no-repeat;
-    height: 60px
+    height: 0px
 }
 aside .navigationToggle:focus,
 aside.minimized .navigationToggle:focus {
@@ -219,58 +221,70 @@ aside.minimized .navigationToggle:focus {
 #stage-stage .content input[type='checkbox']:checked+label {
     background-image: url('https://d1rpkia8qpfj4t.cloudfront.net/repo/styles/templates/magnum/img/checkbox-active.png')
 }
+
+.checkContainer {	
+	position: absolute !important;
+	width: 0%;
+	height: 0%;
+}
+
 .checkContainer .buttonContainer {
-    top: 26px;
+  	top: 0px;
     right: 0;
-    width: 150px;
-    height: 50px
+    width: 0px;
+    height: 0px
 }
 .checkContainer .buttonContainer .checkBtn {
-    line-height: 50px;
+    line-height: 0px;
     padding: 0;
-    min-width: 150px;
-    background: #1c1c1c !important
+    min-width: 0px;
+    background: #1F262F !important
 }
+
+.checkContainer .buttonContainer .checkBtn:hover {
+    background: #404E60FF !important
+}
+
 .checkContainer .buttonContainer .checkBtn,
 .checkContainer .buttonContainer .closeFeedbackBtn {
-    font-size: 17px;
+    font-size: 0px;
     text-transform: uppercase;
     outline: 0;
     padding-bottom: 0;
-    width: 150px;
-    height: 48px;
-    min-width: 150px;
+    width: 0px;
+    height: 0px;
+    min-width: 0px;
     font-family: 'Open Sans', sans-serif !important
 }
 .checkContainer .buttonContainer .correctFeedback {
-    width: 150px;
-    line-height: 50px;
+    width: 0px;
+    line-height: 0px;
     padding: 0;
-    min-width: 150px;
+    min-width: 0px;
     background: #47be9e !important
 }
 .checkContainer .buttonContainer::after {
     display: none
 }
 .feedbackContainer .bottomContainer {
-    bottom: -25px;
-    right: -1px
+    bottom: 0px;
+    right: -0px
 }
 .feedbackContainer .bottomContainer #stage-feedback {
     box-shadow: none
 }
 .feedbackContainer .bottomContainer #stage-feedback .content {
-    background: #fff;
-    padding: 25px 0 25px 25px;
-    min-height: 180px !important
+    background: #ccff22;
+    padding: 0px 0 0px 0px;
+    min-height: 0px !important
 }
 .feedbackContainer .bottomContainer .toggleFeedbackBtn {
     position: absolute;
-    bottom: -50px;
-    right: 151px;
-    width: 284px;
-    height: 50px;
-    background: #fff;
+    bottom: 0px;
+    right: 0px;
+    width: 0px;
+    height: 0px;
+    background: #f7ff7d;
     outline: 0;
     border: 1px solid #f1f1ef
 }
@@ -278,31 +292,31 @@ aside.minimized .navigationToggle:focus {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 25px;
-    width: 10px;
-    height: 8px;
+    left: 0px;
+    width: 0px;
+    height: 0px;
     background: url("https://d1rpkia8qpfj4t.cloudfront.net/repo/styles/templates/magnum/img/feedback-arrow.png") no-repeat 0 0;
     margin: auto
 }
 .feedbackContainer .bottomContainer .toggleFeedbackBtn::after {
-    content: "Feedback";
+    content: "";
     display: block;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    padding-left: 35px;
-    font-size: 17px;
+    bottom: 0px;
+    left: 0px;
+    width: 0%;
+    height: 0px;
+    padding-left: 0px;
+    font-size: 0px;
     color: #1c1c1c;
     text-align: center;
-    line-height: 50px;
+    line-height: 0px;
     box-sizing: border-box;
     text-transform: uppercase;
     font-family: 'Open Sans', sans-serif !important
 }
 .feedbackContainer .bottomContainer.minimized .toggleFeedbackBtn .icon {
-    background-position: 0 -8px
+    background-position: 0px
 }
 .feedbackContainer #stage-feedback {
     border: 1px solid #f1f1ef;
@@ -339,14 +353,14 @@ aside.minimized .navigationToggle:focus {
     display: none
 }
 .cover .checkContainer {
-    width: 45px !important
+    width: 0px !important
 }
 .cover .checkContainer .buttonContainer {
-    top: 15px;
-    width: 125px
+    top: 0px;
+    width: 0px
 }
 .cover .checkContainer .buttonContainer .spricon-ajax-loader {
-    left: 30px;
+    left: 0px;
     right: 0;
     margin: auto
 }
@@ -361,61 +375,118 @@ aside.minimized .navigationToggle:focus {
     z-index: 1004
 }
 .mainView .feedbackContainer .bottomContainer {
-    bottom: -27px;
-    right: 0
+    top: -0px;
+    right: 0px;
 }
 .mainView .feedbackContainer .bottomContainer .toggleFeedbackBtn {
-    width: 150px;
-    height: 48px;
-    bottom: -47px;
-    right: 150px
+    width: 0px;
+    height: 0px;
+    bottom: 0px;
+    right: 0px
 }
-.mainView .feedbackContainer #stage-feedback {
+.mainView .feedbackCo1ntainer #stage-feedback {
     border-bottom: 1px solid #e1e1e1
 }
 .skin-default {
-    background-color: #fff
+    background-color: #000
 }
 #stage-stage .content {
     border: 1px solid #000!important
 }
-.feedbackContainer .bottomContainer .toggleFeedbackBtn {
-    border-color: #e1e1e1!important
+.feedbackContainer .bottomContainer {
+    top: -0px;
 }
+
 .feedbackContainer .bottomContainer #stage-feedback {
     border-color: #e1e1e1
 }
 .feedbackContainer .bottomContainer #stage-feedback .content {
-    background: #e1e1e1
+    background: #e1e1e1;
 }
 .headerContainer {
     display: block
 }
-.vft .stageContainer {
+
+.simIFrame .stageContainer {
+    width: 99vw !important;
+    height: 99vh !important;
+    left: 0 !important;
+    top: -10px !important
+}
+
+
+.simIFrame .stageContainer .content {
+	 width: 99vw !important;
+    height: 99vh !important;
+    left: 0 !important;
+    top: -10px !important
+	
+}	
+.simIFrame .stageContainer .content .instructions 
+{
+	top: 60% !important;
+	left: 40% !important;
+}
+
+.simIFrame .stageContainer .content .guide 
+{
+	bottom: 10% !important;
+	right: 10% !important;
+}
+/*	
+.simIFrame .stageContainer #stage-stage .content {
+    position: absolute !important;
+	top: 50% !important;
+    left: 50% !important;
+    margin: -275px 0 0 -450px !important;
+    box-shadow: none !important
+}	
+*/
+.simIFrame .checkContainer {
+	position: absolute !important;
+	height: 0px !important;
+	width: 0px !important;
+	/*bottom: 133px !important;*/
+}
+
+.simIFrame .checkContainer .buttonContainer {
+	height: 0px !important;
+	width: 0px !important;
+	/*bottom: 133px !important;*/
+}
+
+.simIFrame .checkContainer .buttonContainer .checkBtn {
+	height: 0px !important;
+	width: 0px !important;
+	/*bottom: 133px !important;*/
+}
+
+.simIFrame .feedbackContainer {
+	position: absolute;
+	width: 0% !important;
+	height: 0% !important;
+	bottom: 0px !important;
+	left: 0px!important;
+}
+
+.simIFrame iframe#simIFrame {
     width: 100% !important;
-    height: calc(100% - 65px) !important;
-    top: -10px
+    height: 100% !important;
 }
-.vft .stageContainer .content {
-    width: 100%!important;
-    height: 100%!important;
-    top: -10px
+
+.simIFrame .centerStage {
+  /*position: fixed !important;*/
+  top: 50% !important;
+  left: 50% !important; 
 }
-.vft iframe#vft {
-    width: 100% !important;
-    height: 100% !important
+
+.simIFrame .anchored {
+  position: inherit !important;
+  margin-left: auto;
+  margin-right: auto;
 }
-.vft .checkContainer,
-.vft .feedbackContainer {
-    top: -45px !important;
-    width: 90% !important
-}
-.vft .checkContainer .buttonContainer {
-    top: -42px !important
-}
-.vft .feedbackContainer .bottomContainer {
-    bottom: 42px !important
-}
+
+
 header .optionsPanel .option.logoutOption {
     display: none!important
 }
@@ -424,9 +495,7 @@ header .score {
 }
 header .name {
     opacity: 0!important;
-    min-width: 40px!important
+    min-width: 0px!important
 }
-.headerContainer .lessonTitle {
-    color: #C0C0C0!important;
-    padding-left: 0!important
+
 }

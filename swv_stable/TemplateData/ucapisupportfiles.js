@@ -12766,6 +12766,155 @@ define('api/snapshot/util/uuid',['require'],function(require) {
 
 });
 
+// domain utility defintion
+define('api/snapshot/util/domain', ['require'], function (require) {
+    return {
+        getDomain: function () {
+            return document.domain;
+        },
+        setDomain: function (newDomain) {
+            //console.log(document.domain);
+            document.domain = newDomain;
+            //console.log(document.domain);
+        }
+    };
+});
+
+// iFrame utility definition
+define('api/snapshot/util/iframe', ['require'], function (require) {
+    return {
+        isInIframe: function () {
+            return window !== window.parent;
+        },
+        isInAuthor: function () {
+            return document.referrer.indexOf('/bronte/author') !== -1;
+        }
+    };
+});
+
+define('api/snapshot/config/apiList', ['require'], function (require) {
+    return {
+        ChemicalAPI: ['getStructure'],
+        DeviceAPI: ['listDevicesInGroup'],
+        DataSyncAPI: ['createSession', 'joinSession', 'endSession', 'setSessionData', 'getSessionData'],
+        InchRepoService: ['search'],
+        PeerResponseAPI: ['getPeerIds', 'getResponses']
+    };
+});
+
+
+define('ApiInterface', ['require'], function (require) {
+    var apiList = require('api/snapshot/config/apiList');
+    var SimCapiMessage = require('api/snapshot/SimCapiMessage');
+
+    function ApiInterface() {
+        this.apiCallUid = 0;
+        this.responseQueue = {};
+    }
+
+    ApiInterface.create = function (transporter) {
+        var Transporter = require('api/snapshot/Transporter').Transporter;
+        if (!(transporter instanceof Transporter)) {
+            throw new Error('Transporter not received');
+        }
+
+        var apiInterface = new ApiInterface();
+        apiInterface.transporter = transporter;
+
+        return apiInterface;
+    };
+
+    ApiInterface.prototype.apiCall = function (api, method, params, callback) {
+        if (!apiList[api]) {
+            throw new Error('Invalid api name provided');
+        }
+        if (apiList[api].indexOf(method) === -1) {
+            throw new Error('Method does not exist on the api');
+        }
+
+        var uid = ++this.apiCallUid;
+        var handshake = this.transporter.getHandshake();
+
+        var message = new SimCapiMessage({
+            type: SimCapiMessage.TYPES.API_CALL_REQUEST,
+            handshake: handshake,
+            values: {
+                api: api,
+                method: method,
+                uid: uid,
+                params: params
+            }
+        });
+
+        if (typeof callback === 'function') {
+            this.responseQueue[uid] = callback;
+        }
+
+        this.transporter.sendMessage(message);
+    };
+
+    ApiInterface.prototype.processResponse = function (response) {
+        var callback = this.responseQueue[response.values.uid];
+        if (!callback) {
+            return;
+        }
+
+        callback(response.values.type, response.values.args);
+        delete this.responseQueue[response.values.uid];
+    };
+
+    return ApiInterface;
+});
+
+
+// Local Data definition
+define('api/snapshot/LocalData', ['require'], function (require) {
+    var LocalData = {
+        getData: function (simId, key, onSuccess) {
+            var response = {
+                key: key,
+                value: null,
+                exists: false
+            };
+
+            try {
+                var simData = JSON.parse(window.sessionStorage.getItem(simId));
+                if (simData && simData.hasOwnProperty(key)) {
+                    response.value = simData[key];
+                    response.exists = true;
+                }
+            }
+            catch (err) {
+                console.warn('An error occurred while reading the date from sessionStorage.');
+            }
+            asyncResponse(response, onSuccess);
+        },
+        setData: function (simId, key, value, onSuccess) {
+            try {
+                var simData = JSON.parse(window.sessionStorage.getItem(simId)) || {};
+                simData[key] = value;
+                window.sessionStorage.setItem(simId, JSON.stringify(simData));
+            }
+            catch (err) {
+                console.warn('An error occurred while trying to save the data to sessionStorage.');
+            }
+            asyncResponse(null, onSuccess);
+        }
+    };
+
+    function asyncResponse(response, callback) {
+        setTimeout(sendResponse.bind(this, response, callback), 0);
+    }
+
+    function sendResponse(response, callback) {
+        callback(response);
+    }
+
+    return LocalData;
+});
+
+
+
 define('api/snapshot/SimCapiMessage',['require'],function(require) {
 
     var SimCapiMessage = function(options) {
@@ -12998,15 +13147,19 @@ define('api/snapshot/Transporter',['jquery',
     'api/snapshot/util/uuid',
     'api/snapshot/SimCapiMessage',
     'check',
-    'api/snapshot/SimCapiValue'
-], function($, _, uuid, SimCapiMessage, check, SimCapiValue) {
+    'api/snapshot/SimCapiValue',
+    'api/snapshot/util/domain',
+    'api/snapshot/util/iframe',
+    'api/snapshot/LocalData',
+    'ApiInterface'
+], function($, _, uuid, SimCapiMessage, check, SimCapiValue, domainUtil, iframeUtil, LocalData, ApiInterface) {
 
     $.noConflict();
     _.noConflict();
 
     var Transporter = function(options) {
         // current version of Transporter
-        var version = 0.67;
+        var version = "<%= version %>";
 
         // Ensure that options is initialized. This is just making code cleaner by avoiding lots of
         // null checks
@@ -13023,6 +13176,7 @@ define('api/snapshot/Transporter',['jquery',
         //The list of change listeners
         var changeListeners = [];
         var initialSetupCompleteListeners = [];
+        var handshakeListeners = [];
 
         // Authentication handshake used for communicating to viewer
         var handshake = {
@@ -13051,6 +13205,11 @@ define('api/snapshot/Transporter',['jquery',
             getData: null
         };
 
+        /* can be used to uniquely identify messages */
+        this.lastMessageId = 0;
+        /* can be used to keep track of the success and error callbacks for a given message */
+        this.messageCallbacks = {};
+
         /*
          * Gets/SetsRequest callbacks
          * simId -> { key -> { onSucess -> function, onError -> function } }
@@ -13061,17 +13220,17 @@ define('api/snapshot/Transporter',['jquery',
         /*
          *   Throttles the value changed message to 25 milliseconds
          */
-        var setTimeoutStarted = false;
         var currentTimeout = null;
         var timeoutAmount = 25;
 
+        this.apiInterface = ApiInterface.create(this);
 
         this.getHandshake = function() {
             return handshake;
         };
 
         /*
-         * Helper to route messages to approvidate handlers
+         * Helper to route messages to appropriate handlers
          */
         this.capiMessageHandler = function(message) {
             switch (message.type) {
@@ -13099,8 +13258,17 @@ define('api/snapshot/Transporter',['jquery',
                 case SimCapiMessage.TYPES.SET_DATA_RESPONSE:
                     handleSetDataResponse(message);
                     break;
+                case SimCapiMessage.TYPES.API_CALL_RESPONSE:
+                    this.apiInterface.processResponse(message);
+                    break;
                 case SimCapiMessage.TYPES.INITIAL_SETUP_COMPLETE:
                     handleInitialSetupComplete(message);
+                    break;
+                case SimCapiMessage.TYPES.RESIZE_PARENT_CONTAINER_RESPONSE:
+                    handleResizeParentContainerResponse(message);
+                    break;
+                case SimCapiMessage.TYPES.ALLOW_INTERNAL_ACCESS:
+                    setDomainToShortform();
                     break;
             }
         };
@@ -13156,6 +13324,15 @@ define('api/snapshot/Transporter',['jquery',
             });
         };
 
+        var handshakeComplete = false;
+        this.addHandshakeCompleteListener = function(listener) {
+            if (handshakeComplete) {
+                listener(handshake);
+                return;
+            }
+            handshakeListeners.push(listener);
+        };
+
         /*
          *   @since 0.5
          *   Handles the get data message
@@ -13181,15 +13358,16 @@ define('api/snapshot/Transporter',['jquery',
          */
         var handleSetDataResponse = function(message) {
             if (message.handshake.authToken === handshake.authToken) {
+                var callbacks = setRequests[message.values.simId][message.values.key];
+                delete setRequests[message.values.simId][message.values.key];
                 if (message.values.responseType === 'success') {
-                    setRequests[message.values.simId][message.values.key].onSuccess({
+                    callbacks.onSuccess({
                         key: message.values.key,
                         value: message.values.value
                     });
                 } else if (message.values.responseType === 'error') {
-                    setRequests[message.values.simId][message.values.key].onError(message.values.error);
+                    callbacks.onError(message.values.error);
                 }
-                delete setRequests[message.values.simId][message.values.key];
             }
         };
 
@@ -13204,6 +13382,11 @@ define('api/snapshot/Transporter',['jquery',
 
             onSuccess = onSuccess || function() {};
             onError = onError || function() {};
+
+            if(!iframeUtil.isInIframe() || iframeUtil.isInAuthor()) {
+                LocalData.getData(simId, key, onSuccess);
+                return true;
+            }
 
             var getDataRequestMsg = new SimCapiMessage({
                 type: SimCapiMessage.TYPES.GET_DATA_REQUEST,
@@ -13250,6 +13433,11 @@ define('api/snapshot/Transporter',['jquery',
 
             onSuccess = onSuccess || function() {};
             onError = onError || function() {};
+
+            if(!iframeUtil.isInIframe() || iframeUtil.isInAuthor()) {
+                LocalData.setData(simId, key, value, onSuccess);
+                return true;
+            }
 
             var setDataRequestMsg = new SimCapiMessage({
                 type: SimCapiMessage.TYPES.SET_DATA_REQUEST,
@@ -13306,6 +13494,7 @@ define('api/snapshot/Transporter',['jquery',
             var toBeRemoved = [];
 
             for (var i in callback.check[eventName]) {
+                if(!callback.check[eventName].hasOwnProperty(i)){ continue; }
 
                 callback.check[eventName][i].handler(message);
 
@@ -13315,6 +13504,7 @@ define('api/snapshot/Transporter',['jquery',
             }
 
             for (var r in toBeRemoved) {
+                if(!toBeRemoved.hasOwnProperty(r)){ continue; }
                 callback.check[eventName].splice(callback.check[eventName].indexOf(toBeRemoved[r]), 1);
             }
         };
@@ -13360,6 +13550,7 @@ define('api/snapshot/Transporter',['jquery',
                         } else if (!outgoingMap[key]) {
                             //key hasn't been exposed yet. Could be a dynamic capi property.
                             toBeApplied[key] = capiValue.value;
+                            changed.push(new SimCapiValue({ value: capiValue.value, key: key }));
                         }
                     }
                 });
@@ -13426,10 +13617,16 @@ define('api/snapshot/Transporter',['jquery',
                 self.sendMessage(onReadyMsg);
                 pendingOnReady = false;
 
+                handshakeListeners.forEach(function(listener) {
+                    listener(handshake);
+                });
+                handshakeComplete = true;
+                handshakeListeners = [];
+
                 // send initial value snapshot
                 self.notifyValueChange();
             }
-            if (!isInIframe()) {
+            if (!iframeUtil.isInIframe()) {
                 handleInitialSetupComplete({
                     handshake: handshake
                 });
@@ -13443,27 +13640,84 @@ define('api/snapshot/Transporter',['jquery',
         this.triggerCheck = function(handlers) {
             if (checkTriggered)
             {
-                console.log("Please read and close the feedback window before proceeding.");
+                console.log("You have already triggered a check event");
             }
+            else
+            {
+                checkTriggered = true;
 
-            checkTriggered = true;
+                handlers = handlers || {};
 
-            handlers = handlers || {};
+                if (handlers.complete) {
+                    self.addCheckCompleteListener(handlers.complete, true);
+                }
 
-            if (handlers.complete) {
-                self.addCheckCompleteListener(handlers.complete, true);
+                var triggerCheckMsg = new SimCapiMessage({
+                    type: SimCapiMessage.TYPES.CHECK_REQUEST,
+                    handshake: handshake
+                });
+
+                pendingMessages.forValueChange.push(triggerCheckMsg);
+
+                //Ensure that there are no more set value calls to be able to send the message.
+                self.notifyValueChange();
             }
-
-            var triggerCheckMsg = new SimCapiMessage({
-                type: SimCapiMessage.TYPES.CHECK_REQUEST,
-                handshake: handshake
-            });
-
-            pendingMessages.forValueChange.push(triggerCheckMsg);
-
-            //Ensure that there are no more set value calls to be able to send the message.
-            self.notifyValueChange();
         };
+
+        this.requestParentContainerResize = function(options, onSuccess) {
+            onSuccess = onSuccess || function() {};
+            var messageId = ++self.lastMessageId;
+            var message = new SimCapiMessage({
+                type: SimCapiMessage.TYPES.RESIZE_PARENT_CONTAINER_REQUEST,
+                handshake: handshake,
+                values: {
+                    messageId: messageId,
+                    width: options.width,
+                    height: options.height
+                }
+            });
+            this.messageCallbacks[messageId] = {
+                onSuccess: onSuccess
+            };
+            if (!handshake.authToken) {
+                pendingMessages.forHandshake.push(message);
+            } else {
+                self.sendMessage(message);
+            }
+        };
+        var handleResizeParentContainerResponse = function(message) {
+            var messageId = message.values.messageId;
+            var callbacks = self.messageCallbacks[messageId];
+            delete self.messageCallbacks[messageId];
+            if (message.values.responseType === 'success') {
+                callbacks.onSuccess();
+            }
+        };
+        var setDomainToShortform = function ()
+        {
+            //console.log(document.domain.toString());
+            if (domainUtil.getDomain().indexOf("smartsparrow.com") != -1)
+            {
+                return;
+            }
+            domainUtil.setDomain("smartsparrow.com");
+            //console.log(document.domain.toString());
+        };
+        this.requestInternalViewerAccess = function ()
+        {
+            //console.log(document.domain.toString());
+            var message = new SimCapiMessage({
+                type: SimCapiMessage.TYPES.ALLOW_INTERNAL_ACCESS,
+                handshake: this.getHandshake()
+            });
+            self.sendMessage(message);
+            //console.log(document.domain.toString());
+        };
+
+        this.TryResetLesson = function ()
+        {
+            window.parent.document.querySelector(".restartBtn").click();
+        }
 
         /*
          * Send a VALUE_CHANGE message to the viewer with a dump of the model.
@@ -13562,12 +13816,9 @@ define('api/snapshot/Transporter',['jquery',
         // Helper to send message to viewer
         this.sendMessage = function(message) {
             // window.parent can be itself if it's not inside an iframe
-            if (isInIframe()) {
+            if (iframeUtil.isInIframe()) {
                 window.parent.postMessage(JSON.stringify(message), '*');
             }
-        };
-        var isInIframe = function() {
-            return window !== window.parent;
         };
 
         // Calls all the changeListeners
@@ -13589,7 +13840,7 @@ define('api/snapshot/Transporter',['jquery',
                 var message = JSON.parse(event.data);
                 self.capiMessageHandler(message);
             } catch (e) {
-                //silently ignore - occuring in test
+                window.console.log(e);
             }
 
         };
@@ -13601,8 +13852,6 @@ define('api/snapshot/Transporter',['jquery',
             window.addEventListener('message', messageEventHandler);
         });
     };
-
-
 
     var _instance = null;
     var getInstance = function() {
@@ -14412,7 +14661,32 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 		window.location.href = doReset;		
 	}
 
-    var initialized = false;
+	window.UnityOpenRestartMenu = function (ph)
+	{
+	    location.reload(true);
+	    //console.log(window.parent.document.domain.toString());
+	    //document.domain = "smartsparrow.com";
+	    //Transporter.TryResetLesson();
+	    //SendMessage('SoundBoard', 'DebugJavaScriptData', _myDoc);
+	}
+
+	window.UnityWantsViewerAccess = function (please)
+	{
+	    //console.log(document.domain.toString());
+	    if (document.domain.indexOf("smartsparrow.com") != -1)
+	    {
+	        document.domain = "smartsparrow.com";
+	        Transporter.requestInternalViewerAccess();
+	        console.log("Requested");
+	    }
+	    else
+	    {
+	        console.log("Could not request");
+	    }
+	}
+
+	var initialized = false;
+
     window.receiveExposeFromUnity = function (name, type, value, allowedValues)
     {
         if (!initialized)
@@ -14437,6 +14711,34 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 
         capi.set(name, value);
         adapter.expose(name, capi, descObj);
+    };
+
+    function storageSuccess() {
+        console.log("Storage process successful for ");
+        console.log(Transporter.getHandshake().authToken);
+    };
+
+    function storageError() {
+        console.log("Storage process errored!");
+    };
+
+    function transmitDataToUnity(value)
+    {
+        console.log(value.value.toString());
+        SendMessage("Scene Controller", "UpdateFoundWorlds", value.value.toString());
+    }
+
+    //
+    // Utilize the transporter for more permanent storage.
+    // JOS: 12/9/2016
+    window.storeUnityData = function (simId, key, value)
+    {
+        Transporter.setDataRequest(simId, key, value, storageSuccess, storageError);
+    };
+
+    window.getUnityData = function (simId, key)
+    {
+        Transporter.getDataRequest(simId, key, transmitDataToUnity, storageError);
     };
 
     // TODO pregenerate for each type and cache
