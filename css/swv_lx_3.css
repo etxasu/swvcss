@@ -15,6 +15,11 @@ header {
     height: 0px;
 	z-index: 200;
 }
+
+.offline {
+	top: -50px;
+}
+
 .headerContainer .lessonTitle {
     position: absolute;
     left: 0px;
