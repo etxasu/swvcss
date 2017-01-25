@@ -16,10 +16,6 @@ header {
 	z-index: 200;
 }
 
-.offline {
-	top: 100px;
-}
-
 .headerContainer .lessonTitle {
     position: absolute;
     left: 0px;
