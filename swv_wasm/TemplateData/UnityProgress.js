@@ -10,7 +10,6 @@ function UnityProgress(gameInstance, progress) {
     gameInstance.progress = document.createElement("div");
     gameInstance.progress.className = "progress " + gameInstance.Module.splashScreenStyle;
 	gameInstance.progress.textLabel = document.createTextNode("Receiving transmission.")
-	gameInstance.progress.textLabel.fontcolor("white");
     gameInstance.progress.empty = document.createElement("div");
     gameInstance.progress.empty.className = "empty";
     gameInstance.progress.appendChild(gameInstance.progress.empty);
