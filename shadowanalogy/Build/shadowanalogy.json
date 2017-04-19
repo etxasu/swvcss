@@ -1,0 +1,9 @@
+{
+"TOTAL_MEMORY": 268435456,
+"dataUrl": "shadowanalogy.data.unityweb",
+"asmCodeUrl": "shadowanalogy.asm.code.unityweb",
+"asmMemoryUrl": "shadowanalogy.asm.memory.unityweb",
+"asmFrameworkUrl": "shadowanalogy.asm.framework.unityweb",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#222C36"
+}
