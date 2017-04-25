@@ -14633,8 +14633,6 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
     var Capi = ExtendedModel.extend({});
     var capi;
 
-    var gameInstance = UnityLoader.instantiate("gameContainer", "%UNITY_WEBGL_BUILD_URL%", { onProgress: UnityProgress });
-
     require('sim-common/Detect');
     require('sim-common/VersionCheck');
 
