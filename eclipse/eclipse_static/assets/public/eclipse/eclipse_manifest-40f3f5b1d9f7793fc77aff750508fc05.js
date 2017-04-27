@@ -2128,7 +2128,7 @@ var main = {
 		// main.time_rate_lower = ranger_eclipse.update({getInfo: "minTimeRate"})
 		// main.time_now = ranger_eclipse.update({getInfo: "Time"})
 		ranger_eclipse.getTimeBounds();
-		//ranger_eclipse.update({eclipse: {setPenumbraColor: [1.0, 1.0, 1.0, 1.0]}});
+		//ranger_eclipse.update({setPenumbraColor: [1.0, 1.0, 1.0, 1.0]}});
 		locations.createLocations();
 		actions.setFov(main.fov);
 		actions.setMinMaxSliderLabels(true);
