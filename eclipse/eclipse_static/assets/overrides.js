@@ -53,7 +53,7 @@ function loadEyesOnTheSolarSystem(button)
     'interface' : '$SERVERURL/content/interface/default/default.xml',
   }
   var params = getParamsFromUrl(defaults);
-  loadEyes(button, params);
+  loadEyes(button, params);``
 }
 
 function loadEyesOnExoplanets(button)
