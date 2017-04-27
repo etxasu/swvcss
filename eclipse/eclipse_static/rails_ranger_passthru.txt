@@ -1,0 +1,27 @@
+Environment config "development.rb"
+
+	config.ranger_url = 'http://rangerdev.jpl.nasa.gov'
+
+Route
+
+	get '/ranger/*r' => 'application#ranger_passthru'
+
+
+
+Application Controller 
+ 
+	def ranger_passthru
+		respond_to do |format|
+		  format.all{
+			ranger_url = (Rails.configuration.present? && Rails.configuration.respond_to?(:ranger_url)) ? Rails.configuration.ranger_url : 'https://eyes.nasa.gov'
+			req = request.original_fullpath
+			if(ranger_url == 'http://rangerdev.jpl.nasa.gov')
+			  req = req.gsub('ranger/', '').gsub('eclipse11/', 'eclipse/')
+			end
+			request_url = ranger_url + req
+			logger.debug("Ranger passthru: #{request_url}")
+			response = open(request_url)
+			send_data response.read, type: response.content_type, disposition: 'inline'
+		  }
+		end
+	end

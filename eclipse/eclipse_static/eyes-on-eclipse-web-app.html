@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<!--[if lte IE 9]> <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p> <![endif]-->
+<html>
+<head>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<!-- Always force latest IE rendering engine or request Chrome Frame -->
+<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+<!-- Responsiveness -->
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no' name='viewport'>
+<!-- Favicon -->
+<link href='/favicons/favicon.ico' rel='shortcut icon' type='image/ico'>
+<link href='/favicons/apple-touch-icon-57x57.png' rel='apple-touch-icon' sizes='57x57'>
+<link href='/favicons/apple-touch-icon-57x57.png' rel='apple-touch-icon' sizes='57x57'>
+<link href='/favicons/apple-touch-icon-60x60.png' rel='apple-touch-icon' sizes='60x60'>
+<link href='/favicons/apple-touch-icon-72x72.png' rel='apple-touch-icon' sizes='72x72'>
+<link href='/favicons/apple-touch-icon-76x76.png' rel='apple-touch-icon' sizes='76x76'>
+<link href='/favicons/apple-touch-icon-114x114.png' rel='apple-touch-icon' sizes='114x114'>
+<link href='/favicons/apple-touch-icon-120x120.png' rel='apple-touch-icon' sizes='120x120'>
+<link href='/favicons/apple-touch-icon-144x144.png' rel='apple-touch-icon' sizes='144x144'>
+<link href='/favicons/apple-touch-icon-152x152.png' rel='apple-touch-icon' sizes='152x152'>
+<link href='/favicons/apple-touch-icon-180x180.png' rel='apple-touch-icon' sizes='180x180'>
+<link href='/favicons/favicon-32x32.png' rel='icon' sizes='32x32' type='image/png'>
+<link href='/favicons/favicon-96x96.png' rel='icon' sizes='96x96' type='image/png'>
+<link href='/favicons/android-chrome-192x192.png' rel='icon' sizes='192x192' type='image/png'>
+<link href='/favicons/favicon-16x16.png' rel='icon' sizes='16x16' type='image/png'>
+<meta content='#ffffff' name='msapplication-TileColor'>
+<meta content='/favicons/mstile-144x144.png' name='msapplication-TileImage'>
+<meta content='#ffffff' name='theme-color'>
+
+<title>NASA's Eyes: Eclipse 2017</title>
+<meta content="NASA's Eyes" property='og:site_name'>
+<meta content='' name='author'>
+<meta content='' name='keywords'>
+<meta content="Welcome to NASA's Eyes, a way for you to learn about your home planet, our solar system, the universe beyond and the spacecraft exploring them." name='description'>
+<meta content="Welcome to NASA's Eyes, a way for you to learn about your home planet, our solar system, the universe beyond and the spacecraft exploring them." property='og:description'>
+<meta content='Home' property='og:title'>
+<meta content='http://localhost:3000/eyes-on-eclipse-web-app.html' property='og:url'>
+<meta content='article' property='og:type'>
+<meta content='2017-02-06 15:32:06 -0800' property='og:updated_time'>
+<meta content='http://localhost:3000' property='og:image'>
+<link href='http://localhost:3000' rel='image_src'>
+
+
+<link href="/assets/eclipse_manifest-be94610fc1fc157d025f16bded766b69.css" media="all" rel="stylesheet" />
+<link href='/assets/overrides.css' rel='stylesheet' type='text/css'>
+</head>
+<body class='eclipse_application earth' id='eyes-on-eclipse-web-app'>
+<div id='main_container'>
+<div id='site_body'>
+<div id='page'>
+<!-- title to go in the page_header -->
+<section class='full_width minimal'>
+<script src="/assets/public/eclipse/eclipse_manifest-40f3f5b1d9f7793fc77aff750508fc05.js"></script>
+<script>
+  $(document).ready(function(){
+    main.init();
+  })
+</script>
+<div id='loader'>
+<div class='loader_modal eclipse_modal panel'>
+<div class='modal_content'>
+<div class='intro_logo'>
+<img alt='Nasa Jet Propulsion Laboratory' src='/assets/logo_nasa_trio_white@2x.png'>
+</div>
+<div class='eclipse_logo_container'>
+<h1>
+ECLIPSE 2017
+</h1>
+</div>
+<div class='description'>
+<div class='browser_ok'>
+<p>
+View the eclipse from multiple locations and perspectives, moving back and forth in time and space. How will it look from your town?
+</p>
+</div>
+<div class='browser_fail'>
+<p>
+It appears your browser does not support WebGL. Please visit <a href="https://get.webgl.org/" target="_blank">this site</a> for more information and support.
+</p>
+</div>
+<noscript>
+<p>
+This application requires that javascript is enabled. Please enable or try a different web browser. Visit <a href="http://enable-javascript.com/" target="_blank">this site</a> for more information.
+</p>
+</noscript>
+</div>
+<div class='button_loader_container'>
+<div class='loading'></div>
+<div class='button'>
+ENTER
+</div>
+</div>
+<p class='recommended_platforms'>
+<a href="/eyes-on-eclipse-web-detail.html" target="_blank">About this app</a>
+<span class='divider'>
+|
+</span>
+<a href="/eyes-on-eclipse-web-detail.html#recommend-platforms" target="_blank">Recommended platforms</a>
+</p>
+</div>
+</div>
+</div>
+
+<div class='eclipse_module' id='eclipse_module'>
+<div class='eclipse_header_area'>
+<header class='site_header'>
+<div class='brand_area'>
+<div class='brand1'>
+<a class='nasa_logo tooltip_bottom_right' href='http://www.nasa.gov' target='_blank' title='visit nasa.gov'>NASA</a>
+</div>
+<div class='brand2'>
+<a class='top_logo tooltip_bottom' href='http://jpl.nasa.gov' id='jpl_logo' title='JPL'>Jet Propulsion Laboratory</a>
+<a class='sub_logo tooltip_bottom' href='http://www.caltech.edu' title='Caltech'>California Institute of Technology</a>
+</div>
+<img alt='' class='print_only print_logo' src='/assets/logo_eclipse_black@2x.png'>
+</div>
+<div class='site_logo_container'>
+<img alt='Eclipse' class='site_logo' src='/assets/eclipse_logo.png'>
+</div>
+<a class='visuallyhidden focusable' href='#page'>Skip Navigation</a>
+</header>
+<div class='warning_area'><b>WARNING</b>: NEVER look directly at the Sun without proper solar filters.
+<span class='close_btn'>
+<div class='icon'></div>
+</span>
+</div>
+</div>
+<div class='gradient_container_top'></div>
+
+<div class='settings_container'>
+<div class='settings_button'>
+<div class='settings_icon icon'></div>
+</div>
+<div class='settings_modal'>
+<form>
+<div class='menu_name'>
+SETTINGS
+</div>
+<div class='menu_section earth_view_section'>
+<div class='menu_section_title'>
+Earth View
+</div>
+<div class='menu_option'>
+<div class='toggle_wrapper'>
+<label for='show_political_map'>Show boundary map</label>
+<input class='toggle' id='show_political_map' type='checkbox'>
+<div class='toggle_icon'></div>
+</div>
+</div>
+<div class='menu_option display_times'>
+<div class='toggle_wrapper'>
+<label for='display_times'>Display times</label>
+<input class='toggle' id='display_times' type='checkbox'>
+<div class='toggle_icon'></div>
+</div>
+</div>
+<div class='menu_option'>
+<div class='toggle_wrapper'>
+<label for='display_shadow_labels'>Display shadow labels</label>
+<input checked class='toggle' id='display_shadow_labels' type='checkbox'>
+<div class='toggle_icon'></div>
+</div>
+</div>
+<div class='menu_option'>
+<div class='toggle_wrapper'>
+<label for='display_all_views_at_scale'>Display all views at scale</label>
+<input class='toggle' id='display_all_views_at_scale' type='checkbox'>
+<div class='toggle_icon'></div>
+</div>
+<div class='settings_disclaimer'>
+Earth and Moon Perspective views are always at scale
+</div>
+</div>
+</div>
+<div class='menu_section behind_moon_section'>
+<div class='menu_section_title'>
+Behind Moon View
+</div>
+<div class='menu_option'>
+<div class='toggle_wrapper'>
+<label for='display_city_names'>Display city names</label>
+<input class='toggle' id='display_city_names' type='checkbox'>
+<div class='toggle_icon'></div>
+</div>
+</div>
+</div>
+<!--
+<div class='menu_section'>
+<div class='menu_option lighting'>
+<div class='toggle_wrapper'>
+<label for='moon_lighting'>Moon Lighting</label>
+<input class='toggle' id='moon_lighting' type='checkbox'>
+<div class='toggle_icon'></div>
+</div>
+</div>
+</div>
+-->
+<div class='menu_section field_of_view_section'>
+<div class='menu_option field_of_view'>
+<div class='left_column'>
+<div class='menu_section_title'>
+Field of View
+</div>
+</div>
+<div class='right_column'>
+<div class='ui_button minus_btn'>
+<div class='icon'></div>
+</div>
+<!-- %input{id: "fov", type: "text"} -->
+<div class='fov_display' id='fov'></div>
+<div class='ui_button plus_btn'>
+<div class='icon'></div>
+</div>
+</div>
+</div>
+</div>
+</form>
+</div>
+
+</div>
+<div id='panels'>
+<div class='intro_modal eclipse_modal panel'>
+<div class='description'>
+<p>
+Click globe or use bottom menu to add locations.
+</p>
+</div>
+<div class='button'>
+GOT IT
+</div>
+</div>
+<div class='eclipse_modal panel light_background' id='enter_location_modal'>
+<div class='close_btn'>
+<div class='icon'></div>
+</div>
+<div id='enter_location'>
+<div class='location_title'>
+Enter location
+</div>
+<input id='location_input' placeholder='City, State - or - Lat.,Long.'>
+<div class='error' id='location_error'></div>
+<div id='help_text'>
+For best results, enter a city and state (state may be abbreviated). You may also enter lat./long. which requires a decimal degrees format, e.g.: 34.2001, -118.176
+</div>
+<a class='help_btn' href='#'>
+Help
+</a>
+<button class='button' id='add_location_btn'>
++ Add
+</button>
+</div>
+<div id='location_added'></div>
+</div>
+</div>
+
+<div class='earth current_view viewer_text_area'>
+<div class='expander'></div>
+<header>
+<h1 class='media_feature_title'>
+The Path of the Eclipse
+</h1>
+<div class='toggle_arrow'></div>
+</header>
+<div class='viewer_preview_image'>
+</div>
+<div class='description'>
+Watch the great eclipse of August 21st, 2017, interactively!  Pick your location on the Earth, scroll through time, and see if your view will be a partial eclipse (in the penumbra) or a total eclipse (in the umbra).
+</div>
+</div>
+<div class='earth_moon viewer_text_area'>
+<div class='expander'></div>
+<header>
+<h1 class='media_feature_title'>
+Earth Moon View
+</h1>
+<div class='toggle_arrow'></div>
+</header>
+<div class='viewer_preview_image'>
+</div>
+<div class='description'>
+In this view, we can observe the Earth-Moon system during the eclipse.  The two concentric shadow cones, the umbra and penumbra, sweep across the Earth faster than the Earth rotates. 
+</div>
+</div>
+<div class='earth_moon_sun viewer_text_area'>
+<div class='expander'></div>
+<header>
+<h1 class='media_feature_title'>
+Earth Moon Sun View
+</h1>
+<div class='toggle_arrow'></div>
+</header>
+<div class='viewer_preview_image'>
+</div>
+<div class='description'>
+Ac urna a pid nec sagittis augue et, velit placerat est aenean adipiscing. Rhoncus dolor? Turpis, egestas? Lectus ac, habitasse eros placerat lorem? Et in. Nec dignissim, placerat ridiculus tincidunt sociis pid magna duis. Habitasse rhoncus adipiscing augue diam platea nisi tincidunt.
+</div>
+</div>
+<div class='moon viewer_text_area'>
+<div class='expander'></div>
+<header>
+<h1 class='media_feature_title'>
+Moon view
+</h1>
+<div class='toggle_arrow'></div>
+</header>
+<div class='viewer_preview_image'>
+</div>
+<div class='description'>
+In this view, we can observe the Earth-Moon system during the eclipse.  The two concentric shadow cones, the umbra and penumbra, sweep across the Earth faster than the Earth rotates. 
+</div>
+</div>
+
+<div class='webGl_module_container'>
+<div id='ranger-container'></div>
+</div>
+<section class='map_controls_container'>
+<div class='date_slider_container'>
+<div class='min_label' id='min_label'></div>
+<div class='slider_container'>
+<div class='time_rate_slider' id='time_rate_slider'></div>
+<div class='handle_hint left'>
+Drag
+</div>
+</div>
+<div class='max_label' id='max_label'></div>
+</div>
+<div class='group1'>
+<ul>
+<li class='pause_btn ui_button play_pause'>
+<div class='icon'></div>
+<div class='button_hint left'>
+Pause
+</div>
+</li>
+</ul>
+</div>
+<div class='group2'><div class='arrow_container'></div><div class='rate_display'>
+0 sec/sec
+</div>
+<ul>
+<li class='plus_btn ui_button'>
+<div class='icon'></div>
+<div class='button_hint left'>
+RATE: 1.0
+</div>
+</li>
+<li class='minus_btn ui_button'>
+<div class='icon'></div>
+<div class='button_hint left'>
+RATE: 1.0
+</div>
+</li>
+</ul><div class='time_label'>Time<br>Rate</div></div><div class='time_label mobile_expander'>Time<br>Rate</div><hr>
+<div class='group3'>
+<ul class='zoom_area'>
+<li class='zoom_in ui_button'>
+<div class='icon'></div>
+<div class='button_hint left'>
+FOV: 0.52
+</div>
+</li>
+<li class='zoom_out ui_button'>
+<div class='icon'></div>
+<div class='button_hint left'>
+FOV: 0.52
+</div>
+</li>
+</ul>
+</div>
+</section>
+
+<div class='webgl_toolbar_container'>
+<div class='webgl_toolbar'>
+<div class='info_btn ui_button'>
+<div class='icon'></div>
+</div>
+<div class='info_mode'>
+<div class='mobile_info_container'>
+<div class='earth current_view mobile_viewer_text_area'>
+<div class='expander'></div>
+<header>
+<h1 class='media_feature_title'>
+The Path of the Eclipse
+</h1>
+<div class='toggle_arrow'></div>
+</header>
+<div class='viewer_preview_image'>
+</div>
+<div class='description'>
+Watch the great eclipse of August 21st, 2017, interactively!  Pick your location on the Earth, scroll through time, and see if your view will be a partial eclipse (in the penumbra) or a total eclipse (in the umbra).
+</div>
+</div>
+<div class='earth_moon mobile_viewer_text_area'>
+<div class='expander'></div>
+<header>
+<h1 class='media_feature_title'>
+Earth Moon View
+</h1>
+<div class='toggle_arrow'></div>
+</header>
+<div class='viewer_preview_image'>
+</div>
+<div class='description'>
+In this view, we can observe the Earth-Moon system during the eclipse.  The two concentric shadow cones, the umbra and penumbra, sweep across the Earth faster than the Earth rotates. 
+</div>
+</div>
+<div class='earth_moon_sun mobile_viewer_text_area'>
+<div class='expander'></div>
+<header>
+<h1 class='media_feature_title'>
+Earth Moon Sun View
+</h1>
+<div class='toggle_arrow'></div>
+</header>
+<div class='viewer_preview_image'>
+</div>
+<div class='description'>
+Ac urna a pid nec sagittis augue et, velit placerat est aenean adipiscing. Rhoncus dolor? Turpis, egestas? Lectus ac, habitasse eros placerat lorem? Et in. Nec dignissim, placerat ridiculus tincidunt sociis pid magna duis. Habitasse rhoncus adipiscing augue diam platea nisi tincidunt.
+</div>
+</div>
+<div class='moon mobile_viewer_text_area'>
+<div class='expander'></div>
+<header>
+<h1 class='media_feature_title'>
+Moon view
+</h1>
+<div class='toggle_arrow'></div>
+</header>
+<div class='viewer_preview_image'>
+</div>
+<div class='description'>
+In this view, we can observe the Earth-Moon system during the eclipse.  The two concentric shadow cones, the umbra and penumbra, sweep across the Earth faster than the Earth rotates. 
+</div>
+</div>
+
+</div>
+</div>
+<div class='view_selectors'>
+<div class='selected_wrapper'>
+<div class='view_options' id='view_options'>
+<header>
+<h3>
+view options
+</h3>
+<div class='toggle_arrow'></div>
+</header>
+<ul>
+<li class='earth_moon_sun_item' data-view='EarthMoonSun'>
+<div class='image_container earth_moon_sun'></div>
+<div class='text_container'>
+Earth/Moon/Sun
+</div>
+</li>
+<li class='earth_moon_item' data-view='EarthMoon'>
+<div class='image_container earth_moon'></div>
+<div class='text_container'>
+Earth/Moon
+</div>
+</li>
+<li class='earth_item current' data-view='Earth'>
+<div class='image_container earth'></div>
+<div class='text_container'>
+Earth
+</div>
+</li>
+<li class='moon_item' data-view='Moon'>
+<div class='image_container moon'></div>
+<div class='text_container'>
+Moon Perspective
+</div>
+</li>
+</ul>
+</div>
+<div class='selected'>
+<div class='selected_view earth'></div>
+<div class='selection_arrow'></div>
+</div>
+</div>
+</div>
+<div class='divider_line'></div>
+<div class='locations'>
+<div class='selected_location'>
+<div class='location_text'></div>
+<div class='selection_arrow'></div>
+</div>
+<div class='location_list'>
+<header>
+<h3>
+locations
+</h3>
+<div class='toggle_arrow'></div>
+</header>
+<ul id='static_locations'></ul>
+<ul id='custom_locations'></ul>
+<ul class='mobile_add_location'>
+<li class='show_add_location ui_button'>
+Add New
+<div class='plus_btn'>
+<div class='icon'></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class='plus_btn ui_button show_add_location'>
+<div class='icon'></div>
+</div>
+</div>
+<div class='fullscreen_options'>
+<div class='fullscreen_option tooltip_fs' id='expand_screen' title='fullscreen mode'>
+<img alt="Expand screen icon" src="/assets/expand_screen_icon.png" />
+</div>
+<div class='fullscreen_option tooltip_fs' id='contract_screen' title='exit fullscreen mode'>
+<img alt="Contract screen icon" src="/assets/contract_screen_icon.png" />
+</div>
+</div>
+</div>
+
+<div class='text_overlay_area'>
+<div class='disclaimer_message'>
+(scale exaggerated)
+</div>
+<section class='display_time_container'><span class='display_date_short' id='displayed_date_short'></span><span class='display_date' id='displayed_date'></span><span class='display_time' id='display_time'></span><div class='now_container' id='now_btn'>
+<div class='now_btn'>
+NOW
+</div>
+</div>
+</section>
+
+</div>
+</div>
+
+</section>
+
+</div>
+</div>
+<div id='rotate_warning'>
+<div class='rotate_message'>
+<div class='rotate_icon'></div>
+<span></span>
+</div>
+</div>
+</div>
+<script id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&subagency=EYES&pua=UA-19316180-1&sp=find&yt=true&dclink=true" type='text/javascript'></script>
+
+
+</body>
+</html>
