@@ -14736,13 +14736,11 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
         }
     }
 	
-	var jplcapi = 
-	{
-		var ShowShadowLabels = false;
+	var ShowShadowLabels = false;
 	
-		receiveExposeFromRanger("System.Show Shadow Labels", Boolean, ShowShadowLabels, null);
+	receiveExposeFromRanger("System.Show Shadow Labels", Boolean, ShowShadowLabels, null);
 	
-	};
+	
 });
 
 
