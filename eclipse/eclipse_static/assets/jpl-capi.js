@@ -14753,7 +14753,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 					case "System.Add Location":
 						// {id: "3", name: "Derpville", location:[34.0522, -118.2437]} <- format to Ranger
 						// 3, Derpville, 34.0522, -118.2437 <- format from SPR
-						var _message = str.split(changedAttributes[i]);
+						var _message = changedAttributes[i].split(",");
 						ranger_eclipse.update({"addLocation": {id: _message[0], name: _message[1], location:[_message[2], _message[3]]}});
 						break;
 				}
