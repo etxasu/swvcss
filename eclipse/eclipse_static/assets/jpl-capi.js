@@ -14730,7 +14730,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
         if (changedAttributes) {
             for (var i in changedAttributes)
             {
-                //console.log("setting " + i + " to " + changedAttributes[i]);
+                console.log("setting " + i + " to " + changedAttributes[i]);
                 //window.SendMessage("CAPI", "setValueFromJS", JSON.stringify({name: i, value: changedAttributes[i]}));
             }
         }
