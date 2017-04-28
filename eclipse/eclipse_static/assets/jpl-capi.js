@@ -14760,7 +14760,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	var RangerFOV = 0.0;
 	
 	receiveExposeFromRanger("System.Show Shadow Labels", Boolean, ShowShadowLabels, null);
-	receiveExposeFromRanger("System.Camera FOV", number, RangerFOV, null);
+	receiveExposeFromRanger("System.Camera FOV", typeof RangerFOV, RangerFOV, null);
 	
 	
 });
