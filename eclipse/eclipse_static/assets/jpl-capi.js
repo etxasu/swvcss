@@ -14731,6 +14731,12 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
             for (var i in changedAttributes)
             {
                 console.log("setting " + i + " to " + changedAttributes[i]);
+				
+				if(i == "System.Show Shadow Labels")
+				{
+					ranger_eclipse.update({"shadowLabelsEnabled": changedAttributes[i]});
+				}
+				
                 //window.SendMessage("CAPI", "setValueFromJS", JSON.stringify({name: i, value: changedAttributes[i]}));
             }
         }
