@@ -14731,7 +14731,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
             for (var i in changedAttributes)
             {
                 console.log("setting " + i + " to " + changedAttributes[i]);
-				if(ranger_eclipse)
+				if(typeof ranger_eclipse !== 'undefined')
 				{
 					if(i == "System.Show Shadow Labels")
 					{
@@ -14749,7 +14749,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	
 	var ShowShadowLabels = false;
 	
-	receiveExposeFromRanger("System.Show Shadow Labels", Boolean, ShowShadowLabels, null);
+	receiveExposeFromRanger("System.Show Shadow Labels", typeof ShowShadowLabels, ShowShadowLabels, null);
 	
 	
 });
