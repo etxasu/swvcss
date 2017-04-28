@@ -14731,7 +14731,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
             for (var i in changedAttributes)
             {
                 //console.log("setting " + i + " to " + changedAttributes[i]);
-                window.SendMessage("CAPI", "setValueFromJS", JSON.stringify({name: i, value: changedAttributes[i]}));
+                //window.SendMessage("CAPI", "setValueFromJS", JSON.stringify({name: i, value: changedAttributes[i]}));
             }
         }
     }
