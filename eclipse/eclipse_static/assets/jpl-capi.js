@@ -14732,16 +14732,24 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
             {
                 console.log("setting " + i + " to " + changedAttributes[i]);
 				
-				if(i == "System.Show Shadow Labels")
+				if(typeof ranger_eclipse !== 'undefined')
 				{
-					if(typeof ranger_eclipse !== 'undefined')
-					{
+					//de nada
+				}
+				else
+				{
+					console.log("Ranger not found");
+					return;
+				}
+				
+				switch(i)
+				{
+					case "System.Show Shadow Labels":
 						ranger_eclipse.update({"shadowLabelsEnabled": changedAttributes[i]});
-					}
-					else
-					{
-						console.log("Ranger not found");
-					}
+						break;
+					case "System.Camera FOV":
+						ranger_eclipse.update({"setFOV": changedAttributes[i]});
+						break;
 				}
 				
             }
@@ -14749,8 +14757,10 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
     }
 	
 	var ShowShadowLabels = false;
+	var RangerFOV = 0.0;
 	
 	receiveExposeFromRanger("System.Show Shadow Labels", Boolean, ShowShadowLabels, null);
+	receiveExposeFromRanger("System.Camera FOV", float, RangerFOV, null);
 	
 	
 });
