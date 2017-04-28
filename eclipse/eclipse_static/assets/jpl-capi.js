@@ -14737,6 +14737,14 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
     }
 });
 
+var jpl-capi = 
+{
+	var ShowShadowLabels = false;
+	
+	receiveExposeFromRanger("System.Show Shadow Labels", Boolean, ShowShadowLabels, null);
+	
+};
+
 //Use almond's special top-level, synchronous require to trigger factory
 //functions, get the final module value, and export it as the public
 //value.
