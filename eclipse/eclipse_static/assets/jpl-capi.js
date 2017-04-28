@@ -14739,8 +14739,12 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 					}
 					else
 					{
-						console.log("Ranger not defined");
+						console.log("Ranger not found");
 					}
+				}
+				else
+				{
+					console.log("Ranger not declared");
 				}
                 //window.SendMessage("CAPI", "setValueFromJS", JSON.stringify({name: i, value: changedAttributes[i]}));
             }
