@@ -14731,7 +14731,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
             for (var i in changedAttributes)
             {
                 console.log("setting " + i + " to " + changedAttributes[i]);
-				/*
+				
 				if(i == "System.Show Shadow Labels")
 				{
 					if(typeof ranger_eclipse !== 'undefined')
@@ -14743,7 +14743,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						console.log("Ranger not found");
 					}
 				}
-				*/
+				
             }
         }
     }
