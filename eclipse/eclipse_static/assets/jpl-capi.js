@@ -14731,9 +14731,10 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
             for (var i in changedAttributes)
             {
                 console.log("setting " + i + " to " + changedAttributes[i]);
-				if(typeof ranger_eclipse !== 'undefined')
+				
+				if(i == "System.Show Shadow Labels")
 				{
-					if(i == "System.Show Shadow Labels")
+					if(typeof ranger_eclipse !== 'undefined')
 					{
 						ranger_eclipse.update({"shadowLabelsEnabled": changedAttributes[i]});
 					}
@@ -14742,10 +14743,8 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						console.log("Ranger not found");
 					}
 				}
-				else
-				{
-					console.log("Ranger not declared");
-				}
+				
+				
                 //window.SendMessage("CAPI", "setValueFromJS", JSON.stringify({name: i, value: changedAttributes[i]}));
             }
         }
@@ -14753,7 +14752,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	
 	var ShowShadowLabels = false;
 	
-	receiveExposeFromRanger("System.Show Shadow Labels", typeof ShowShadowLabels, ShowShadowLabels, null);
+	receiveExposeFromRanger("System.Show Shadow Labels", Boolean, ShowShadowLabels, null);
 	
 	
 });
