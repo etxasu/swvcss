@@ -14761,7 +14761,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	
 	var ShowShadowLabels = false;
 	var RangerFOV = 0.0;
-	var RangerAddLocation = "{id: "3", name: "Derpville", location:[34.0522, -118.2437]}";
+	var RangerAddLocation = "";
 	
 	receiveExposeFromRanger("System.Show Shadow Labels", Boolean, ShowShadowLabels, null);
 	receiveExposeFromRanger("System.Camera FOV", typeof RangerFOV, RangerFOV, null);
