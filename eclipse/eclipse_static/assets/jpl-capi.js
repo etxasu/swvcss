@@ -14765,7 +14765,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	
 	receiveExposeFromRanger("System.Show Shadow Labels", Boolean, ShowShadowLabels, null);
 	receiveExposeFromRanger("System.Camera FOV", typeof RangerFOV, RangerFOV, null);
-	receiveExposeFromRanger("System.Add Location", typeof RangerAddLocation, RangerAddMarker, null);
+	receiveExposeFromRanger("System.Add Location", typeof RangerAddLocation, RangerAddLocation, null);
 	
 	
 });
