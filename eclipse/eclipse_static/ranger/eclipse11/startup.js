@@ -241,6 +241,9 @@ function createDefaultStyleSheet(parentElement) {
     cssRules['#downloads'] = ['list-style-type: none', 'margin: 0', 
                 'padding: 0', 'width: 100%'];
 
+    cssRules['a.ranger-svg'] = ['position: relative', 'display: inline-block'];
+    cssRules['a.ranger-svg:after'] = ['position: absolute', 'content: ""', 'top: 0', 'left: 0', 'bottom: 0', 'right: 0'];
+
     // Add default CSS Rules to the Style Element Created.
     addInlineCSS(style, cssRules);
 }

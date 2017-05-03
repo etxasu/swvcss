@@ -256,9 +256,9 @@ var mb_utils = {
 	  *   The target:
 	  *     <ul class="expandable_element" data-expand-index="0"> (Can be any type of html element)
 	  *   
-	  *   • Note that data-expand-index must be the same on both the button and the target element.
-	  *   • This method allows for any number of independent expandable elements on a page.
-	  *   • The button/link can have any text, but will only toggle if '+ more' or '- less' are used
+	  *   â€¢Â Note that data-expand-index must be the same on both the button and the target element.
+	  *   â€¢Â This method allows for any number of independent expandable elements on a page.
+	  *   â€¢Â The button/link can have any text, but will only toggle if '+ more' or '- less' are used
 	  *   
 	  *   -JM
 	  */  
@@ -915,7 +915,7 @@ var actions = {
 		//should change this once we can be sure ranger will accept commands but for now will just pause on change
 		// this._pause($('.play_pause')[0]);
 
-		ranger_eclipse.update({setView: {view: view, toScale: to_scale}});
+		ranger_eclipse.update({setView: {view: view, toScale: to_scale}}, false, function(){ actions.onViewChangeDone() });
 	},
 
 	//determine what the to scale should be. used in update view and to_scale click listener
@@ -980,6 +980,9 @@ var actions = {
 		var min,max,min_date,max_date;
 		min_date = new Date(main.time_min);
 		max_date = new Date(main.time_max);
+
+		min = main.timeFormat(min_date);
+		max = main.timeFormat(max_date);
 		if(time){
 			min = main.timeFormat(min_date);
 			max = main.timeFormat(max_date);
@@ -1002,20 +1005,13 @@ var actions = {
 	},
 
 	onViewChangeDone: function(){
-		if(main.current_view == "earth_moon"){
-			//replace with calls to ranger
-			ranger_eclipse.getTimeBounds();
-			actions.setMinMaxSliderLabels(false);
-		} else {
-			//replace with calls to ranger
-			ranger_eclipse.getTimeBounds();
-			actions.setMinMaxSliderLabels(true);
-		}
-		if(main.playing) {
-			//seems ranger is not really accepting commands yet... need to investigate -RK
-			window.setTimeout(this.setTimeRate, 500)
-		}
-		// this.setTimeRate();
+		ranger_eclipse.getTimeBounds(function(){
+			main.slider.updateOptions({range: {min: main.time_min, max: main.time_max}});
+			actions.setMinMaxSliderLabels(main.current_view != "earth_moon" && main.current_view != "earth_moon_sun");
+			if(main.playing) {
+				actions.setTimeRate();
+			}
+		});
 	}
 
 }
@@ -1286,7 +1282,7 @@ var locations = {
 		$.ajax({
 			type: 'GET',
 			dataType: "json",
-			url: "https://maps.googleapis.com/maps/api/geocode/json?latlng="+latitude+","+longitude+"&sensor=false",
+			url: "//maps.googleapis.com/maps/api/geocode/json?latlng="+latitude+","+longitude+"&sensor=false",
 			data: {},
 			success: function(data) {
 				var loc =  locations._getNameFromGoogleResults(data);
@@ -1478,11 +1474,26 @@ var ranger_eclipse = {
 		this.getRanger();
 	},
 
-	getTimeBounds: function(){
+	getTimeBounds: function(time_done){
 		main.ranger_updating_time = true;
-		ranger_eclipse.update({getInfo: "maxTime"})
-		ranger_eclipse.update({getInfo: "minTime"})
-		ranger_eclipse.update({getInfo: "timeRateValues"})
+		var max_time = $.Deferred();
+		var min_time = $.Deferred();
+		var time_rate_values = $.Deferred();
+
+		ranger_eclipse.update({getInfo: "maxTime"}, false, function(ack){
+			ranger_eclipse.setMaxTime(ack.message.maxTime);
+			max_time.resolve()
+		})
+		var min_time = ranger_eclipse.update({getInfo: "minTime"}, false, function(ack){
+			ranger_eclipse.setMinTime(ack.message.minTime);
+			min_time.resolve()
+		})
+		var time_rate_values = ranger_eclipse.update({getInfo: "timeRateValues"}, false, function(ack){
+			ranger_eclipse.setTimeRateValues(ack.message.timeRateValues)
+			time_rate_values.resolve();
+		})
+
+		$.when(max_time, min_time, time_rate_values).done(time_done)
 	},
 
 
@@ -1513,12 +1524,16 @@ var ranger_eclipse = {
 		})
 	},
 
-	update: function(message, quiet){
+	update: function(message, quiet, callback){
 		if(!quiet){
 			console.log("SENDING MESSAGE TO RANGER: ", message)
 		}
 		if(typeof(__ranger) != "undefined" && typeof(__ranger.update) == "function" && message){
-			__ranger.update({eclipse: message})
+			if(callback){
+				__ranger.update({eclipse: message}, null, callback)
+			} else {
+				__ranger.update({eclipse: message})
+			}
 		}
 	},
 
@@ -1536,7 +1551,7 @@ var ranger_eclipse = {
 			$.each(kv_pair, ranger_eclipse._dispatchMessage);
 		} else {
 			if(message.success){
-				//ignore this for now, when did this start?
+				// console.log("success", message)    //ignore these
 			} else {
 				console.error("message does not contain known directive", message)
 			}
@@ -1557,15 +1572,17 @@ var ranger_eclipse = {
 		locations.removeLocation($('.location[data-id="'+ location +'"]').children()[0])
 	},
 
-	/* Messages from Ranger */
-	minTime: function(value){
+	setMinTime: function(value){
+		console.log("set min time to ",  new Date(value))
 		main.time_min = new Date(value).getTime();
 	},
-	maxTime: function(value){
+
+	setMaxTime: function(value){
+		console.log("set max time to ",  new Date(value))
 		main.time_max = new Date(value).getTime();
 	},
 
-	timeRateValues: function(values){
+	setTimeRateValues: function(values){
 		main.time_rate_values = values;
 		if(typeof(main.time_rate) != "undefined"){
 			var new_rate_idx = values.indexOf(main.time_rate);
@@ -1582,12 +1599,23 @@ var ranger_eclipse = {
 		main.ranger_updating_time = false;
 	},
 
+	/* Messages from Ranger */
+	minTime: function(value){
+		//handled via callback
+	},
+	maxTime: function(value){
+		// handled via callback
+	},
+
+	timeRateValues: function(values){
+		//handled via callback
+	},
+
 	loadedEarth: function(){
 		main.onRangerReady();
 	},
 
-	//{eclipse: {draggedOnPip: true}}
-	draggedOnPip: function(){
+	draggedOnEclipseViewport: function(){
 		if(main.playing){
 			actions._pause();
 		}
@@ -1603,10 +1631,12 @@ var ranger_eclipse = {
 		}
 	},
 	setViewDone: function(){
-		main.ranger_updating_time = false;
-		actions.onViewChangeDone();
-	}
+		// handled via callback
+	},
 
+	markerClicked: function(a){
+		ranger_eclipse.update({showMarkerPopup: a});
+	}
 }
 
 jQuery.cachedScript = function( url, options ) {
@@ -1710,7 +1740,7 @@ var main = {
     mb_utils.mouseCheck();
 		if(main.webgl_detect()){
 			this._loaderModal();
-			ranger_eclipse.init("/swvcss/eclipse/eclipse_static/ranger");
+			ranger_eclipse.init("/ranger");
 			main.initListeners();
 
 		} else {
@@ -1947,6 +1977,10 @@ var main = {
 		$('#display_all_views_at_scale').change(function(e){
 			ranger_eclipse.update({toScale: actions.getScaleBool(main.current_view)})
 		});
+
+		$('#eclipse_viewport_mode').change(function(e){
+			ranger_eclipse.update({setEclipseViewportMode: $(this).prop('checked')})
+		})
 		
 		$('#moon_lighting').change(function(e){
 			ranger_eclipse.update({headLightEnabled: $(this).prop('checked')});
@@ -2127,13 +2161,15 @@ var main = {
 		// main.time_rate_upper = ranger_eclipse.update({getInfo: "maxTimeRate"})
 		// main.time_rate_lower = ranger_eclipse.update({getInfo: "minTimeRate"})
 		// main.time_now = ranger_eclipse.update({getInfo: "Time"})
-		ranger_eclipse.getTimeBounds();
-		ranger_eclipse.update({"shadowLabelsEnabled": false});
-		//ranger_eclipse.update({"setPenumbraColor": [1.0, 1.0, 1.0, 1.0]});
+		ranger_eclipse.getTimeBounds(function(){
+			actions.setMinMaxSliderLabels(true);
+			main.createSlider();
+		});
 		locations.createLocations();
 		actions.setFov(main.fov);
-		actions.setMinMaxSliderLabels(true);
-		main.createSlider();
+
+		ranger_eclipse.update({"shadowLabelsEnabled": false});
+		
 		actions.checkEclipseToday(new Date());
 		//main.initTooltips();
 		main.pulseTooltip();
@@ -2148,7 +2184,6 @@ var main = {
 	}
 }
 ;
-
 
 
 
