@@ -1499,6 +1499,7 @@ var ranger_eclipse = {
 
 	getRanger: function(){
 		//MUST ALSO CHANGE ECLIPSE{VERSION} IN THE CONTROLLER WHEN THIS CHANGES -RK
+		console.log(ranger_eclipse.ranger_url + ranger_eclipse.eclipse_v + "/startup.js");
 		$.getScript(ranger_eclipse.ranger_url + ranger_eclipse.eclipse_v + "/startup.js", function(){
 			var settings = window['__ranger'].settings;
 			settings.scene = settings.scene || {};
