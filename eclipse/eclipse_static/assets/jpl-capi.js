@@ -14766,6 +14766,10 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						var _message = changedAttributes[i].split(",");
 						ranger_eclipse.update({setPenumbraColor: _message[0], _message[1], _message[2], _message[3]});
 						break;
+					case "System.Cone.UmbraColor":
+						var _message = changedAttributes[i].split(",");
+						ranger_eclipse.update({setUmbraColor: _message[0], _message[1], _message[2], _message[3]});
+						break;
 				}
 				
             }
@@ -14777,7 +14781,8 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	var RangerAddLocation = "";
 	var RangerCurrentTime = 1503331200000;
 	var RangerTimeRate = 1.0f;
-	var PenumbraColor = "1,0,0,0"; 
+	var PenumbraColor = "1,0,0,0";
+	var UmbraColor = "0,0,0,1";	
 	
 	receiveExposeFromRanger("System.Show Shadow Labels", Boolean, ShowShadowLabels, null);
 	receiveExposeFromRanger("System.Camera FOV", typeof RangerFOV, RangerFOV, null);
@@ -14785,6 +14790,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	receiveExposeFromRanger("System.Set Current Time", typeof RangerCurrentTime, RangerCurrentTime, null);
 	receiveExposeFromRanger("System.Set Time Rate", typeof RangerTimeRate, RangerTimeRate, null);
 	receiveExposeFromRanger("System.Cone.PenumbraColor", typeof PenumbraColor, PenumbraColor, null);
+	receiveExposeFromRanger("System.Cone.UmbraColor", typeof UmbraColor, UmbraColor, null);
 	
 });
 
