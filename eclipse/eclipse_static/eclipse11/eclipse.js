@@ -5328,8 +5328,8 @@
 						},
 						rate: 0
 					},
-					e.swapImageIconPath = "/assets/swap.svg",
-					e.mapPinIconPath = "/assets/map_pin.svg",
+					e.swapImageIconPath = "/swvcss/eclipse/eclipse_static/assets/swap.svg",
+					e.mapPinIconPath = "/swvcss/eclipse/eclipse_static/assets/map_pin.svg",
 					n.init(l);
 					var u = e.scene.get("Earth");
 					u.addTrigger(null, function () {
