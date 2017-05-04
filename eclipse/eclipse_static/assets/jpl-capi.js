@@ -14765,11 +14765,11 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 					case "System.Cone.PenumbraColor":
 						var _message = changedAttributes[i].split(",");
 						console.log(_message[0] + " " + _message[1] + " " + _message[2] + " " + _message[3]);
-						ranger_eclipse.update({setPenumbraColor: _message[0], _message[1], _message[2], _message[3]});
+						ranger_eclipse.update({setPenumbraColor: [_message[0], _message[1], _message[2], _message[3]]});
 						break;
 					case "System.Cone.UmbraColor":
 						var _message = changedAttributes[i].split(",");
-						ranger_eclipse.update({setUmbraColor: _message[0], _message[1], _message[2], _message[3]});
+						ranger_eclipse.update({setUmbraColor: [_message[0], _message[1], _message[2], _message[3]]});
 						break;
 				}
 				
