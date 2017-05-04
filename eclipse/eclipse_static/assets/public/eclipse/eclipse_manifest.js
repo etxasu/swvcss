@@ -1468,7 +1468,7 @@ var panels = {
 ;
 var ranger_eclipse = {
 	ranger_url: "/swvcss/eclipse/eclipse_static",
-	eclipse_v: "/ranger/eclipse11",
+	eclipse_v: "/eclipse11",
 	init: function(ranger_url) {
 		this.ranger_url = ranger_url;
 		console.log(ranger_url);
