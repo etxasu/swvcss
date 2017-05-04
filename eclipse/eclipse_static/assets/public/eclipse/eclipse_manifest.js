@@ -1742,7 +1742,7 @@ var main = {
     mb_utils.mouseCheck();
 		if(main.webgl_detect()){
 			this._loaderModal();
-			ranger_eclipse.init("/ranger");
+			ranger_eclipse.init("/swvcss/eclipse/eclipse_static");
 			main.initListeners();
 
 		} else {
