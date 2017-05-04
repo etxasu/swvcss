@@ -1471,6 +1471,7 @@ var ranger_eclipse = {
 	eclipse_v: "/eclipse11",
 	init: function(ranger_url) {
 		this.ranger_url = ranger_url;
+		console.log(ranger_url);
 		this.getRanger();
 	},
 
