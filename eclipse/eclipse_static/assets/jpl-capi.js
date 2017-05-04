@@ -14756,6 +14756,9 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						var _message = changedAttributes[i].split(",");
 						ranger_eclipse.update({"addLocation": {id: _message[0], name: _message[1], location:[_message[2], _message[3]]}});
 						break;
+					case "System.Set Current Time":
+						ranger_eclipse.update({setTime: changedAttributes[i]});
+						break;
 				}
 				
             }
@@ -14765,10 +14768,12 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	var ShowShadowLabels = false;
 	var RangerFOV = 0.0;
 	var RangerAddLocation = "";
+	var RangerCurrentTime = 1503331200000;
 	
 	receiveExposeFromRanger("System.Show Shadow Labels", Boolean, ShowShadowLabels, null);
 	receiveExposeFromRanger("System.Camera FOV", typeof RangerFOV, RangerFOV, null);
 	receiveExposeFromRanger("System.Add Location", typeof RangerAddLocation, RangerAddLocation, null);
+	receiveExposeFromRanger("System.Set Current Time", typeof RangerCurrentTime, RangerAddLocation, null);
 	
 	
 });
