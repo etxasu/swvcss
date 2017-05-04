@@ -14781,7 +14781,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	var RangerFOV = 0.0;
 	var RangerAddLocation = "";
 	var RangerCurrentTime = 1503331200000;
-	var RangerTimeRate = 1.0f;
+	var RangerTimeRate = 1.0;
 	var PenumbraColor = "1,0,0,0";
 	var UmbraColor = "0,0,0,1";	
 	
