@@ -14759,6 +14759,13 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 					case "System.Set Current Time":
 						ranger_eclipse.update({setTime: changedAttributes[i]});
 						break;
+					case "System.Set Time Rate":
+						ranger_eclipse.update({setTimeRate: changedAttributes[i]});
+						break;
+					case "System.Cone.PenumbraColor":
+						var _message = changedAttributes[i].split(",");
+						ranger_eclipse.update({setPenumbraColor: _message[0], _message[1], [_message[2], _message[3]]});
+						break;
 				}
 				
             }
@@ -14769,12 +14776,15 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	var RangerFOV = 0.0;
 	var RangerAddLocation = "";
 	var RangerCurrentTime = 1503331200000;
+	var RangerTimeRate = 1.0f;
+	var PenumbraColor = "1,0,0,0"; 
 	
 	receiveExposeFromRanger("System.Show Shadow Labels", Boolean, ShowShadowLabels, null);
 	receiveExposeFromRanger("System.Camera FOV", typeof RangerFOV, RangerFOV, null);
 	receiveExposeFromRanger("System.Add Location", typeof RangerAddLocation, RangerAddLocation, null);
 	receiveExposeFromRanger("System.Set Current Time", typeof RangerCurrentTime, RangerCurrentTime, null);
-	
+	receiveExposeFromRanger("System.Set Time Rate", typeof RangerTimeRate, RangerTimeRate, null);
+	receiveExposeFromRanger("System.Cone.PenumbraColor", typeof PenumbraColor, PenumbraColor, null);
 	
 });
 
