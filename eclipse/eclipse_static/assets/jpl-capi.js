@@ -14805,7 +14805,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	receiveExposeFromRanger("System.Cone.PenumbraColor", typeof PenumbraColor, PenumbraColor, null);
 	receiveExposeFromRanger("System.Cone.UmbraColor", typeof UmbraColor, UmbraColor, null);
 	receiveExposeFromRanger("System.Views.Sub View.Swap", typeof SwapCamera, SwapCamera, null);
-	receiveExposeFromRanger("System.Views.Sub View.Visible", typeof SwapCamera, SwapCamera, null);
+	receiveExposeFromRanger("System.Views.Sub View.Visible", typeof RemoveViewport, RemoveViewport, null);
 	
 });
 
