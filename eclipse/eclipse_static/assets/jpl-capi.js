@@ -14771,6 +14771,16 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						var _message = changedAttributes[i].split(",");
 						ranger_eclipse.update({setUmbraColor: [parseFloat(_message[0]), parseFloat(_message[1]), parseFloat(_message[2]), parseFloat(_message[3])]});
 						break;
+					case "System.Views.Sub View.Swap":
+						ranger_eclipse.update({swapDisplays: changedAttributes[i]});
+						SwapCamera = false;
+						capi.set("System.Views.Sub View.Swap", SwapCamera);
+						break;
+					case "System.Views.Sub View.Visible":
+						ranger_eclipse.update({swapDisplays: changedAttributes[i]});
+						RemoveViewport = false;
+						capi.set("System.Views.Sub View.Visible", SwapCamera);
+						break;
 				}
 				
             }
@@ -14784,6 +14794,8 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	var RangerTimeRate = 1.0;
 	var PenumbraColor = "0,0,0,0";
 	var UmbraColor = "0,0,0,0";	
+	var SwapCamera = false;
+	var RemoveViewport = false;
 	
 	receiveExposeFromRanger("System.Show Shadow Labels", Boolean, ShowShadowLabels, null);
 	receiveExposeFromRanger("System.Camera FOV", typeof RangerFOV, RangerFOV, null);
@@ -14792,6 +14804,8 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	receiveExposeFromRanger("System.Set Time Rate", typeof RangerTimeRate, RangerTimeRate, null);
 	receiveExposeFromRanger("System.Cone.PenumbraColor", typeof PenumbraColor, PenumbraColor, null);
 	receiveExposeFromRanger("System.Cone.UmbraColor", typeof UmbraColor, UmbraColor, null);
+	receiveExposeFromRanger("System.Views.Sub View.Swap", typeof SwapCamera, SwapCamera, null);
+	receiveExposeFromRanger("System.Views.Sub View.Visible", typeof SwapCamera, SwapCamera, null);
 	
 });
 
