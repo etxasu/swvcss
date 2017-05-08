@@ -2135,8 +2135,9 @@ var main = {
 		// set up a listener to close the intro panel, but just want to do it once
 		$('#loader .button').on('click touchstart', function(){
 			$('body').addClass('eclipse_loaded');
-			$('#loader').fadeOut(main.panelFadeSpeed, function () {
-				$('#panels .intro_modal').fadeIn();
+			$('#loader').fadeOut(main.panelFadeSpeed, function () 
+			{
+				//$('#panels .intro_modal').fadeIn();
 			});
 		});
 	},
