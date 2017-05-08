@@ -14781,6 +14781,9 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						RemoveViewport = false;
 						capi.set("System.Views.Sub View.Visible", RemoveViewport);
 						break;
+					case "System.SendMessage":
+						ranger_eclipse.update(changedAttributes[i]);
+						break;
 				}
 				
             }
@@ -14798,6 +14801,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	var RemoveViewport = false;
 	var LastClickedLatitude = 0.0000;
 	var LastClickedLongitude = 0.0000;
+	var GenericMessage = "";
 	
 	receiveExposeFromRanger("System.Show Shadow Labels", Boolean, ShowShadowLabels, null);
 	receiveExposeFromRanger("System.Camera FOV", typeof RangerFOV, RangerFOV, null);
@@ -14810,6 +14814,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	receiveExposeFromRanger("System.Views.Sub View.Visible", typeof RemoveViewport, RemoveViewport, null);
 	receiveExposeFromRanger("System.Locations.Last Clicked.Latitude", typeof LastClickedLatitude, LastClickedLatitude, null);
 	receiveExposeFromRanger("System.Locations.Last Clicked.Longitude", typeof LastClickedLongitude, LastClickedLongitude, null);
+	receiveExposeFromRanger("System.SendMessage", typeof GenericMessage, GenericMessage, null);
 });
 
 
