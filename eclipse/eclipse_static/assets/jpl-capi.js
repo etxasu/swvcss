@@ -14782,11 +14782,15 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						capi.set("System.Views.Sub View.Visible", RemoveViewport);
 						break;
 					case "System.SendMessage":
-						if(changedAttributes[i] !== "" )
+						if(changedAttributes[i] !== "DO NOT USE" )
 						{
 							var _newObject = JSON.parse(changedAttributes[i]);
 							ranger_eclipse.update(_newObject);
 						}
+						break;
+					case "System.Camera.UpdateTransform":
+						var _message = changedAttributes[i].split(",");
+						ranger_eclipse.update({setCameraState: setCameraState: { "id": "mainWindow", "target": "Earth", "orientation": [ parseFloat(_message[0]), parseFloat(_message[1]), parseFloat(_message[2]), parseFloat(_message[3]) ], "position": [ parseFloat(_message[4]), parseFloat(_message[5]), parseFloat(_message[6])], });
 						break;
 				}
 				
@@ -14805,7 +14809,8 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	var RemoveViewport = false;
 	var LastClickedLatitude = 0.0000;
 	var LastClickedLongitude = 0.0000;
-	var GenericMessage = "";
+	var GenericMessage = "DO NOT USE";
+	var CameraData = "0,0,0,0,0,0,0";
 	
 	receiveExposeFromRanger("System.Show Shadow Labels", Boolean, ShowShadowLabels, null);
 	receiveExposeFromRanger("System.Camera FOV", typeof RangerFOV, RangerFOV, null);
@@ -14818,6 +14823,9 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	receiveExposeFromRanger("System.Views.Sub View.Visible", typeof RemoveViewport, RemoveViewport, null);
 	receiveExposeFromRanger("System.Locations.Last Clicked.Latitude", typeof LastClickedLatitude, LastClickedLatitude, null);
 	receiveExposeFromRanger("System.Locations.Last Clicked.Longitude", typeof LastClickedLongitude, LastClickedLongitude, null);
+	
+	receiveExposeFromRanger("System.Camera.UpdateTransform", typeof CameraData, CameraData, null);
+	
 	receiveExposeFromRanger("System.SendMessage", typeof GenericMessage, GenericMessage, null);
 });
 
