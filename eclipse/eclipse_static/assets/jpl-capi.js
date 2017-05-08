@@ -14782,7 +14782,8 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						capi.set("System.Views.Sub View.Visible", RemoveViewport);
 						break;
 					case "System.SendMessage":
-						ranger_eclipse.update(changedAttributes[i]);
+						var _newObject = JSON.parse(changedAttributes[i]);
+						ranger_eclipse.update(_newObject);
 						break;
 				}
 				
