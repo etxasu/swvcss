@@ -14779,7 +14779,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 					case "System.Views.Sub View.Visible":
 						ranger_eclipse.update({swapDisplays: changedAttributes[i]});
 						RemoveViewport = false;
-						capi.set("System.Views.Sub View.Visible", SwapCamera);
+						capi.set("System.Views.Sub View.Visible", RemoveViewport);
 						break;
 				}
 				
@@ -14796,6 +14796,8 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	var UmbraColor = "0,0,0,0";	
 	var SwapCamera = false;
 	var RemoveViewport = false;
+	var LastClickedLatitude = 0.0000;
+	var LastClickedLongitude = 0.0000;
 	
 	receiveExposeFromRanger("System.Show Shadow Labels", Boolean, ShowShadowLabels, null);
 	receiveExposeFromRanger("System.Camera FOV", typeof RangerFOV, RangerFOV, null);
@@ -14806,7 +14808,8 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	receiveExposeFromRanger("System.Cone.UmbraColor", typeof UmbraColor, UmbraColor, null);
 	receiveExposeFromRanger("System.Views.Sub View.Swap", typeof SwapCamera, SwapCamera, null);
 	receiveExposeFromRanger("System.Views.Sub View.Visible", typeof RemoveViewport, RemoveViewport, null);
-	
+	receiveExposeFromRanger("System.Locations.Last Clicked.Latitude", typeof LastClickedLatitude, LastClickedLatitude, null);
+	receiveExposeFromRanger("System.Locations.Last Clicked.Longitude", typeof LastClickedLongitude, LastClickedLongitude, null);
 });
 
 
