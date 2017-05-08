@@ -14790,7 +14790,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						break;
 					case "System.Camera.UpdateTransform":
 						var _message = changedAttributes[i].split(",");
-						ranger_eclipse.update({setCameraState: { "id": "mainWindow", "target": "Earth", "orientation": [ parseFloat(_message[0]), parseFloat(_message[1]), parseFloat(_message[2]), parseFloat(_message[3]) ], "position": [ parseFloat(_message[4]), parseFloat(_message[5]), parseFloat(_message[6])], });
+						ranger_eclipse.update({setCameraState: { "id": "mainWindow", "target": "Earth", "orientation": [ parseFloat(_message[0]), parseFloat(_message[1]), parseFloat(_message[2]), parseFloat(_message[3]) ], "position": [ parseFloat(_message[4]), parseFloat(_message[5]), parseFloat(_message[6])] }});
 						break;
 				}
 				
