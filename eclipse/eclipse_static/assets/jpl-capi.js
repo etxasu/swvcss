@@ -14810,7 +14810,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	var LastClickedLatitude = 0.0000;
 	var LastClickedLongitude = 0.0000;
 	var GenericMessage = "DO NOT USE";
-	var CameraData = "0,0,0,0,0,0,0";
+	var CameraData = "0.5065328566884535, -0.0942412441171466, 0.03476542271963596, 0.8563494721113643, 3407.0549814006035, -23600.455980565075, 12665.324862123498";
 	
 	receiveExposeFromRanger("System.Show Shadow Labels", Boolean, ShowShadowLabels, null);
 	receiveExposeFromRanger("System.Camera FOV", typeof RangerFOV, RangerFOV, null);
