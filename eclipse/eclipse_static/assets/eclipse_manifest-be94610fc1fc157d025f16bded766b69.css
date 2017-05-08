@@ -2604,7 +2604,7 @@ body.motanf.fullscreen_element #ranger-container {
 
 @media (min-width: 900px) {
     .eclipse_module .viewer_text_area.current_view {
-        display: block
+        display: none
     }
 }
 
@@ -3681,7 +3681,7 @@ body.motanf.fullscreen_element #ranger-container {
         display: none
     }
     .webgl_toolbar_container .mobile_viewer_text_area.current_view {
-        display: block
+        display: none
     }
 }
 
