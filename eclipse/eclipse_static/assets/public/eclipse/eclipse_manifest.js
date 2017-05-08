@@ -1561,8 +1561,9 @@ var ranger_eclipse = {
 	locationClicked: function(location_arr){
 		console.log("Clicked " +  location_arr  + " from ranger.");
 		locations.getLocationFromCoordinates(location_arr[0], location_arr[1], locations.addPin);
-		capi.set("System.Locations.Last Clicked.Latitude", location_arr[0]);
-		capi.set("System.Locations.Last Clicked.Longitude", location_arr[1]);
+		
+		receiveValueFromRanger("System.Locations.Last Clicked.Latitude", typeof location_arr[0], location_arr[0]);
+		receiveValueFromRanger("System.Locations.Last Clicked.Longitude", typeof location_arr[1], location_arr[1]);
 	},
 
 	locationSelectedToAdd: function(id){
