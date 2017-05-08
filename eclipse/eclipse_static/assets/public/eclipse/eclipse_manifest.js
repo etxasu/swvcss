@@ -2137,6 +2137,7 @@ var main = {
 			$('body').addClass('eclipse_loaded');
 			$('#loader').fadeOut(main.panelFadeSpeed, function () 
 			{
+				main.onGotIt();
 				//$('#panels .intro_modal').fadeIn();
 			});
 		});
