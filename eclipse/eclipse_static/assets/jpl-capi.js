@@ -14792,6 +14792,9 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						var _message = changedAttributes[i].split(",");
 						ranger_eclipse.update({setCameraState: { "id": "mainWindow", "target": "Earth", "orientation": [ parseFloat(_message[0]), parseFloat(_message[1]), parseFloat(_message[2]), parseFloat(_message[3]) ], "position": [ parseFloat(_message[4]), parseFloat(_message[5]), parseFloat(_message[6])] }});
 						break;
+					case "System.Debug.AddTestMarker":
+						ranger_eclipse.update({addMarker: {id: "marker0", locationId: "location0", name: "Los Angeles", location: [34.0522, -118.2437], color: "blue", popupDisplayed: false}});
+						break;
 				}
 				
             }
@@ -14811,6 +14814,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	var LastClickedLongitude = 0.0000;
 	var GenericMessage = "DO NOT USE";
 	var CameraData = "0.5065328566884535, -0.0942412441171466, 0.03476542271963596, 0.8563494721113643, 3407.0549814006035, -23600.455980565075, 12665.324862123498";
+	var AddTestMarker = false;
 	
 	receiveExposeFromRanger("System.Show Shadow Labels", Boolean, ShowShadowLabels, null);
 	receiveExposeFromRanger("System.Camera FOV", typeof RangerFOV, RangerFOV, null);
@@ -14823,6 +14827,8 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	receiveExposeFromRanger("System.Views.Sub View.Visible", typeof RemoveViewport, RemoveViewport, null);
 	receiveExposeFromRanger("System.Locations.Last Clicked.Latitude", typeof LastClickedLatitude, LastClickedLatitude, null);
 	receiveExposeFromRanger("System.Locations.Last Clicked.Longitude", typeof LastClickedLongitude, LastClickedLongitude, null);
+	
+	receiveExposeFromRanger("System.Debug.AddTestMarker", typeof AddTestMarker, AddTestMarker, null);
 	
 	receiveExposeFromRanger("System.Camera.UpdateTransform", typeof CameraData, CameraData, null);
 	
