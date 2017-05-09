@@ -1563,10 +1563,21 @@ var ranger_eclipse = {
 		locations.getLocationFromCoordinates(location_arr[0], location_arr[1], locations.addPin);
 		
 		//console.log(ranger_eclipse.update({getInfo: { "cameraState": { "id": "mainWindow"}}}));
-		console.log(ranger_eclipse.update({getInfo: "cameraIds" }));
+		console.log(getCameraTransform());
 		
 		receiveValueFromRanger("System.Locations.Last Clicked.Latitude", typeof location_arr[0], location_arr[0]);
 		receiveValueFromRanger("System.Locations.Last Clicked.Longitude", typeof location_arr[1], location_arr[1]);
+	},
+	
+	getCameraTransform: function(_done){
+		var _value = $.Deferred();
+
+		ranger_eclipse.update({getInfo: { "cameraState": { "id": "mainWindow"}}}, false, function(ack){
+			console.log(ack.message);
+			_value.resolve()
+		})
+
+		$.when(_value).done(_done)
 	},
 
 	locationSelectedToAdd: function(id){
