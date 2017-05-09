@@ -1563,6 +1563,7 @@ var ranger_eclipse = {
 		locations.getLocationFromCoordinates(location_arr[0], location_arr[1], locations.addPin);
 		
 		var _message = ranger_eclipse.update({getInfo: { "cameraState": { "id": "mainWindow"}}});
+		console.log(_message.toString());
 		
 		receiveValueFromRanger("System.Locations.Last Clicked.Latitude", typeof location_arr[0], location_arr[0]);
 		receiveValueFromRanger("System.Locations.Last Clicked.Longitude", typeof location_arr[1], location_arr[1]);
