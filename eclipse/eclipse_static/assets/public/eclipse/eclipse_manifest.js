@@ -1633,8 +1633,11 @@ var ranger_eclipse = {
 			main.ranger_updating_time = false;
 		}
 	},
-	setViewDone: function(){
-		// handled via callback
+	setViewDone: function()
+	{
+		var _message = ranger_eclipse.update({getInfo: {“cameraState”: {id: “mainWindow”}}});
+		console.log(_message);
+		//receiveValueFromRanger("System.Camera.UpdateTransform", typeof _message, location_arr[1]);
 	},
 
 	markerClicked: function(a){
