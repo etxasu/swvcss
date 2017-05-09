@@ -1562,6 +1562,8 @@ var ranger_eclipse = {
 		console.log("Clicked " +  location_arr  + " from ranger.");
 		locations.getLocationFromCoordinates(location_arr[0], location_arr[1], locations.addPin);
 		
+		var _message = ranger_eclipse.update({getInfo: "cameraState"});
+		
 		receiveValueFromRanger("System.Locations.Last Clicked.Latitude", typeof location_arr[0], location_arr[0]);
 		receiveValueFromRanger("System.Locations.Last Clicked.Longitude", typeof location_arr[1], location_arr[1]);
 	},
@@ -1620,7 +1622,6 @@ var ranger_eclipse = {
 
 	draggedOnEclipseViewport: function()
 	{
-		var _message = ranger_eclipse.update({getInfo: "cameraState"});
 		if(main.playing){
 			actions._pause();
 		}
