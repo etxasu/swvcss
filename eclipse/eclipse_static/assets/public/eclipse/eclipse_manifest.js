@@ -1635,7 +1635,7 @@ var ranger_eclipse = {
 	},
 	setViewDone: function()
 	{
-		var _message = ranger_eclipse.update({getInfo: "cameraState": {id: "mainWindow"}});
+		var _message = ranger_eclipse.update({getInfo: "cameraState"});
 		console.log(_message);
 		//receiveValueFromRanger("System.Camera.UpdateTransform", typeof _message, location_arr[1]);
 	},
