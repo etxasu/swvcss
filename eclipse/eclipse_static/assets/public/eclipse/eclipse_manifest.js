@@ -1557,6 +1557,18 @@ var ranger_eclipse = {
 			}
 		}
 	},
+	
+	getCameraTransform: function(_done)
+	{
+		var _value = $.Deferred();
+
+		ranger_eclipse.update({getInfo: { "cameraState": { "id": "mainWindow"}}}, false, function(ack){
+			console.log(ack.message);
+			_value.resolve()
+		})
+
+		$.when(_value).done(_done)
+	},
 
 	locationClicked: function(location_arr){
 		console.log("Clicked " +  location_arr  + " from ranger.");
@@ -1567,17 +1579,6 @@ var ranger_eclipse = {
 		
 		receiveValueFromRanger("System.Locations.Last Clicked.Latitude", typeof location_arr[0], location_arr[0]);
 		receiveValueFromRanger("System.Locations.Last Clicked.Longitude", typeof location_arr[1], location_arr[1]);
-	},
-	
-	getCameraTransform: function(_done){
-		var _value = $.Deferred();
-
-		ranger_eclipse.update({getInfo: { "cameraState": { "id": "mainWindow"}}}, false, function(ack){
-			console.log(ack.message);
-			_value.resolve()
-		})
-
-		$.when(_value).done(_done)
 	},
 
 	locationSelectedToAdd: function(id){
