@@ -1618,7 +1618,9 @@ var ranger_eclipse = {
 		main.onRangerReady();
 	},
 
-	draggedOnEclipseViewport: function(){
+	draggedOnEclipseViewport: function()
+	{
+		var _message = ranger_eclipse.update({getInfo: "cameraState"});
 		if(main.playing){
 			actions._pause();
 		}
@@ -1635,8 +1637,6 @@ var ranger_eclipse = {
 	},
 	setViewDone: function()
 	{
-		var _message = ranger_eclipse.update({getInfo: "cameraState"});
-		console.log(_message);
 		//receiveValueFromRanger("System.Camera.UpdateTransform", typeof _message, location_arr[1]);
 	},
 
