@@ -14679,6 +14679,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 
     window.UpdateScreenAtSPR = function (_func) 
     {
+		console.log(_func);
         Transporter.triggerCheck();
     }
 	

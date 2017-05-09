@@ -2202,6 +2202,7 @@ var main = {
 		$(".handle_hint").addClass('pulse');
 		actions.setTimeRate()
 		window.setInterval(main.getTimeLoop, main.get_time_interval);
+		UpdateScreenAtSPR("Advancing screen");
 	}
 }
 ;
