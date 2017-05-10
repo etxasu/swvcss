@@ -14798,7 +14798,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						break;
 					case "System.Markers.AddMarker":
 						var _message = changedAttributes[i].split(",");
-						ranger_eclipse.update({addMarker: {id: _message[0], locationId: _message[1], name: _message[2], location: [_message[3], _message[4], color: _message[5], popupDisplayed: false}});
+						ranger_eclipse.update({addMarker: {id: _message[0], locationId: _message[1], name: _message[2], location: [_message[3], _message[4]], color: _message[5], popupDisplayed: false}});
 						break;
 				}
 				
