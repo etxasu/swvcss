@@ -14810,7 +14810,6 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						
 						for(var _i = 0; _i < _messageLength; _i++)
 						{
-							console.log(_message[_i]);
 							if(_message[_i] !== "")
 							{
 								console.log("Removing " + _message[_i]);
