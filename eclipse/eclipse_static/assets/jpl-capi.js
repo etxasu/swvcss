@@ -14798,10 +14798,10 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						break;
 					case "System.Markers.Add Marker":
 						var _message = changedAttributes[i].split(",");
-						var _derp = CurrentMarkers.concat(_message[0], ",");
-						CurrentMarkers = _derp;
-						console.log(CurrentMarkers);
-						capi.set("System.Markers.Current Markers", CurrentMarkers);
+						//var _derp = CurrentMarkers.concat(_message[0], ",");
+						//CurrentMarkers = _derp;
+						//console.log(CurrentMarkers);
+						//capi.set("System.Markers.Current Markers", CurrentMarkers);
 						ranger_eclipse.update({addMarker: {id: _message[0], locationId: _message[1], name: _message[2], location: [_message[3], _message[4]], color: _message[5], popupDisplayed: false}});
 						break;
 					case "System.Markers.Remove Marker":
