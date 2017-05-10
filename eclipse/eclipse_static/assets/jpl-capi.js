@@ -14820,6 +14820,9 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						
 						CurrentMarkers = "";
 						break;
+					case "System.Bullseye Shadow":
+						ranger_eclipse.update({eclipseShadowEnabled: changedAttributes[i]});
+						break;
 				}
 				
             }
@@ -14842,10 +14845,12 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	var MarkerData = "marker_0,location_0,Gold Beach,42.4133,-124.4222,green";
 	var AddTestMarker = false;
 	var RemoveAllMarkers = false;
+	var BullseyeShadow = false;
 	
 	var CurrentMarkers = "";
 	
 	receiveExposeFromRanger("System.Show Shadow Labels", Boolean, ShowShadowLabels, null);
+	receiveExposeFromRanger("System.Bullseye Shadow", typeof BullseyeShadow, BullseyeShadow, null);
 	receiveExposeFromRanger("System.Camera FOV", typeof RangerFOV, RangerFOV, null);
 	receiveExposeFromRanger("System.Add Location", typeof RangerAddLocation, RangerAddLocation, null);
 	receiveExposeFromRanger("System.Set Current Time", typeof RangerCurrentTime, RangerCurrentTime, null);
