@@ -14798,9 +14798,9 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						break;
 					case "System.Markers.Add Marker":
 						var _message = changedAttributes[i].split(",");
-						//var _derp = CurrentMarkers.concat(_message[0], ",");
-						//CurrentMarkers = _derp;
-						//console.log(CurrentMarkers);
+						var _derp = CurrentMarkers.concat(_message[0], ",");
+						CurrentMarkers = _derp;
+						console.log(CurrentMarkers);
 						//capi.set("System.Markers.Current Markers", CurrentMarkers);
 						ranger_eclipse.update({addMarker: {id: _message[0], locationId: _message[1], name: _message[2], location: [_message[3], _message[4]], color: _message[5], popupDisplayed: false}});
 						break;
@@ -14855,7 +14855,6 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	receiveExposeFromRanger("System.Locations.Last Clicked.Longitude", typeof LastClickedLongitude, LastClickedLongitude, null);
 	receiveExposeFromRanger("System.Markers.Add Marker", typeof MarkerData, MarkerData, null);
 	receiveExposeFromRanger("System.Markers.Remove Marker", typeof RemoveAllMarkers, RemoveAllMarkers, null);
-	receiveExposeFromRanger("System.Markers.Current Markers", typeof CurrentMarkers, CurrentMarkers, null);
 	receiveExposeFromRanger("System.Camera.UpdateTransform", typeof CameraData, CameraData, null);
 	receiveExposeFromRanger("System.Debug.AddTestMarker", typeof AddTestMarker, AddTestMarker, null);
 	receiveExposeFromRanger("System.SendMessage", typeof GenericMessage, GenericMessage, null);
