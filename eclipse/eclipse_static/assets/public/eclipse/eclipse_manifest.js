@@ -2188,8 +2188,6 @@ var main = {
 		});
 		locations.createLocations();
 		actions.setFov(main.fov);
-
-		ranger_eclipse.update({eclipseShadowEnabled: false});
 		
 		actions.checkEclipseToday(new Date());
 		//main.initTooltips();
@@ -2202,6 +2200,7 @@ var main = {
 		$(".handle_hint").addClass('pulse');
 		actions.setTimeRate();
 		ranger_eclipse.update({"shadowLabelsEnabled": false});
+		ranger_eclipse.update({eclipseShadowEnabled: false});
 		window.setInterval(main.getTimeLoop, main.get_time_interval);
 		UpdateScreenAtSPR("Advancing screen");
 	}
