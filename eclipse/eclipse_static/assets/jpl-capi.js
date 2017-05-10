@@ -14798,17 +14798,20 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						break;
 					case "System.Markers.Add Marker":
 						var _message = changedAttributes[i].split(",");
-						CurrentMarkers.push(_message[0]);
+						CurrentMarkers.concat(_message[0], ",");
 						capi.set("System.Markers.Current Markers", CurrentMarkers);
 						ranger_eclipse.update({addMarker: {id: _message[0], locationId: _message[1], name: _message[2], location: [_message[3], _message[4]], color: _message[5], popupDisplayed: false}});
 						break;
 					case "System.Markers.Remove Marker":
-						for(var _i = 0, _length = CurrentMarkers.length; i < _length; _i++)
+						
+						var _message = changedAttributes[i].split(",");
+						
+						for(var _i = 0, _length = _message.length; i < _length; _i++)
 						{
-							ranger_eclipse.update({removeMarker: CurrentMarkers[_i]});
+							ranger_eclipse.update({removeMarker: _message[_i]});
 						}
 						
-						CurrentMarkers = [];
+						CurrentMarkers = "";
 						capi.set("System.Markers.Current Markers", CurrentMarkers);
 						
 						break;
@@ -14835,7 +14838,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	var AddTestMarker = false;
 	var RemoveAllMarkers = false;
 	
-	var CurrentMarkers = [];
+	var CurrentMarkers = "";
 	
 	receiveExposeFromRanger("System.Show Shadow Labels", Boolean, ShowShadowLabels, null);
 	receiveExposeFromRanger("System.Camera FOV", typeof RangerFOV, RangerFOV, null);
