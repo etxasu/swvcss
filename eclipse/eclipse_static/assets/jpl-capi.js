@@ -14806,11 +14806,16 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 					case "System.Markers.Remove Marker":
 						
 						var _message = CurrentMarkers.split(",");
-						console.log(_message + " | " + _message.length);
-						for(var _i = 0; i < _message.length; _i++)
+						var _messageLength = _message.length;
+						
+						for(var _i = 0; i < _messageLength; _i++)
 						{
-							console.log("Removing " + _message[i]);
-							ranger_eclipse.update({removeMarker: _message[_i]});
+							console.log(_message[i]);
+							if(_message[i] !== "")
+							{
+								console.log("Removing " + _message[i]);
+								ranger_eclipse.update({removeMarker: _message[_i]});
+							}
 						}
 						
 						CurrentMarkers = "";
