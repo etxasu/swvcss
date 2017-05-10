@@ -5851,7 +5851,7 @@
 			}
 			function h(e) {
 				var t = ne.scene.get("Earth");
-				t.context.data["double"].shadowScale = e
+				t.context.data["double"].shadowScale = e;
 			}
 			function v(e, t) {
 				return "boolean" != typeof e ? (console.verboseError("Invalid: eclipseShadowEnabled must be provided a boolean. Data received: ", e), void t.reject("Invalid: eclipseShadowEnabled must be provided a boolean. Data received: " + e)) : void(e ? (h(1), t.resolve("Enabling Eclipse Shadow."), console.verboseLog("Enabling Eclipse Shadow.")) : (h(0), t.resolve("Disabling Eclipse Shadow."), console.verboseLog("Disabling Eclipse Shadow.")))
