@@ -14746,6 +14746,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 				switch(i)
 				{
 					case "System.Show Shadow Labels":
+						ranger_eclipse.update({eclipseShadowEnabled: false});
 						ranger_eclipse.update({"shadowLabelsEnabled": changedAttributes[i]});
 						break;
 					case "System.Camera FOV":
