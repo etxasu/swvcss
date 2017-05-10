@@ -2190,6 +2190,7 @@ var main = {
 		actions.setFov(main.fov);
 
 		ranger_eclipse.update({"shadowLabelsEnabled": false});
+		ranger_eclipse.update({eclipseShadowEnabled: false});
 		
 		actions.checkEclipseToday(new Date());
 		//main.initTooltips();
