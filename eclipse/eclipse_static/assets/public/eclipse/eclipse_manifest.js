@@ -2189,7 +2189,6 @@ var main = {
 		locations.createLocations();
 		actions.setFov(main.fov);
 
-		ranger_eclipse.update({"shadowLabelsEnabled": false});
 		ranger_eclipse.update({eclipseShadowEnabled: false});
 		
 		actions.checkEclipseToday(new Date());
@@ -2201,7 +2200,8 @@ var main = {
 		$('#static_locations li').first().click();
 		panels.closePanels();
 		$(".handle_hint").addClass('pulse');
-		actions.setTimeRate()
+		actions.setTimeRate();
+		ranger_eclipse.update({"shadowLabelsEnabled": false});
 		window.setInterval(main.getTimeLoop, main.get_time_interval);
 		UpdateScreenAtSPR("Advancing screen");
 	}
