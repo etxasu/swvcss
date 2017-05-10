@@ -14808,12 +14808,12 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						var _message = CurrentMarkers.split(",");
 						var _messageLength = _message.length;
 						
-						for(var _i = 0; i < _messageLength; _i++)
+						for(var _i = 0; _i < _messageLength; _i++)
 						{
-							console.log(_message[i]);
-							if(_message[i] !== "")
+							console.log(_message[_i]);
+							if(_message[_i] !== "")
 							{
-								console.log("Removing " + _message[i]);
+								console.log("Removing " + _message[_i]);
 								ranger_eclipse.update({removeMarker: _message[_i]});
 							}
 						}
