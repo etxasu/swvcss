@@ -14800,7 +14800,6 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						var _message = changedAttributes[i].split(",");
 						var _derp = CurrentMarkers.concat(_message[0], ",");
 						CurrentMarkers = _derp;
-						console.log(CurrentMarkers);
 						//capi.set("System.Markers.Current Markers", CurrentMarkers);
 						ranger_eclipse.update({addMarker: {id: _message[0], locationId: _message[1], name: _message[2], location: [_message[3], _message[4]], color: _message[5], popupDisplayed: false}});
 						break;
@@ -14808,14 +14807,13 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						
 						var _message = CurrentMarkers.split(",");
 						
-						for(var _i = 0, _length = _message.length; i < _length; _i++)
+						for(var _i = 0; i < _message.length; _i++)
 						{
+							console.log("Removing " + _message[i]);
 							ranger_eclipse.update({removeMarker: _message[_i]});
 						}
 						
 						CurrentMarkers = "";
-						capi.set("System.Markers.Current Markers", CurrentMarkers);
-						
 						break;
 				}
 				
