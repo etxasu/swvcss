@@ -14804,7 +14804,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						break;
 					case "System.Markers.Remove Marker":
 						
-						var _message = changedAttributes[i].split(",");
+						var _message = CurrentMarkers.split(",");
 						
 						for(var _i = 0, _length = _message.length; i < _length; _i++)
 						{
