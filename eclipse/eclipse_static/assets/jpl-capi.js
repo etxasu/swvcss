@@ -14766,7 +14766,6 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						break;
 					case "System.Cone.PenumbraColor":
 						var _message = changedAttributes[i].split(",");
-						console.log(_message[0] + " " + _message[1] + " " + _message[2] + " " + _message[3]);
 						ranger_eclipse.update({setPenumbraColor: [parseFloat(_message[0]), parseFloat(_message[1]), parseFloat(_message[2]), parseFloat(_message[3])]});
 						break;
 					case "System.Cone.UmbraColor":
