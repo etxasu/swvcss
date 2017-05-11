@@ -1017,7 +1017,7 @@ var actions = {
 }
 ;
 var locations = {
-	static_locations: [{title: "Kansas City, KS", lat: 39.1141, lon: -94.6275, id: 0},{title: "Alliance, NE", lat: 42.0930, lon: -102.8702, id: 1},{title: "Phoenix, AZ", lat: 33.4484 , lon: -112.074, id: 2}],
+	static_locations: [{title: "Alliance, NE", lat: 42.0930, lon: -102.8702, id: 0},{title: "Kansas City, KS", lat: 39.1141, lon: -94.6275, id: 1},{title: "Phoenix, AZ", lat: 33.4484 , lon: -112.074, id: 2}],
 	custom_locations: [],
 	pinned_locations: [],
 	last_id: 2,
