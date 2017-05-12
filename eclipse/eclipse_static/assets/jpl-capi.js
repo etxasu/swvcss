@@ -14778,7 +14778,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						capi.set("System.Views.Sub View.Swap", SwapCamera);
 						break;
 					case "System.Views.Sub View.Visible":
-						ranger_eclipse.update({swapDisplays: changedAttributes[i]});
+						ranger_eclipse.update({removeEclipseViewport: changedAttributes[i]});
 						RemoveViewport = false;
 						capi.set("System.Views.Sub View.Visible", RemoveViewport);
 						break;
