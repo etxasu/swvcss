@@ -14782,6 +14782,10 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						RemoveViewport = false;
 						capi.set("System.Views.Sub View.Visible", RemoveViewport);
 						break;
+					case "System.Views.Sub View.Set":
+						var _message = changedAttributes[i].split(",");
+						ranger_eclipse.update({setEclipseViewport: _message[0], parseFloat(_message[1]), parseFloat(_message[2])]});
+						break;
 					case "System.SendMessage":
 						if(changedAttributes[i] !== "DO NOT USE" )
 						{
@@ -14837,6 +14841,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	var UmbraColor = "0,0,0,0";	
 	var SwapCamera = false;
 	var RemoveViewport = false;
+	var SetViewport = "Gold Beach,42.4132,-124.4221";	
 	var LastClickedLatitude = 0.0000;
 	var LastClickedLongitude = 0.0000;
 	var GenericMessage = "DO NOT USE";
@@ -14858,6 +14863,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	receiveExposeFromRanger("System.Cone.UmbraColor", typeof UmbraColor, UmbraColor, null);
 	receiveExposeFromRanger("System.Views.Sub View.Swap", typeof SwapCamera, SwapCamera, null);
 	receiveExposeFromRanger("System.Views.Sub View.Visible", typeof RemoveViewport, RemoveViewport, null);
+	receiveExposeFromRanger("System.Views.Sub View.Set", typeof SetViewport, SetViewport, null);
 	receiveExposeFromRanger("System.Locations.Last Clicked.Latitude", typeof LastClickedLatitude, LastClickedLatitude, null);
 	receiveExposeFromRanger("System.Locations.Last Clicked.Longitude", typeof LastClickedLongitude, LastClickedLongitude, null);
 	receiveExposeFromRanger("System.Markers.Add Marker", typeof MarkerData, MarkerData, null);
