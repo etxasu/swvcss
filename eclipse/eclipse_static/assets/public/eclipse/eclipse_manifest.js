@@ -2191,8 +2191,8 @@ var main = {
 		
 		ranger_eclipse.update({"shadowLabelsEnabled": false});
 		ranger_eclipse.update({eclipseShadowEnabled: false});
-		ranger_eclipse.update({setUmbraColor: [0,0,0,0]});
-		ranger_eclipse.update({setPenumbraColor: [0,0,0,0]});
+		//ranger_eclipse.update({setUmbraColor: [0,0,0,0]});
+		//ranger_eclipse.update({setPenumbraColor: [0,0,0,0]});
 		
 		actions.checkEclipseToday(new Date());
 		//main.initTooltips();
