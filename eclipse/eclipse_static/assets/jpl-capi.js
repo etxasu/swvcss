@@ -14784,7 +14784,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						break;
 					case "System.Views.Sub View.Set":
 						var _message = changedAttributes[i].split(",");
-						ranger_eclipse.update({setEclipseViewport: _message[0], parseFloat(_message[1]), parseFloat(_message[2])});
+						ranger_eclipse.update({setEclipseViewport: _message[0], location: [parseFloat(_message[1]), parseFloat(_message[2])]});
 						break;
 					case "System.SendMessage":
 						if(changedAttributes[i] !== "DO NOT USE" )

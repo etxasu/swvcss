@@ -2803,7 +2803,7 @@ body.motanf.fullscreen_element #ranger-container {
 }
 
 .map_controls_container {
-	display: block;
+	display: none;
     color: #7f7d7d;
     position: fixed;
     right: 0;
