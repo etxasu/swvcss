@@ -1008,8 +1008,9 @@ var actions = {
 		ranger_eclipse.getTimeBounds(function(){
 			main.slider.updateOptions({range: {min: main.time_min, max: main.time_max}});
 			actions.setMinMaxSliderLabels(main.current_view != "earth_moon" && main.current_view != "earth_moon_sun");
-			if(main.playing) {
-				actions.setTimeRate();
+			if(main.playing) 
+			{
+				//actions.setTimeRate();
 			}
 		});
 	}
