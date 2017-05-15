@@ -2203,7 +2203,7 @@ var main = {
 		$('#static_locations li').first().click();
 		panels.closePanels();
 		$(".handle_hint").addClass('pulse');
-		actions.setTimeRate();
+		//actions.setTimeRate();
 		
 		window.setInterval(main.getTimeLoop, main.get_time_interval);
 		UpdateScreenAtSPR("Advancing screen");
