@@ -14797,6 +14797,11 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 						var _message = changedAttributes[i].split(",");
 						ranger_eclipse.update({setCameraState: { "id": "mainWindow", "target": "Earth", "orientation": [ parseFloat(_message[0]), parseFloat(_message[1]), parseFloat(_message[2]), parseFloat(_message[3]) ], "position": [ parseFloat(_message[4]), parseFloat(_message[5]), parseFloat(_message[6])] }});
 						break;
+					case "System.Camera.Set View":
+						var _message = changedAttributes[i].split(",");
+						var _toScale = JSON.parse(_message[1]);
+						ranger_eclipse.update({setView: { view: _message[0], toScale: _toScale}});
+						break;
 					case "System.Debug.AddTestMarker":
 						ranger_eclipse.update({addMarker: {id: "marker0", locationId: "location0", name: "Los Angeles", location: [34.0522, -118.2437], color: "blue", popupDisplayed: false}});
 						break;
@@ -14850,6 +14855,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	var AddTestMarker = false;
 	var RemoveAllMarkers = false;
 	var BullseyeShadow = false;
+	var CurrentViewMode = "Earth";
 	
 	var CurrentMarkers = "";
 	
@@ -14869,6 +14875,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	receiveExposeFromRanger("System.Markers.Add Marker", typeof MarkerData, MarkerData, null);
 	receiveExposeFromRanger("System.Markers.Remove Marker", typeof RemoveAllMarkers, RemoveAllMarkers, null);
 	receiveExposeFromRanger("System.Camera.UpdateTransform", typeof CameraData, CameraData, null);
+	receiveExposeFromRanger("System.Camera.Set View", typeof CurrentViewMode, CurrentViewMode, null);
 	receiveExposeFromRanger("System.Debug.AddTestMarker", typeof AddTestMarker, AddTestMarker, null);
 	receiveExposeFromRanger("System.SendMessage", typeof GenericMessage, GenericMessage, null);
 });
