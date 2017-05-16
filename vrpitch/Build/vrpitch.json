@@ -1,0 +1,11 @@
+{
+"TOTAL_MEMORY": 268435456,
+"dataUrl": "vrpitch.data.unityweb",
+"wasmCodeUrl": "vrpitch.wasm.code.unityweb",
+"wasmFrameworkUrl": "vrpitch.wasm.framework.unityweb",
+"asmCodeUrl": "vrpitch.asm.code.unityweb",
+"asmMemoryUrl": "vrpitch.asm.memory.unityweb",
+"asmFrameworkUrl": "vrpitch.asm.framework.unityweb",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#222C36"
+}
