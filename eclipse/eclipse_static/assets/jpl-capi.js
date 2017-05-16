@@ -14855,7 +14855,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	var AddTestMarker = false;
 	var RemoveAllMarkers = false;
 	var BullseyeShadow = false;
-	var CurrentViewMode = "Earth";
+	var CurrentViewMode = "Earth, false";
 	
 	var CurrentMarkers = "";
 	
