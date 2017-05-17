@@ -1579,8 +1579,7 @@ var ranger_eclipse = {
 		{
 			console.log(ack.message);
 			
-			var _ack = JSON.parse(ack.message);
-			console.log(_ack);
+			console.log(ack.toString());
 		});
 		
 		receiveValueFromRanger("System.Locations.Last Clicked.Latitude", typeof location_arr[0], location_arr[0]);
