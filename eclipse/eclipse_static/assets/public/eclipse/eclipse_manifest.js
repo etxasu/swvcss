@@ -2028,7 +2028,7 @@ var main = {
 			$('#help_text').toggle();
 		});
 		
-		window.addEventListener("mouseup", this.onMouseUp_.bind(this)),
+		window.addEventListener("mouseup", onMouseUp_),
 		
 		onMouseUp_ = function (e) 
 		{
