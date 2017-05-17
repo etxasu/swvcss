@@ -1577,9 +1577,6 @@ var ranger_eclipse = {
 		
 		ranger_eclipse.update({getInfo: { "cameraState": { "id": "mainWindow"}}}, null, function(ack)
 		{
-			_ack = JSON.parse(ack);
-			console.log(_ack.orientation);
-			
 			console.log(ack[0].orientation);
 		});
 		
