@@ -2040,7 +2040,8 @@ var main = {
 				ack.message.orientation[3].toString(), ",",
 				ack.message.position[0].toString(), ",",
 				ack.message.position[1].toString(), ",",
-				ack.message.position[2].toString(),
+				ack.message.position[2].toString(), ",",
+				ack.message.fov.toString()
 				);
 				
 				console.log(_message);
