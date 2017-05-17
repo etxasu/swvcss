@@ -2028,8 +2028,6 @@ var main = {
 			$('#help_text').toggle();
 		});
 		
-		window.addEventListener("mouseup", onMouseUp_),
-		
 		onMouseUp_ = function (e) 
 		{
 			ranger_eclipse.update({getInfo: { "cameraState": { "id": "mainWindow"}}}, null, function(ack)
@@ -2039,6 +2037,8 @@ var main = {
 			//console.log(ack.message.orientation);
 			});
 		};
+		
+		window.addEventListener("mouseup", onMouseUp_),
 
 	},
 	//safari doesn't support text input in fullscreen
