@@ -7325,8 +7325,8 @@
 					minTimeRate: -1800,
 					maxTimeRate: 1800,
 					defaultFOV: .5235987755982988,
-					minFOV: .2617993877991494,
-					maxFOV: .7853981633974483,
+					minFOV: .0349066,
+					maxFOV: 1.5708,
 					timeRateValues: [-1800, -600, -300, -60, -30, -1, 0, 1, 30, 60, 300, 600, 1800],
 					displayPip: !0
 				},
@@ -11834,7 +11834,8 @@
 								this.phi_ = o.clamp(this.phi_, -Math.PI / 2, Math.PI / 2)
 							}
 						},
-						n.prototype.onMouseUp_ = function (e) {
+						n.prototype.onMouseUp_ = function (e) 
+						{
 							this.isDragging_ = !1
 						},
 						n.prototype.isPointerLocked_ = function () {

@@ -14670,7 +14670,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
         adapter.expose(name, capi, descObj);
     };
 
-	    window.receiveValueFromRanger = function (name, type, value) {
+	window.receiveValueFromRanger = function (name, type, value) {
         if (initialized) {
             value = generateTypeConverter(type)(value);
             capi.set(name, value);

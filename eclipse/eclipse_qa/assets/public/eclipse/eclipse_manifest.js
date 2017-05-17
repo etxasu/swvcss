@@ -1468,7 +1468,7 @@ var panels = {
 }
 ;
 var ranger_eclipse = {
-	ranger_url: "/swvcss/eclipse/eclipse_static",
+	ranger_url: "/swvcss/eclipse/eclipse_qa",
 	eclipse_v: "/eclipse11",
 	init: function(ranger_url) {
 		this.ranger_url = ranger_url;
@@ -1575,7 +1575,12 @@ var ranger_eclipse = {
 		console.log("Clicked " +  location_arr  + " from ranger.");
 		locations.getLocationFromCoordinates(location_arr[0], location_arr[1], locations.addPin);
 		
-		ranger_eclipse.update({getInfo: { "cameraState": { "id": "mainWindow"}}}, null, function(ack){console.log(ack)});
+		ranger_eclipse.update({getInfo: { "cameraState": { "id": "mainWindow"}}}, null, function(ack)
+		{
+			console.log(ack.message);
+			
+			//console.log(ack.message.orientation);
+		});
 		
 		receiveValueFromRanger("System.Locations.Last Clicked.Latitude", typeof location_arr[0], location_arr[0]);
 		receiveValueFromRanger("System.Locations.Last Clicked.Longitude", typeof location_arr[1], location_arr[1]);
@@ -1760,7 +1765,7 @@ var main = {
     mb_utils.mouseCheck();
 		if(main.webgl_detect()){
 			this._loaderModal();
-			ranger_eclipse.init("/swvcss/eclipse/eclipse_static");
+			ranger_eclipse.init("/swvcss/eclipse/eclipse_qa");
 			main.initListeners();
 
 		} else {
@@ -2022,7 +2027,31 @@ var main = {
 			e.preventDefault();
 			$('#help_text').toggle();
 		});
-
+		
+		onMouseUp_ = function (e) 
+		{
+			ranger_eclipse.update({getInfo: { "cameraState": { "id": "mainWindow"}}}, null, function(ack)
+			{
+				var _string = "";
+				var _message = _string.concat(
+				ack.message.orientation[0].toString(), ",",
+				ack.message.orientation[1].toString(), ",",
+				ack.message.orientation[2].toString(), ",",
+				ack.message.orientation[3].toString(), ",",
+				ack.message.position[0].toString(), ",",
+				ack.message.position[1].toString(), ",",
+				ack.message.position[2].toString(), ",",
+				ack.message.fov.toString()
+				);
+				
+				console.log(_message);
+				
+				//receiveValueFromRanger("System.Camera.UpdateTransform", typeof _message, _message);
+				//console.log(ack.message.orientation);
+			});
+		};
+		
+		window.addEventListener("mouseup", onMouseUp_);
 
 	},
 	//safari doesn't support text input in fullscreen
