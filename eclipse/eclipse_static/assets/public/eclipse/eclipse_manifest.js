@@ -1579,7 +1579,7 @@ var ranger_eclipse = {
 		{
 			console.log(ack.message);
 			
-			console.log(ack.message.orientation);
+			//console.log(ack.message.orientation);
 		});
 		
 		receiveValueFromRanger("System.Locations.Last Clicked.Latitude", typeof location_arr[0], location_arr[0]);
@@ -1640,8 +1640,6 @@ var ranger_eclipse = {
 
 	draggedOnEclipseViewport: function()
 	{
-		console.log("drug");
-		
 		if(main.playing){
 			actions._pause();
 		}
@@ -2029,7 +2027,18 @@ var main = {
 			e.preventDefault();
 			$('#help_text').toggle();
 		});
-
+		
+		window.addEventListener("mouseup", this.onMouseUp_.bind(this)),
+		
+		onMouseUp_ = function (e) 
+		{
+			ranger_eclipse.update({getInfo: { "cameraState": { "id": "mainWindow"}}}, null, function(ack)
+			{
+			console.log(ack.message);
+			
+			//console.log(ack.message.orientation);
+			});
+		};
 
 	},
 	//safari doesn't support text input in fullscreen

@@ -11834,7 +11834,8 @@
 								this.phi_ = o.clamp(this.phi_, -Math.PI / 2, Math.PI / 2)
 							}
 						},
-						n.prototype.onMouseUp_ = function (e) {
+						n.prototype.onMouseUp_ = function (e) 
+						{
 							this.isDragging_ = !1
 						},
 						n.prototype.isPointerLocked_ = function () {
