@@ -2038,7 +2038,7 @@ var main = {
 			});
 		};
 		
-		window.addEventListener("mouseup", onMouseUp_),
+		window.addEventListener("mouseup", onMouseUp_);
 
 	},
 	//safari doesn't support text input in fullscreen
