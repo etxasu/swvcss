@@ -1577,7 +1577,7 @@ var ranger_eclipse = {
 		
 		ranger_eclipse.update({getInfo: { "cameraState": { "id": "mainWindow"}}}, null, function(ack)
 		{
-			console.log(ack[0].orientation);
+			console.log(ack.message);
 		});
 		
 		receiveValueFromRanger("System.Locations.Last Clicked.Latitude", typeof location_arr[0], location_arr[0]);
