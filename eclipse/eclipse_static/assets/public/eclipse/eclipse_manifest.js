@@ -2043,7 +2043,7 @@ var main = {
 				ack.message.position[2].toString(),
 				);
 			
-				receiveValueFromRanger("System.Camera.UpdateTransform", typeof _message, _message);
+				//receiveValueFromRanger("System.Camera.UpdateTransform", typeof _message, _message);
 				//console.log(ack.message.orientation);
 			});
 		};
