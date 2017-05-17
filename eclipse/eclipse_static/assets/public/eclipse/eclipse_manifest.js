@@ -1579,6 +1579,8 @@ var ranger_eclipse = {
 		{
 			_ack = JSON.parse(ack);
 			console.log(_ack.orientation);
+			
+			console.log(ack[0].orientation);
 		});
 		
 		receiveValueFromRanger("System.Locations.Last Clicked.Latitude", typeof location_arr[0], location_arr[0]);
