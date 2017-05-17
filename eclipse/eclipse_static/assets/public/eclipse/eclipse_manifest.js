@@ -2032,9 +2032,8 @@ var main = {
 		{
 			ranger_eclipse.update({getInfo: { "cameraState": { "id": "mainWindow"}}}, null, function(ack)
 			{
-				console.log(ack.message);
-				
-				var _string = _string.concat(
+				var _string = "";
+				var _message = _string.concat(
 				ack.message.orientation[0].toString(), ",",
 				ack.message.orientation[1].toString(), ",",
 				ack.message.orientation[2].toString(), ",",
@@ -2044,7 +2043,7 @@ var main = {
 				ack.message.position[2].toString(),
 				);
 			
-				receiveValueFromRanger("System.Camera.UpdateTransform", typeof _string, _string);
+				receiveValueFromRanger("System.Camera.UpdateTransform", typeof _message, _message);
 				//console.log(ack.message.orientation);
 			});
 		};
