@@ -1640,6 +1640,8 @@ var ranger_eclipse = {
 
 	draggedOnEclipseViewport: function()
 	{
+		console.log("drug");
+		
 		if(main.playing){
 			actions._pause();
 		}
