@@ -7325,7 +7325,7 @@
 					minTimeRate: -1800,
 					maxTimeRate: 1800,
 					defaultFOV: .5235987755982988,
-					minFOV: .139626,
+					minFOV: .0349066,
 					maxFOV: 1.5708,
 					timeRateValues: [-1800, -600, -300, -60, -30, -1, 0, 1, 30, 60, 300, 600, 1800],
 					displayPip: !0
