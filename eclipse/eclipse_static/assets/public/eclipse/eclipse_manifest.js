@@ -2042,7 +2042,9 @@ var main = {
 				ack.message.position[1].toString(), ",",
 				ack.message.position[2].toString(),
 				);
-			
+				
+				console.log(_message);
+				
 				//receiveValueFromRanger("System.Camera.UpdateTransform", typeof _message, _message);
 				//console.log(ack.message.orientation);
 			});
