@@ -6691,7 +6691,7 @@
 								},
 								fov: e.fov || a._camera.fov,
 								after: function () {
-									t.resolve("Transition to new camera state completed.")
+									t.resolve("Transition to new camera state " + target + " completed.")
 								}
 							};
 							d(e.id).setCamera(c.trackingTransition(r))
