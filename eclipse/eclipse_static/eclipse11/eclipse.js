@@ -6678,7 +6678,6 @@
 								};
 							var r = {
 								cameraBehavior: u[i],
-								console.log(u[i]);
 								frame: n.frame,
 								target: n.target || M(e.target),
 								orientation: e.orientation || n.frame.orientation,
@@ -6692,7 +6691,7 @@
 								},
 								fov: e.fov || a._camera.fov,
 								after: function () {
-									t.resolve("Transition to new camera state " + u[i].name + " completed.")
+									t.resolve("Transition to new camera state " + cameraBehavior.name + " completed.")
 								}
 							};
 							d(e.id).setCamera(c.trackingTransition(r))
