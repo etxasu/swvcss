@@ -6686,12 +6686,12 @@
 								win: a,
 								cameraBehaviorParams: {
 									minRadius: e.minRadius || n.minRadiusAsGiven,
-									maxRadius: e.maxRadius || n.maxRadiusAsGiven
+									maxRadius: e.maxRadius || n.maxRadiusAsGiven,
 									focus: M(e.focus) || null
 								},
 								fov: e.fov || a._camera.fov,
 								after: function () {
-									t.resolve("Transition to new camera state " + target.toString() + " completed.")
+									t.resolve("Transition to new camera state " + u[i].name + " completed.")
 								}
 							};
 							d(e.id).setCamera(c.trackingTransition(r))
