@@ -1025,7 +1025,7 @@ var locations = {
 	max_custom: 3,
 	google_api_key: "AIzaSyBZYgZ99Xo3Zt92ms6gtbtg2ZVXjYeMoKU", //Kevin Hussey's dev key. This must be changed before final go live!!!,
 	error_fadeout_duration: 3000,
-	marker_display_popup: true,
+	marker_display_popup: false,
 
 	createLocations: function(){
 		$.each(locations.static_locations, function(k,v){
