@@ -1044,6 +1044,7 @@ var locations = {
 		$(el).addClass('current');
 		$('.selected_location .location_text').text($(el).text());
 		ranger_eclipse.update({setMarker: {id: $(el).data('id')}})
+		ranger_eclipse.update({removeEclipseViewport: true});
 		panels._checkIfMobileLocationListClose();
 	},
 
@@ -1243,6 +1244,7 @@ var locations = {
 	addPin: function(loc){
 		locations.pinned_locations.push(loc);
 		ranger_eclipse.update({setMarker: {id: loc['id'], name: loc['title'], location: [ loc['lat'], loc['lon']], displayPopup: locations.marker_display_popup }})
+		ranger_eclipse.update({removeEclipseViewport: true});
 	},
 
 	addPinnedLocation: function(id){
