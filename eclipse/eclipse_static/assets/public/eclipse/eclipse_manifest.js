@@ -1242,7 +1242,7 @@ var locations = {
 
 	addPin: function(loc){
 		locations.pinned_locations.push(loc);
-		ranger_eclipse.update({addMarker: {id: "Eclipse_Marker", locationId: loc['id'],  name: loc['title'], location: [ loc['lat'], loc['lon']], displayPopup: locations.marker_display_popup }})
+		ranger_eclipse.update({updateMarker: {id: "Eclipse_Marker", locationId: loc['id'],  name: loc['title'], location: [ loc['lat'], loc['lon']], displayPopup: locations.marker_display_popup }})
 	},
 
 	addPinnedLocation: function(id){
