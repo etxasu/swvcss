@@ -7328,7 +7328,7 @@
 					minFOV: .0349066,
 					maxFOV: 1.5708,
 					timeRateValues: [-1800, -600, -300, -60, -30, -1, 0, 1, 30, 60, 300, 600, 1800],
-					displayPip: !0
+					displayPip: !1
 				},
 				Moon: {
 					defaultTime: 556612000.2144,
@@ -7341,7 +7341,7 @@
 					minFOV: .017453292519943295,
 					maxFOV: .05235987755982988,
 					timeRateValues: [-1800, -600, -300, -60, -30, -1, 0, 1, 30, 60, 300, 600, 1800],
-					displayPip: !0
+					displayPip: !1
 				},
 				EarthMoon: {
 					defaultTime: 556612000.2144,
