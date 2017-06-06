@@ -14725,7 +14725,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
     function transmitDataToUnity(value)
     {
         console.log(value.value.toString());
-        SendMessage("Scene Controller", "UpdateFoundWorlds", value.value.toString());
+        gameInstance.SendMessage("Scene Controller", "UpdateFoundWorlds", value.value.toString());
     }
 
     //
@@ -14763,7 +14763,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
             for (var i in changedAttributes)
             {
                 //console.log("setting " + i + " to " + changedAttributes[i]);
-                window.SendMessage("CAPI", "setValueFromJS", JSON.stringify({name: i, value: changedAttributes[i]}));
+                gameInstance.SendMessage("CAPI", "setValueFromJS", JSON.stringify({ name: i, value: changedAttributes[i] }));
             }
         }
     }
