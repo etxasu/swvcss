@@ -1,0 +1,12 @@
+{
+"TOTAL_MEMORY": 268435456,
+"dataUrl": "transits.data.unityweb",
+"wasmCodeUrl": "transits.wasm.code.unityweb",
+"wasmFrameworkUrl": "transits.wasm.framework.unityweb",
+"asmCodeUrl": "transits.asm.code.unityweb",
+"asmMemoryUrl": "transits.asm.memory.unityweb",
+"asmFrameworkUrl": "transits.asm.framework.unityweb",
+"backgroundUrl": "transits.jpg",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#FFFFFF"
+}
