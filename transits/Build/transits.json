@@ -7,6 +7,6 @@
 "asmMemoryUrl": "transits.asm.memory.unityweb",
 "asmFrameworkUrl": "transits.asm.framework.unityweb",
 "backgroundUrl": "transits.jpg",
-"splashScreenStyle": "Dark",
+"splashScreenStyle": "Light",
 "backgroundColor": "#FFFFFF"
 }
