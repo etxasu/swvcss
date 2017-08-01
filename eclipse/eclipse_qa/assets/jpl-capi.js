@@ -14856,6 +14856,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	var RemoveAllMarkers = false;
 	var BullseyeShadow = false;
 	var CurrentViewMode = "Earth, false";
+	var HaveLoadedSim = false;
 	
 	var CurrentMarkers = "";
 	
@@ -14878,6 +14879,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 	receiveExposeFromRanger("System.Camera.Set View", typeof CurrentViewMode, CurrentViewMode, null);
 	receiveExposeFromRanger("System.Debug.AddTestMarker", typeof AddTestMarker, AddTestMarker, null);
 	receiveExposeFromRanger("System.SendMessage", typeof GenericMessage, GenericMessage, null);
+	receiveExposeFromRanger("System.Have Loaded Simulation", typeof HaveLoadedSim, HaveLoadedSim, null);
 });
 
 

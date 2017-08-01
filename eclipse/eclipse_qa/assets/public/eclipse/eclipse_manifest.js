@@ -2202,6 +2202,7 @@ var main = {
 	onRangerReady: function(){
 		console.log("Eclipse ready");
 		main.eclipse_loaded = true;
+		receiveValueFromRanger("System.Have Loaded Simulation", typeof main.eclipse_loaded, main.eclipse_loaded);
 		main._afterEclipseReadyLoaderModal();
 		// ranger_eclipse.update({setView: {view: "Earth", toScale: false}});   //this is throwing an error and blowing up subsequent calls
 		// these will need to be done some day.
