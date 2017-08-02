@@ -2492,7 +2492,7 @@ body.motanf.fullscreen_element #ranger-container {
     padding: 5px 8px;
     font-weight: 400
 }
-
+/*
 @media (max-width: 1023px) and (orientation: landscape) and (min-aspect-ratio: 13 / 9) {
     .touchevents #rotate_warning {
         position: absolute;
@@ -2562,7 +2562,7 @@ body.motanf.fullscreen_element #ranger-container {
         display: none
     }
 }
-
+*/
 .eclipse_module .viewer_text_area {
     display: none
 }
