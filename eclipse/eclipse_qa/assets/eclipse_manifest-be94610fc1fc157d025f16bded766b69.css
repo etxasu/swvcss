@@ -2492,77 +2492,7 @@ body.motanf.fullscreen_element #ranger-container {
     padding: 5px 8px;
     font-weight: 400
 }
-/*
-@media (max-width: 1023px) and (orientation: landscape) and (min-aspect-ratio: 13 / 9) {
-    .touchevents #rotate_warning {
-        position: absolute;
-        z-index: 1000;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        background-color: black;
-        text-align: center
-    }
-    .touchevents .rotate_message {
-        position: absolute;
-        top: 32%;
-        left: 0;
-        right: 0;
-        margin: auto;
-        width: 200px;
-        text-align: center
-    }
-    .touchevents .rotate_message .rotate_icon {
-        width: 99px;
-        height: 99px;
-        background: #000 url("/swvcss/eclipse/eclipse_static/assets/rotate_device@2x.png") no-repeat center;
-        background-size: 99px;
-        display: inline-block
-    }
-    .touchevents .rotate_message span {
-        display: inline-block;
-        font-weight: 700;
-        text-align: center;
-        margin: auto;
-        left: 0;
-        right: 0
-    }
-    .touchevents .rotate_message span:after {
-        content: 'PLEASE ROTATE YOUR DEVICE'
-    }
-    .touchevents .eclipse_header_area {
-        z-index: 1001
-    }
-    .touchevents .eclipse_header_area .site_header {
-        padding: 0.5em 0 0 .5em
-    }
-    .touchevents .eclipse_header_area .brand_area {
-        width: 230px;
-        background: url("/swvcss/eclipse/eclipse_static/assets/logo_nasa_trio_white@2x.png") no-repeat;
-        background-size: 100%
-    }
-    .touchevents .eclipse_header_area .site_logo_container {
-        margin-left: 13px;
-        top: 19px
-    }
-    .touchevents .eclipse_header_area .site_logo_container:before {
-        content: "";
-        height: 120%;
-        background-color: #666666;
-        width: 1px;
-        position: absolute;
-        left: -9px;
-        top: -3px
-    }
-    .touchevents .warning_area {
-        display: none
-    }
-}
-*/
+
 .eclipse_module .viewer_text_area {
     display: none
 }
