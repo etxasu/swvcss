@@ -1,0 +1,11 @@
+{
+"TOTAL_MEMORY": 268435456,
+"dataUrl": "exoplanets.data.unityweb",
+"wasmCodeUrl": "exoplanets.wasm.code.unityweb",
+"wasmFrameworkUrl": "exoplanets.wasm.framework.unityweb",
+"asmCodeUrl": "exoplanets.asm.code.unityweb",
+"asmMemoryUrl": "exoplanets.asm.memory.unityweb",
+"asmFrameworkUrl": "exoplanets.asm.framework.unityweb",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#000000"
+}
