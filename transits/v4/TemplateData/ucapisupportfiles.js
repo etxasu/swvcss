@@ -14724,7 +14724,7 @@ define ('main',['require','jquery','ExtendedModel','api/snapshot/adapters/Backbo
 
     function transmitDataToUnity(value)
     {
-        console.log(value.value.toString());
+        //console.log(value.value.toString());
         gameInstance.SendMessage("Scene Controller", "UpdateFoundWorlds", value.value.toString());
     }
 
