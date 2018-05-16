@@ -1,0 +1,70 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>Mocha Tests</title>
+    <link rel="stylesheet" type="text/css" href="test/test.css"/>
+
+    <script src="../pioneer-js/dist/pioneer.js"></script>
+    <script src="../pioneer-scripts/src/solar_system.js"></script>
+    <script src="../pioneer-scripts/src/moons.js"></script>
+    <script src="../pioneer-scripts/src/cameras.js"></script>
+    <script src="../pioneer-scripts/src/placemarks.js"></script>
+
+    <script src="test/node_modules/mocha/mocha.js"></script>
+    <script src="test/node_modules/chai/chai.js"></script>
+    <script src="test/node_modules/should/should.js"></script>
+</head>
+<body>
+    <div id="view"></div>
+    <div id="ui">
+        <div id="title">Eclipse</div>
+        <div id="subtitle"></div>
+
+        <div class="left panel" id="eclipsesMenu"></div>
+
+        <div class="right panel" id="viewsMenu">
+            <h1>Views</h1>
+            <div class="button" id="earthView" onclick="goToEarthView();">Earth View</div>
+            <div class="button" id="systemView" onclick="goToSystemView();">System View</div>
+            <h1>Options</h1>
+            <label class="checkboxcontainer">Orbit Lines
+                <input id="toggleOrbitLines" type="checkbox" checked="checked" onclick="toggleOrbitLines();">
+                <span class="checkmark"></span>
+            </label>
+            <label class="checkboxcontainer">Ecliptic Plane
+                <input id="toggleEclipticPlane" type="checkbox" onclick="toggleEclipticPlane();">
+                <span class="checkmark"></span>
+            </label>
+            <label class="checkboxcontainer">Star Field
+                <input id="toggleStarField" type="checkbox" checked="checked" onclick="toggleStarField();">
+                <span class="checkmark"></span>
+            </label>
+            <label class="checkboxcontainer">Shadow Band
+                <input id="toggleShadowBand" type="checkbox" checked="checked" onclick="toggleShadowBand();">
+                <span class="checkmark"></span>
+            </label>
+            <label class="checkboxcontainer">Inset View
+                <input id="toggleInsetView" type="checkbox" checked="checked" onclick="toggleInsetView();">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+        <div class="footerpanel" align="center">
+            <div id="timeRateDisplay">1 sec/sec</div>
+            <br>
+            <button id="timeRateDecrease" class="uiButton1" onclick="decreaseTimeRate();">←</button>
+            <button id="playPause" class="uiButton1" onclick="toggleTimeRate();">| |</button>
+            <button id="timeRateIncrease" class="uiButton1" onclick="increaseTimeRate();">→</button>
+        </div>
+        <div id="insetCaption"></div>
+    </div>
+
+    <div id="mocha"></div>
+    <script>mocha.setup('bdd')</script>
+    <script src="test/indexFunctions.js"></script>
+    <script src="test/test.js"></script>
+    <script>
+        mocha.checkLeaks();
+        mocha.run();
+    </script>
+</body>

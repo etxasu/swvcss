@@ -1,0 +1,20 @@
+@import url("../index.css");
+@import url("node_modules/mocha/mocha.css");
+
+#mocha {
+    position: absolute;
+    color: white;
+    right: 0;
+    bottom: 0;
+    width: 30vw;
+    height: 50%;
+    overflow-y: scroll;
+}
+
+#mocha-stats em {
+    color: rgb(56, 255, 255);
+}
+
+#mocha-stats .progress {
+    background: rgb(56, 255, 255);
+}
