@@ -5,18 +5,76 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Small Worlds Viewer</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
-	<script src="TemplateData/ucapisupportfiles.js"> </script>
     <link rel="stylesheet" href="TemplateData/style.css">
     <script src="TemplateData/UnityProgress.js"></script>  
     <script src="Build/UnityLoader.js"></script>
+    <script src="TemplateData/DetectWebGL.js"></script>
+    <!--NB: 11/02/2017-->
+    <!--Replaced default Unity compatibility check that returns an error
+      prompt for all mobile devices with custom script that only warns
+      users if there device doesn't support WebGL-->
+    <!--NB: 11/13/2017-->
+    <script src="TemplateData/checkOrientation.js"> </script>
+    <script src="Build/UnityLoader.js"></script>
+    <script src="TemplateData/fullscreen.js"></script>
+    <!--NB: 11/13/2017-->
+    <!--Added script to confirm landscape orientation before loading game instance-->
+    <script>checkOrientation();</script>
     <script>
-      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/swv_wasm.json", {onProgress: UnityProgress});
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/swv_wasm.json", {onProgress: UnityProgress, compatibilityCheck: DetectWebGL});
+		window.gameInstance = gameInstance;
+		window.onresize = function()
+		{
+			var canvas = gameInstance.Module.canvas;
+			var container = gameInstance.container;
+			var w = window.innerWidth;
+			var h = window.innerHeight;
+
+			container.style.width = canvas.style.width = w + "px";
+			container.style.height = canvas.style.height = h + "px";
+			container.style.top = Math.floor((window.innerHeight - h)/2) + "px";
+			container.style.left = Math.floor((window.innerWidth - w)/2) + "px";
+		}
     </script>
+	<style>
+		html,body{
+			background: #000;
+			width: 100%;
+			height: 100%;
+			overflow:visible;
+			padding:0;
+			margin:0;
+		}
+		div#gameContainer{
+			background: transparent!important;
+			position: absolute;
+		}
+		div#gameContainer canvas{
+			position: absolute;
+			image-rendering: optimizeSpeed;
+            image-rendering: -webkit-crisp-edges;
+			image-rendering: -moz-crisp-edges;
+			image-rendering: -o-crisp-edges;
+			image-rendering: crisp-edges;
+			image-rendering: -webkit-optimize-contrast;
+            image-rendering: optimize-contrast;
+			image-rendering: pixelated;
+			-ms-interpolation-mode: nearest-neighbor;
+		}
+	</style>
   </head>
-  <body>
+
+  <body onload="window.onresize();">
     <div class="webgl-content">
       <div id="gameContainer" style="width: 100%; height: 100%; position: absolute;"></div>
-      </div>
     </div>
+    <!--NB: 04/02/2018-->
+    <!--Added fullscreen button and related javascript-->
+    <div class="fullscreen">
+      <form id="fullButton">
+          <input class="fullButton" type="button" id="fullButton" onclick='toggleFull()'>
+      </form>
+    </div>
+    <script>checkSupport();</script>
   </body>
 </html>
