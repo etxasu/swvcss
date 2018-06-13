@@ -18,50 +18,30 @@
     <script>
       var gameInstance = UnityLoader.instantiate("gameContainer", "Build/moonphases2018.json", {onProgress: UnityProgress, compatibilityCheck: DetectWebGL});
 		window.gameInstance = gameInstance;
-		window.onresize = function()
-		{
-			var canvas = gameInstance.Module.canvas;
-			var container = gameInstance.container;
-			var w = window.innerWidth;
-			var h = window.innerHeight;
-
-			container.style.width = canvas.style.width = w + "px";
-			container.style.height = canvas.style.height = h + "px";
-			container.style.top = Math.floor((window.innerHeight - h)/2) + "px";
-			container.style.left = Math.floor((window.innerWidth - w)/2) + "px";
-		}
     </script>
 	<style>
-		html,body{
-			background: #000;
-			width: 100%;
-			height: 100%;
-			overflow:visible;
-			padding:0;
-			margin:0;
+		* {
+		margin: 0;
+		padding: 0;		
 		}
-		div#gameContainer{
-			background: transparent!important;
-			position: absolute;
+			
+		#gameContainer canvas {
+		  display:block;
 		}
-		div#gameContainer canvas{
-			position: absolute;
-			image-rendering: optimizeSpeed;
-            image-rendering: -webkit-crisp-edges;
-			image-rendering: -moz-crisp-edges;
-			image-rendering: -o-crisp-edges;
-			image-rendering: crisp-edges;
-			image-rendering: -webkit-optimize-contrast;
-            image-rendering: optimize-contrast;
-			image-rendering: pixelated;
-			-ms-interpolation-mode: nearest-neighbor;
+		
+		div#webgl-content {
+		  position: absolute;
+		  top: 50%;
+		  left: 50%;
+		  -webkit-transform: translate(-50%, -50%);
+		  transform: translate(-50%, -50%);
 		}
 	</style>
   </head>
 
-  <body onload="window.onresize();">
-    <div class="webgl-content">
-      <div id="gameContainer" style="width: 100%; height: 100%; position: absolute;"></div>
+  <body>
+    <div class="webgl-content" style="width: 1920px; height: 1080px">
+      <div id="gameContainer" style="width: 1920px; height: 1080px"></div>
     </div>
   </body>
 </html>
