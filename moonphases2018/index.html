@@ -14,6 +14,7 @@
       prompt for all mobile devices with custom script that only warns
       users if there device doesn't support WebGL-->
     <!--NB: 11/13/2017-->
+    <script src="Build/UnityLoader.js"></script>
     <script>
       var gameInstance = UnityLoader.instantiate("gameContainer", "Build/moonphases2018.json", {onProgress: UnityProgress, compatibilityCheck: DetectWebGL});
 		window.gameInstance = gameInstance;
@@ -44,9 +45,7 @@
 			background: transparent!important;
 			position: absolute;
 		}
-		div#gameContainer canvas{		
-			width: 100%;
-			height: 100%;			
+		div#gameContainer canvas{
 			position: absolute;
 			image-rendering: optimizeSpeed;
             image-rendering: -webkit-crisp-edges;
@@ -55,6 +54,7 @@
 			image-rendering: crisp-edges;
 			image-rendering: -webkit-optimize-contrast;
             image-rendering: optimize-contrast;
+			image-rendering: pixelated;
 			-ms-interpolation-mode: nearest-neighbor;
 		}
 	</style>
