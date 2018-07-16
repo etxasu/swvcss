@@ -8,15 +8,9 @@
     <link rel="stylesheet" href="TemplateData/style.css">
     <script src="TemplateData/UnityProgress.js"></script>  
     <script src="Build/UnityLoader.js"></script>
-    <script src="TemplateData/DetectWebGL.js"></script>
-    <!--NB: 11/02/2017-->
-    <!--Replaced default Unity compatibility check that returns an error
-      prompt for all mobile devices with custom script that only warns
-      users if there device doesn't support WebGL-->
-    <!--NB: 11/13/2017-->
     <script src="Build/UnityLoader.js"></script>
     <script>
-      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/moonphases2018.json", {onProgress: UnityProgress, compatibilityCheck: DetectWebGL});
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/moonphases2018.json", {onProgress: UnityProgress});
 		window.gameInstance = gameInstance;
 		
 		window.onresize = function()
