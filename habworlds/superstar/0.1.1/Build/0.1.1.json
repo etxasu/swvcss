@@ -2,6 +2,8 @@
 "companyName": "ASU",
 "productName": "SuperStarSystem",
 "dataUrl": "0.1.1.data.unityweb",
+"wasmCodeUrl": "0.1.1.wasm.code.unityweb",
+"wasmFrameworkUrl": "0.1.1.wasm.framework.unityweb",
 "asmCodeUrl": "0.1.1.asm.code.unityweb",
 "asmMemoryUrl": "0.1.1.asm.memory.unityweb",
 "asmFrameworkUrl": "0.1.1.asm.framework.unityweb",
