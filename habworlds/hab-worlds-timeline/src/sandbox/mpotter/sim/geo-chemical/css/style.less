@@ -1,0 +1,455 @@
+body {
+    background-color: #1b1a20;
+}
+
+svg {
+    border: 1px solid #939393 !important;
+    border: none !important;
+    // margin-top: -82vh;
+}
+
+text {
+    &.y-axis {
+        text-anchor: end;
+    }
+
+    &.y-axis.right {
+        text-anchor: start;
+    }
+
+    &.y-axis, &.x-axis {
+        font-size: 0.9em;
+    }
+}
+
+.graph {
+    margin-top: -2px;
+    border: none !important;
+}
+
+.invisible {
+    display: none;
+}
+
+::selection {
+    background: #bebbc1;
+}
+
+::-moz-selection {
+    background: #bebbc1;
+}
+
+::-webkit-selection {
+    background: #bebbc1;
+}
+
+.hide {
+    display: none !important;
+}
+
+.invisible {
+    color: transparent !important;
+}
+
+.ui {
+    background-color: #1b1a20;
+    color: #bebbc1;
+
+    &.basic {
+        margin-top: 0;
+
+        &.segment {
+            &.head {
+                margin-bottom: 0;
+            }
+
+            &.property-label {
+                color: #939393;
+
+                > div {
+                    display: inline-block;
+                }
+
+                > .property-label {
+                    float: right;
+                    text-align: center;
+                    width: 110px;
+                }
+            }
+
+            .input-slider {
+                display: inline-block;
+                margin-bottom: 3px;
+
+                .header {
+                    margin-bottom: -5px;
+                }
+
+                .input {
+                    background-color: #312e35;
+                    border: 0.3px solid #bebbc1;
+                    color: #bebbc1;
+                    padding: 0.6em;
+                    text-align: center;
+                    width: 75px;
+                }
+
+                .slider {
+                    margin-right: 20px;
+                }
+            }
+        }
+
+        &.tabs {
+            height: 0;
+            overflowx: hidden;
+            margin: 0;
+            padding: 0;
+            z-index: 999999;
+        }
+    }
+
+    &.header {
+        color: #bebbc1;
+    }
+
+    &.icon.button {
+        background-color: #010101;
+        border: none;
+        border-radius: 0;
+        color: #bebbc1;
+
+        > i {
+            color: #bebbc1;
+        }
+
+        &:hover {
+            background-color: #737373;
+        }
+    }
+
+    &.page {
+        background-color: black;
+        height: 80vh;
+    }
+
+    &.segment {
+        &.group {
+            background-color: #1b1a20;
+            border: solid 1px #939393;
+            border-top: none;
+            border-right: none;
+            margin-top: 0;
+            padding: 0;
+
+            .label {
+                border: solid 2px #1b1a20;
+                border-bottom: solid 1px #939393;
+                height: 20px;
+                margin: 0 -2px;
+                margin-bottom: 1em;
+                padding-top: 3px;
+                text-align: center;
+
+                > div {
+                    margin-bottom: -15px;
+
+                    > label {
+                        background-color: #1b1a20;
+                        padding: 12px;
+                    }
+                }
+            }
+
+            .segment {
+                margin: 0;
+                padding: 0.3em 1em 0 1em;
+            }
+
+            > div.content {
+                height: 150px;
+                overflow: scroll;
+                overflow-x: hidden;
+
+                > button {
+                    margin: 10px;
+                }
+            }
+        }
+    }
+
+    &.segments {
+        &.controls {
+            > .segment.body {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    }
+
+    &.sidebar {
+        border: solid 1px #939393;
+        height: auto;
+
+        &.right, &.left {
+
+            .head {
+                padding: 7px;
+            }
+
+            .ui.icon.button {
+                margin-top: -15px;
+                margin-bottom: 0px;
+                margin-right: 0px;
+                padding: 12px;
+            }
+        }
+
+        &.left {
+            border-left: none;
+
+            .head {
+                padding-right: 0;
+                padding-bottom: 0;
+                margin-bottom: 0;
+                text-align: right;
+            }
+        }
+
+        &.right {
+            border-right: none;
+
+            .head {
+                padding-left: 0;
+                padding-bottom: 0;
+            }
+        }
+
+        .ui.segment.head {
+            background-color: #010101;
+            color: #bebbc1;
+        }
+    }
+
+    &.tabular.menu {
+        margin-top: -25px;
+        margin-bottom: 7px;
+        text-align: center;
+
+        .item, .item.active, .ui.tab, .ui.tab.active {
+            border-radius: 0 !important;
+            height: 25px;
+            color: #bebbc1;
+            margin-top: 15px;
+
+            &.active {
+                background-color: #737373;
+            }
+        }
+
+        .item:hover {
+            background-color: #737373;
+            border-radius: 0;
+            color: #bebbc1;
+        }
+    }
+
+    &.button {
+        background-color: #010101;
+        border: solid 1px #939393;
+        border-radius: 0;
+        color: #bebbc1;
+        padding: 11px;
+        margin-top: 7px;
+
+        &.floated {
+            background-color: #010101;
+            border: solid 1px #939393;
+            position: absolute;
+            margin-top: 0;
+            top: 0em;
+
+            &.left {
+                border-left: none;
+                left: 0;
+            }
+
+            &.right {
+                border-right: none;
+                right: 0;
+            }
+
+            &.circular {
+                border: solid 1px #939393;
+                border-radius: 100%;
+                padding: 5px;
+                right: 1vw;
+            }
+
+            &.active {
+                border: none;
+                border-top: solid 1px #939393;
+            }
+
+            &:hover {
+                background-color: #737373;
+            }
+        }
+
+        &.compact.labeled.icon {
+            background-color: #1b1a20;
+            font-size: 12px;
+            margin-top: -3px !important;
+            padding: 0px 5px 0px 30px !important;
+            font-size: left;
+            width: 60px;
+
+            i {
+                color: #939393;
+            }
+
+            &:hover {
+                color: #668ea1;
+
+                i {
+                    color: #668ea1;
+                }
+            }
+
+            &.active {
+                color: #668ea1;
+
+                i {
+                    color: #668ea1;
+                }
+            }
+        }
+    }
+}
+
+#carbon-graph-group, #carbon-bar-graph-group {
+
+    > div.content {
+        height: auto;
+        margin-left: -1px;
+        overflow: hidden;
+    }
+}
+
+.tabber {
+    .ui.segment.group {
+        max-height: 300px;
+        padding-bottom: 12px;
+    }
+}
+
+.atmosphere.input-slider.area {
+    background-color: #010101 !important;
+    height: 120px;
+    margin-left: 14px;
+    overflow-Y: scroll;
+    width: 290px;
+
+    .ui.header {
+        background-color: #010101;
+    }
+
+    input[type="range"] {
+        width: 130px;
+    }
+}
+
+.property.toggle.group {
+    font-size: 11px;
+    margin-bottom: 3px;
+    overflow: auto;
+}
+
+#header-bar {
+    padding-bottom: 7px;
+    padding-top: 7px;
+
+    .ui.right.floated.icon.button {
+        border: solid 1px #939393;
+        margin: 4px 20px;
+    }
+}
+
+// Styling sliders
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 165px; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: #668ea1;
+  height: 10px;
+  width: 10px;
+}
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+    border-radius: 100%;
+    background: #668ea1;
+    height: 10px;
+    width: 10px;
+}
+
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+    border-radius: 100%;
+    background: #668ea1;
+    height: 10px;
+    width: 10px;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    background: #737373;
+    height: 1px;
+    // width: 100%;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #737373;
+    height: 1px;
+    // width: 100%;
+}
+
+input[type=range]::-moz-range-track {
+    background: #737373;
+    height: 1px;
+    // width: 100%;
+}
+
+input[type=range]::-ms-track {
+    background: #737373;
+    height: 1px;
+    // width: 100%;
+}
+
+// Fixes to specific elements
+// If things look off after changing the layout, look here first.
+#graph-tabber-right-tabs {
+    margin-top: -39px
+}

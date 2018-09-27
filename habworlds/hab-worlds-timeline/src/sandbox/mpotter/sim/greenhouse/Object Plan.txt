@@ -1,0 +1,122 @@
+8 / 27 / 2018
+
+Need:
+    Y-axis graph autoscaling
+    New graph object needs to:
+        - Detect given value for highest point on graph
+        - Scale down other points based on this point to keep all points
+            within graph area
+        - Hand off highest point to some formula that determines the new top Y-Axis value
+
+
+IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+================================================================================
+IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+
+Looking at mock ups suggests I will need the following:
+
+    [done] Tabber.js
+        - Holds child objects
+        - Can set which child is currently active
+        - Dynamically creates buttons based on children
+        - Clicking a button sets the respective child to active
+        - Inactive children are hidden, active children are visible
+
+    Property Folder
+        [done] Unit.js
+            - Holds a core unit
+            - Takes a unit exchange-rate object at start
+            - Can be told to update what unit is being shown
+            - Does all math with the core unit
+
+        [done] InputSlider.js
+            - Extends unit.js
+            - Creates a header label
+            - Creates a slider and text input
+            - Adjusting one adjusts the other
+
+        [done] PropertyLabel.js
+            - Extends unit.js
+            - A label with a static and dynamic portion
+            - The dynamic portion can be set with a function call
+
+    [done] NamedGroup.js
+        - Creates a div
+        - This is the thing that has the top, left, and right borders with the name in the middle of the top border
+
+    Control folder
+        [done] Base.js
+            - Base object for control objects
+            - Will contain abstracted functionality that is found to be shared amongst control objects
+
+        [done] Star.js
+            -creates a namedGroup
+                - Creates an InputSlider
+                - Creates three PropertyLabels
+                - When the input slider is changed, update PropertyLabels
+
+        [done] Planet.js
+            - Creates two InputSliders
+
+        [done] Atmosphere.js
+            - Creates a NameGroup with three property labels
+            - Creates a series of buttons
+            - Creates a fixed-height div
+            - As buttons are toggled on, the respective gas appears in the fixed-height div
+            - Creates the following object when a button is toggled on:
+                - GasAdjuster.js
+                    - Is given the responsibility of creating a slider and contacting the parent when changes are made
+            - Atmosphere.js has a listener that children call when changes are made
+
+    Molecule folder
+        View.js
+            - Creates the dom elements and houses functions for creating dom elements
+
+        Collider.js
+            - Extends View.js
+            - Manages particle-photon collisions
+
+        Base.js
+            - Hold hitbox info
+            - Gets/Receives reference to Collider.js
+            - Generic function for making visual dom elements based on config
+            - Holds an empty animation function
+
+        Photon.js
+            - Extends Base.js
+            - Creates look for photons
+            - Manages photon animations for a single photon
+            - Overrides animation function for sin-wave behavior
+
+        Molecule.js
+            - Extends Base.js
+            - Creates look for gas molecules
+            - Manages animations for a single gas
+            - Ovverides animation function for bouncing behavior
+
+    App folder
+        [done] Base.js
+            - Creates all the objects in the sim
+
+        Manager.js
+            - Manages interactions between objects
+            - Plugs data into the Formula.js object
+            - Holds the core game loop that everything else runs off of
+            - Creates a dropdown
+                - Changing this dropdown updates all PropertyLabels and SliderInputs to display the new unit
+
+    Formula.js
+        - Holds functions for getting appropriate data based on input for various things
+
+    Graph objects:
+        - Take graphs from atmospheric chamber
+        - They may need adjustments
+
+    [done] Space Folder
+        View.js
+            - Sets up dom objects and scene containing sun and earth
+
+        Dynamic.js
+            - Extends View.js
+            - Updates the look of the scene based on information from the app
+            - It will be the app's responsibility to contact the Dynamic.js

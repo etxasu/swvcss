@@ -1,0 +1,34 @@
+{{#each test2 }}
+{{#each list2 }}
+<div class="card win">
+    <div class="header">
+        <p>
+            {{this.sector}}
+        </p>
+    </div>
+    <div class="body">
+        <div class="text">
+            <span class="font number"> {{this.number}} </span>
+            <span class="units">{{this.unit}}</span>
+        </div>
+        <div class="bar container">
+            <div class="bar pointer"></div>
+            <div class="bar base">
+                <div class="bar meter one dark"></div>
+                <div class="bar meter two light"></div>
+                <div class="bar meter three dark"></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p class="text">
+            RATIO
+        </p>
+        <div class="blip">
+        </div>
+        <div class="blip">
+        </div>
+    </div>
+</div>
+{{/each }}
+{{/each }}

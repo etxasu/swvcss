@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Habitable Worlds Simulations</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/public/lib/semantic-ui/semantic.css">
+        <link rel="stylesheet/less" type="text/css" href="/public/css/style.less" />
+        <link rel="stylesheet/less" type="text/css" href="/src/sandbox/mpotter/sim/atmos/css/atmospheric-chamber.less" />
+
+        <script>
+            less = {
+                env: "development",
+                async: false,
+                fileAsync: false,
+                poll: 1000,
+                functions: {},
+                dumpLineNumbers: "comments",
+                relativeUrls: false,
+                rootpath: ":/a.com/"
+            };
+        </script>
+
+        <!-- 3rd party dependencies -->
+        <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="/node_modules/less/dist/less.min.js"></script>
+        <script src="/public/js/init.js"></script>
+        <script src="/public/lib/semantic-ui/semantic.min.js"></script>
+        <script src="/public/lib/semantic-ui/components/transition.js"></script>
+        <script src="/node_modules/animejs/anime.min.js"></script>
+        <script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
+
+        <!-- Temporary CAPI cdn dependancy. NOTE: Load this script local to the server later -->
+        <script src='https://lib.smartsparrow.com/simcapi-js-3.0.6.min.js'></script>
+
+        <!-- Tamed -->
+        <script src="/node_modules/@thetrg/tamed-js/dist/tamed-full.js"></script>
+        <script src="/node_modules/tamed-js-handlebars/dist/tamed-handlebars-full.js"></script>
+        <script src="/node_modules/tamed-js-loader/dist/tamed-loader-full.js"></script>
+        <script src="/node_modules/keypress.js/keypress-2.1.4.min.js"></script>
+    </head>
+
+    <body>
+        <div class="ui wide left sidebar asu-atmos-sim">
+            <div class="ui inverted segment">
+                <div class="ui left floated header" id="panel-header-left">
+                    <i class="inverted setting icon"></i>
+                    Object Settings
+                </div>
+                <div class="ui right floated icon button" onclick="toggleLeftSidebar()">
+                    <i class="close icon"></i>
+                </div>
+            </div>
+            <div>
+                <select class="ui dropdown" id="gas-select">
+                    <option value="">Select Gas</option>
+                </select>
+                <div class="ui horizontal divider">
+                    Gas
+                </div>
+                <div class="ui basic segment" id="gas-settings">
+                    <div id="gas-control">
+                        <div class="ui basic segment">
+                            Partial Pressure (atm)
+                        </div>
+                        <div class="ui horizontal segments" id="part-pressure-control">
+                            <div class="ui basic segment">
+                                <input type="range" min="1" max="10000" value="1" id="part-pressure">
+                            </div>
+                            <div class="ui segment">
+                                <!-- <span id="partial-pressure-value">0</span> -->
+                                <input id="partial-pressure-value"></input>
+                            </div>
+                        </div>
+                        <div class="ui segments">
+                            <div class="ui basic segment">
+                                Number of molecules <span id="num-particles">0</span>
+                            </div>
+                            <div class="ui basic segment hide">
+                                total pressure (atm)<span id="total-pressure">0</span>
+                            </div>
+                            <div class="ui basic segment hide">
+                                Total Particles in Chamber
+                                <span id="total-particle">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui horizontal divider">
+                    Light
+                </div>
+                <div class="ui basic segment" id="light-settings">
+                    <div class="ui basic segment">
+                        Wavelength (nm)
+                    </div>
+                    <div class="ui horizontal segments">
+                        <div class="ui basic segment">
+                            <input type="range" min="1" max="100" value="25" id="light-wavelength">
+                        </div>
+                        <div class="ui center aligned basic segment">
+                            <span>(nm)</span>
+                            <input id="light-wavelength-value">
+                        </div>
+                    </div>
+
+                    <div class="ui basic segment">
+                        Transmittance
+                        <span id="light-passing-through">100%</span>
+                    </div>
+                </div>
+                <div class="ui segment">
+                    <div class="ui labeled icon button" id="reset-button">
+                        <i class="undo icon"></i>
+                        Reset
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui wide right sidebar asu-atmos-sim" id="right-sidebar">
+            <div class="ui inverted segment">
+                <div class="ui left floated header" id="panel-header-right">
+                    <i class="inverted line chart icon"></i>
+                    Graph
+                </div>
+                <div class="ui right floated icon button" onclick="toggleRightSidebar()">
+                    <i class="close icon"></i>
+                </div>
+            </div>
+
+            <div class="ui center aligned basic segment">
+                <div class="ui horizontal divider" id="gas-button-menu-header">
+                    Gases
+                </div>
+
+                <div class="ui basic segments" id="gas-button-menu">
+                    <div class="seven ui buttons" id="gas-button-list-1"></div>
+                    <div class="seven ui buttons" id="gas-button-list-2"></div>
+                    <div class="seven ui buttons" id="gas-button-list-3"></div>
+                </div>
+
+                <div class="ui horizontal divider" id="graph-name">
+                    Transmission Data
+                </div>
+                <div class="ui basic segments">
+                    <div class="fluid ui buttons">
+                        <div class="ui grey button" id="transmission-button" onclick="showTransmissionGraph()">
+                            Transmission
+                        </div>
+                        <div class="ui button" id="absorbtion-button" onclick="showAbsorbtionGraph()">
+                            Absorption
+                        </div>
+                    </div>
+                    <div class="ui segment">
+                        <div class="graph-container" id="transmission-graph"></div>
+                        <div class="graph-container hide" id="absorbtion-graph"></div>
+                    </div>
+                    <div class="ui left aligned basic segment">
+                        <div class="ui labeled icon button" id="reset-zoom-button">
+                            <i class="search minus icon"></i>
+                            Reset Zoom
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pusher">
+            <!-- Page Contents -->
+            <div class="page">
+                <!-- <div>
+                    <a class="ui button" href="/src">Back</a>
+                </div> -->
+
+                <div class="ui button left-tab" id="left-tab" onclick="toggleLeftSidebar()">
+                    Object Settings
+                </div>
+                <div class="ui center aligned basic segment" id="app-container">
+                    <div class="ui basic segment" id="chamber">
+                    </div>
+                    <div class="particle-view" id="particle-view">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui button right-tab" id="right-tab">
+            <div class="ui button" id="expand-graph" onclick="expandRightSidebar()">
+                <
+            </div>
+            <div class="ui button" onclick="toggleRightSidebar()">
+                Data Viewer
+            </div>
+            <div class="ui button" id="shrink-graph" onclick="shrinkRightSidebar()">
+                >
+            </div>
+        </div>
+        <div class="tooltip" id="transmission-tooltip"></div>
+        <div class="tooltip hide" id="absorbtion-tooltip"></div>
+    </body>
+
+    <!-- Scripts -->
+    <div>
+        <script src="/src/sandbox/mpotter/sim/atmos/Boot.js"></script>
+    </div>
+
+    <script>
+        var centeredChamber, defaultChamber, leftTab, rightTab;
+
+        defaultChamber = {
+            scale: 1,
+            marginTop: 0
+        }
+
+        centeredChamber = {
+            scale: 0.5,
+            marginTop: 20
+        }
+        // Initialize dropdown and add function for setting the object settings data
+        $ ('#gas-select').dropdown ();
+        $ ('#gas-select').change (function (event) {
+            var gas, item, key, list;
+
+            gas = $ ('.text').html ().split (' (') [0]
+            $ ('#part-pressure') [0].value = 0;
+
+            if (gas && window.gasRepo [gas]) {
+                $ ('#part-pressure-control').removeClass ('hide')
+                $ ('#part-pressure') [0].value = window.gasRepo [gas].getCurrentPressure ()
+
+                list = window.gasRepo;
+                for (key in list) {
+                    item = list [key];
+
+                    try {
+                        item.removeParticlesFromChamber ()
+                    }
+                    catch (error) {}
+                }
+
+                window.gasRepo [gas].addParticlesToChamber ();
+                window.gasRepo [gas].showData ();
+            }
+            else { $ ('#part-pressure-control').addClass ('hide') }
+
+            try {
+                window.currentGas = gas;
+
+                value = $ ('#part-pressure') [0].value;
+                max = $ ('#part-pressure') [0].max
+                window.gasRepo [gas].setCurrentPressure (value, max)
+                window.gasRepo [gas].updateObjectSetting ()
+            }
+            catch (error) {
+                console.log (error)
+            }
+        });
+
+        function setPartPressure () {
+            var max, min, value;
+
+            if (window.currentGas) {
+                value = $ ('#part-pressure') [0].value;
+                max = $ ('#part-pressure') [0].max
+                window.gasRepo [window.currentGas].setCurrentPressure (value, max)
+                // window.gasRepo [window.currentGas].updateGraphData ();
+
+                // window.totalPressure = 0;
+                // list = window.gasRepo
+                // for (key in list) {
+                //     item = list [key];
+                //
+                //     window.totalPressure += item.getCurrentPressure ();
+                // }
+                //
+                // $ ('#total-pressure').html (window.totalPressure)
+            }
+        }
+
+        $ ('#part-pressure') [0].oninput = function (event) {
+            setPartPressure ();
+        }
+
+        $ ('#partial-pressure-value') [0].onchange = function (event) {
+            var max, min, percent, value;
+
+            value = $ ('#partial-pressure-value').val ();
+            value = Number (value);
+
+            // Make sure the value is valid
+            if (isNaN (value) || (value < 3.721e-7 || value > 3.721) ) {
+                $ ('#partial-pressure-value').css ({
+                    border: '0.5px solid red'
+                })
+            }
+            else {
+                $ ('#partial-pressure-value').css ({
+                    border: '0.5px solid #bebbc1'
+                });
+
+                max = Number ( $ ('#part-pressure') [0].max );
+                percent = (value / 3.721) * max
+
+                $ ('#part-pressure').val (percent)
+                setPartPressure ()
+                $ ('#partial-pressure-value').val (value)
+            }
+        }
+
+        $ ('#light-wavelength') [0].oninput = function (event) {
+            var value;
+
+            value = $ ('#light-wavelength') [0].value;
+            window.chamber.setLightColor (Number (value))
+            window.chamber.calculateRemainingLight ();
+        }
+
+        $ ('#light-wavelength-value').on ('change', function (event) {
+            var nanometers, value
+
+
+            nanometers = $ ('#light-wavelength-value').val ()
+            // converting nanometers to micrometers
+            value = window.chamber.convertNanometersToPercent (nanometers / 1000) * 100
+
+            if (isNaN (value) || (value < 0 || value > 100) ) {
+                $ ('#light-wavelength-value').css ({
+                    border: '0.5px solid red'
+                })
+            }
+            else {
+                $ ('#light-wavelength-value').css ({
+                    border: '0.5px solid #bebbc1'
+                });
+
+                $ ('#light-wavelength').val (value)
+                window.chamber.setLightColor (Number (value))
+                window.chamber.calculateRemainingLight ();
+                $ ('#light-wavelength-value').val (nanometers)
+
+                // window.ignoreInputHack = true;
+                // convert micrometers to nanometers
+
+            }
+        })
+
+        // $ ('#light-wavelength') [0].value = 55;
+
+        $ ('#reset-button').click (function () {
+            // console.log ('reset the pressure')
+
+            window.totalPressure = 0;
+            list = window.gasRepo
+            for (key in list) {
+                item = list [key];
+
+                item.setCurrentPressure (0);
+                // item.resetParticleCount ();
+
+            }
+
+            $ ('.button.gas-data.grey').click ();
+
+            $ ('#total-pressure').html ( window.totalPressure )
+            $ ('#part-pressure') [0].value = 0;
+        })
+
+        $ ('#reset-zoom-button').click (function () {
+            var transmissionGraph
+
+            window.transmissionGraph.resetZoom ();
+        })
+
+        // Settings for side bars
+        $ ('.ui.sidebar')
+            .sidebar ('setting', 'dimPage', false)
+            .sidebar ('setting', 'closable', false)
+            .sidebar ('setting', 'transition', 'overlay')
+
+        anime ({
+            targets: '#left-tab',
+            translateX: -7,
+            rotate: '-90deg',
+            easing: 'linear',
+            duration: 0,
+        })
+
+        anime ({
+            targets: '#right-tab',
+            translateX: 0,
+            rotate: '90deg',
+            easing: 'linear',
+            duration: 0,
+        })
+
+        var rightSidebarWidth;
+
+        rightSidebarWidth = 350;
+
+        function moveTab (tab, side, sidebar) {
+            anime ({
+                targets: '',
+                easing: 'linear',
+                duration: 550,
+                update: function () {
+                    var rot, x, y;
+
+                    if (side == 'right') {
+                        rot = -90;
+                        x = $ (sidebar).offset ().left + $ (sidebar).width () - 11;
+                        y = 0;
+                    }
+                    else {
+                        rot = 90;
+                        x = $ (sidebar).offset ().left + $ (sidebar).width () - (60 + rightSidebarWidth);
+                        y = 30;
+                    }
+
+                    $ (tab).css ({
+                        'transform': 'translateX(' + x + 'px) translateY(' + y + 'px) rotate(' + rot + 'deg)',
+                    })
+                }
+            })
+        }
+
+        moveTab ('#left-tab', 'right', '.ui.left.sidebar')
+        moveTab ('#right-tab', 'left', '.ui.right.sidebar')
+
+        function scaleApp () {
+            if (window.leftBarOut || window.rightBarOut) {
+                $ ('#app-container').css ({
+                    transform: 'scale(0.5)',
+                    'margin-top': '20vh'
+                })
+            }
+            else {
+                $ ('#app-container').css ({
+                    transform: 'scale(1)',
+                    'margin-top': '0vh'
+                })
+            }
+        }
+
+        // Functions for sliding side-bars in and out
+        function toggleLeftSidebar () {
+            $ ('.ui.left.sidebar')
+                .sidebar ('toggle');
+
+            if (window.leftBarOut) {
+                window.leftBarOut = false
+                moveTab ('#left-tab', 'right', '.ui.left.sidebar')
+            }
+            else {
+                window.leftBarOut = true
+                moveTab ('#left-tab', 'right', '.ui.left.sidebar')
+            }
+
+            scaleApp ()
+        }
+
+        function toggleRightSidebar () {
+            $ ('.ui.right.sidebar')
+                .sidebar ('toggle');
+
+            if (window.rightBarOut) {
+                window.rightBarOut = false
+                moveTab ('#right-tab', 'left', '.ui.right.sidebar')
+
+            }
+            else {
+                window.rightBarOut = true
+                moveTab ('#right-tab', 'left', '.ui.right.sidebar')
+            }
+
+            scaleApp ()
+        }
+
+        var graphTab;
+
+        graphTab = {
+            size: 1,
+            min: 1,
+            max: 3
+        }
+
+        function expandRightSidebar () {
+            if (!window.rightBarOut) {
+                toggleRightSidebar ();
+            }
+            else {
+                graphTab.size++;
+
+                if (graphTab.size > graphTab.max) { graphTab.size = graphTab.max }
+                changeRightSidebarSize (graphTab.size);
+            }
+        }
+
+        function shrinkRightSidebar () {
+            if (window.rightBarOut) {
+                graphTab.size--;
+
+                if (graphTab.size < graphTab.min) { graphTab.size = graphTab.min; toggleRightSidebar (); return;}
+                changeRightSidebarSize (graphTab.size);
+            }
+        }
+
+        function changeRightSidebarSize (size) {
+            var complete, duration, easing, update;
+
+            window.transmissionGraph.hideData ();
+            window.absorbtionGraph.hideData ();
+            easing = 'easeOutCubic'
+            duration = 350
+            update = function () {
+                rightSidebarWidth = $ ('#right-sidebar').width ();
+                moveTab ('#right-tab', 'left', '.ui.right.sidebar');
+                window.transmissionGraph.resizeGraph ();
+                window.absorbtionGraph.resizeGraph ();
+            }
+            complete = function () {
+                window.transmissionGraph.showData ();
+                window.absorbtionGraph.showData ();
+            }
+
+            switch (size) {
+                case 1:
+                    anime ({
+                        targets: '#right-sidebar',
+                        width: '350px',
+                        duration: duration,
+                        easing: easing,
+                        update: update,
+                        complete: complete
+                    })
+                    break;
+                case 2:
+                    anime ({
+                        targets: '#right-sidebar',
+                        width: '515px',
+                        duration: duration,
+                        easing: easing,
+                        update: update,
+                        complete: complete
+                    })
+                    break;
+                case 3:
+                    anime ({
+                        targets: '#right-sidebar',
+                        width: '900px',
+                        duration: duration * 1.4,
+                        easing: easing,
+                        update: update,
+                        complete: complete
+                    })
+                    break;
+            }
+        }
+
+        // Functions for showing/hiding each graph based on user setting
+        function showTransmissionGraph () {
+            $ ('#transmission-button').addClass ('grey')
+            $ ('#transmission-graph').removeClass ('hide')
+            $ ('#absorbtion-button').removeClass ('grey')
+            $ ('#absorbtion-graph').addClass ('hide')
+            window.transmissionGraph.writeTitle ();
+            window.transmissionGraph.resizeGraph ();
+            window.transmissionGraph.update ();
+            window.transmissionGraph.updateWavelengthGuide ();
+        }
+
+        function showAbsorbtionGraph () {
+            $ ('#transmission-button').removeClass ('grey')
+            $ ('#transmission-graph').addClass ('hide')
+            $ ('#absorbtion-button').addClass ('grey')
+            $ ('#absorbtion-graph').removeClass ('hide')
+            window.absorbtionGraph.writeTitle ();
+            window.absorbtionGraph.resizeGraph ();
+            window.absorbtionGraph.update ();
+            window.absorbtionGraph.updateWavelengthGuide ();
+        }
+
+        function updateTotalParticle () {
+            var item, key, list, total;
+
+            total = 0;
+            list = window.gasRepo
+            for (key in list) {
+                item = list [key];
+
+                total += Number (item.getParticleCount ());
+            }
+
+            window.totalParticle = total;
+            // total = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (total > 0) {
+                total = (total / 100000000000)
+                total= total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + 'e+11'
+            }
+            else { total = 0 }
+
+            $ ('#total-particle').html (total)
+
+            window.chamber.calculateRemainingLight ();
+        }
+    </script>
+</html>

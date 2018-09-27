@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Habitable Worlds Simulations</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/public/lib/semantic-ui/semantic.css">
+        <link rel="stylesheet/less" type="text/css" href="/public/css/style.less" />
+        <link rel="stylesheet/less" type="text/css" href="/src/sandbox/mpotter/sim/geo-chemical/css/style.less" />
+
+        <script>
+            less = {
+                env: "development",
+                async: false,
+                fileAsync: false,
+                poll: 1000,
+                functions: {},
+                dumpLineNumbers: "comments",
+                relativeUrls: false,
+                rootpath: ":/a.com/"
+            };
+        </script>
+
+        <!-- 3rd party dependencies -->
+        <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="/node_modules/less/dist/less.min.js"></script>
+        <script src="/public/js/init.js"></script>
+        <script src="/public/lib/semantic-ui/semantic.min.js"></script>
+        <script src="/public/lib/semantic-ui/components/transition.js"></script>
+        <script src="/node_modules/animejs/anime.min.js"></script>
+        <script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
+        <script src="/public/lib/threejs/three.min.js"></script>
+        <script src="/public/lib/threejs/OBJLoader.js"></script>
+
+        <!-- Temporary CAPI cdn dependancy. NOTE: Load this script local to the server later -->
+        <script src='https://lib.smartsparrow.com/simcapi-js-3.0.6.min.js'></script>
+
+        <!-- Tamed -->
+        <script src="/node_modules/@thetrg/tamed-js/dist/tamed-full.js"></script>
+        <script src="/node_modules/tamed-js-handlebars/dist/tamed-handlebars-full.js"></script>
+        <script src="/node_modules/tamed-js-loader/dist/tamed-loader-full.js"></script>
+        <script src="/node_modules/keypress.js/keypress-2.1.4.min.js"></script>
+    </head>
+
+    <body>
+        <div class="ui segments controls">
+            <div class="ui basic segment" id="header-bar">
+                Geo Chemical World
+            </div>
+            <div class="ui basic segment body">
+                <div class="ui basic segment tabs">
+                    <div class="ui icon left floated button" id="left-sidebar-button">
+                        <i class="cog icon"></i>
+                        <i class="double angle right icon"></i>
+                    </div>
+                    <div class="ui icon right floated button" id="right-sidebar-button">
+                        <i class="double angle left icon"></i>
+                        <i class="chart line icon"></i>
+                    </div>
+                </div>
+                <div id="app">
+                    <div class="ui wide left sidebar" id="left-sidebar">
+                        <div class='ui basic segment head'>
+                            Object Settings
+                            <div class="ui icon button" id="left-sidebar-chevron">
+                                <i class="double angle left icon invisible"></i>
+                            </div>
+                        </div>
+                        <div class="ui basic segment" id="left-sidebar-body"></div>
+                    </div>
+                    <div class="ui wide right sidebar" id="right-sidebar">
+                        <div class='ui basic segment head'>
+                            <div class="ui icon button" id="right-sidebar-chevron">
+                                <i class="double angle right icon invisible"></i>
+                            </div>
+                            Graph
+                        </div>
+                        <div class="ui basic segment" id="right-sidebar-body"></div>
+                    </div>
+
+                    <div class="pusher">
+                        <!-- Page Contents -->
+                        <div class="ui page" id="stage"> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui basic segment">
+                <div class="ui right floated tiny circular icon button">
+                    <i class="info icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <div>
+            <script src="/src/sandbox/mpotter/sim/geo-chemical/Boot.js"></script>
+        </div>
+    </body>
+</html>

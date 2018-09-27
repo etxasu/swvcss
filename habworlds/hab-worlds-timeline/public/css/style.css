@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+}
+.asu-sese-etx {
+  background-color: #010101;
+}
+.asu-sese-etx .section-default {
+  background-color: #010101;
+  font-size: 18pt;
+  font-weight: normal;
+}
+.asu-sese-etx .section {
+  background-color: #010101;
+  color: #bebbc1;
+}
+.asu-sese-etx .section h1 {
+  background-color: #010101;
+  font-size: 18pt;
+  font-weight: normal;
+}
+.asu-sese-etx .ui.menu,
+.asu-sese-etx .ui.dropdown,
+.asu-sese-etx .ui.button {
+  background-color: #010101;
+  font-size: 18pt;
+  font-weight: normal;
+  font-size: 12pt;
+}
+.asu-sese-etx .ui.selection.dropdown,
+.asu-sese-etx .ui.selection.visible.dropdown > .text:not(.default) {
+  color: #bebbc1;
+}
+.asu-sese-etx .sim-area {
+  border: 1px solid #616161;
+  margin: auto;
+  min-height: 320px;
+  width: 100%;
+}
+.asu-sese-etx .sim-area iframe {
+  border: none;
+  display: block;
+  height: 600px;
+  width: 100%;
+}
+svg {
+  border: 10px navy solid !important;
+  width: 100%;
+}

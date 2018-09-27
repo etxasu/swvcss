@@ -1,0 +1,99 @@
+
+High Level:
+    Timer:
+        - Manages time steps on sim
+        - Objects listen for when a time step happens
+        - Can adjust rates of time steps
+
+    Carbon Area:
+        - Creates an outline of a circle with a label in the middle
+        - Clicking and dragging on one of these circles starts drawing an arrow
+            - On allows arrow to be placed if mouse is over another circle
+        - Takes a rate of carbon sent out per time step
+            - This is per-outgoing destination, not total
+        - Takes an ID for itself
+        - Takes an ID of the circle it is supposed to connect to
+        - Sets arrow to "possible" mode as a default
+        - When an arrow is connected to another circle, this carbon circle will
+            pump carbon into the circles it is pointed to every time step
+            - There is a priority to the list of items that carbon is delivered to
+                - For example:
+                    If the atmosphere prioritizes carbon to rain, then if it
+                    is connected to the rain and the soil, it will deliver a full
+                    payload of carbon to the rain and will only deliver a full
+                    payload to the soil if there is enough left over. If there
+                    is no carbon to send over to a circle, then no carbon is
+                    delivered
+
+    Live Graphic:
+        - Takes an image
+        - Takes a property to listen to
+        - Takes a callback for when a change occurs
+            - This is for reddening the soil for carbon is in the soil, adjusting
+            the size of the clouds based on carbon in the atmosphere, etc...
+
+    Arrow:
+        takes a starting point
+        Has three modes:
+            Draw
+            Correct
+            Incorrect
+            Possible
+        Calls parent when user releases mouse button
+            - Returns the dom that the mouse was over
+
+        Clicking an arrow removes it?
+
+IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+
+App \
+    Base.js
+        - Creates the controllers for the ui
+
+    Scene.js
+        - Starts requestAnimationFrame
+        - Creates controllers for the 3D objects in the scene
+        - Using Three.js for ease of adjusting color of images
+
+    Capi.js
+        - Creates and hooks up all capi variables
+
+Control \
+    Base.js
+        - Shares functionality for all controllers
+
+    CarbonArea.js
+        - Acts as a manager for all the carbon areas
+        - Holds functions for creating new carbon areas and removing old ones
+
+    Graphic.js
+        - Creates the specific Live Graphics needed for this sim
+        - Holds callbacks that live graphics use when changes occur
+
+    Rate \
+        Base.js
+            - Creates ui elements for controlling how much carbon is in the system
+
+    Time.js
+        - Creates UI for controlling if time is moving
+        - Takes setup data for how frequently time steps occur
+            - Also has a setter for this
+        - Does NOT impact the frequency of requestAnimationFrame
+
+FUTURE:
+
+    app \
+        Eco.js
+            - Creates eco control and hooks up capi
+
+        Planet.js
+            - Creates planet control and hooks up capi
+
+    control \
+        rate \
+            Eco.js
+                - Creates sliders for producers, consumers, and food-burial rates
+
+            Planet.js
+                - Creates sliders to control background volcano activity

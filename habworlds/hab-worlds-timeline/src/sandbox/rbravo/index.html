@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Habitable Worlds Simulations</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/node_modules/semantic-ui/dist/semantic.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
+
+        <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="/node_modules/semantic-ui/dist/semantic.min.js"></script>
+        <script src="/node_modules/semantic-ui/dist/components/transition.js"></script>
+
+        <link rel="stylesheet/less" type="text/css" href="/public/css/style.less" />
+        <link rel="stylesheet/less" type="text/css" href="/src/sandbox/rbravo/css/style.less" />
+        <script>
+        less = {
+            env: "development",
+            async: false,
+            fileAsync: false,
+            poll: 1000,
+            functions: {},
+            dumpLineNumbers: "comments",
+            relativeUrls: false,
+            rootpath: ":/a.com/"
+        };
+        </script>
+        <script src="/node_modules/less/dist/less.min.js"></script>
+        <script src="/node_modules/less/dist/less.min.js"></script>
+
+        <script src="/public/js/init.js"></script>
+        <script src="/node_modules/animejs/anime.min.js"></script>
+        <script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
+
+        <script src="/node_modules/tamed-js/dist/tamed-full.js"></script>
+        <script src="/node_modules/tamed-js-handlebars/dist/tamed-handlebars-full.js"></script>
+        <script src="/node_modules/tamed-js-loader/dist/tamed-loader-full.js"></script>
+    </head>
+    <body>
+        <!-- Page Contents -->
+        <div class="hbw page">
+            <div class="ui vertical stripe basic segment">
+                <div class="ui middle aligned container">
+                    <h1>Sandbox: Ron</h1>
+                    <div>
+                        <a class="ui button" href="/src">Back</a>
+                    </div>
+                    <div id="app"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <div>
+            <!-- App -->
+            <script src="/node_modules/keypress.js/keypress-2.1.4.min.js"></script>
+            <script src="/src/sandbox/rbravo/Boot.js"></script>
+        </div>
+    </body>
+</html>

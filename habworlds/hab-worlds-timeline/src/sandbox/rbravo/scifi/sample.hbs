@@ -1,0 +1,50 @@
+<!-- app.scifi.Sample -->
+<p>You can find me in {{city}}. My address is {{number}} {{street}}.</p>
+
+Mockup from the Martian Ui: <a href="https://vimeo.com/142143279#t=20s" target="_blank"> Demo Reference</a>
+<br>
+<br>
+
+<div class="ui stackable two column grid blue">
+    {{#each test }}
+    <div class="column">
+        <div class="win telemetry">
+            <div class="hd">
+                <h3>
+                    <div class="dot"></div>TELEMTRY <span class="time">00:23</span>  <span class="info">F.20.3</span>
+                    <div class="extra"></div>
+                </h3>
+            </div>
+            <div class="bd">
+                <div class="graph">
+                    <div></div>
+                </div>
+                <div>
+                    <table class="">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each list }}
+                            <tr>
+                                <td>{{ this.label }}</td>
+                                <td><span class="value">{{ this.value }}</span></td>
+                            </tr>
+                            {{/each }}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="ft">
+            </div>
+        </div>
+    </div>
+    {{/each }}
+</div>
+
+<!-- <div class="column"></div>
+<div class="column"></div>
+<div class="column"></div> -->

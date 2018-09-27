@@ -1,0 +1,40 @@
+{
+  "name": "habitable-worlds-js",
+  "version": "1.0.0",
+  "description": "HTML5 Simulations for the Arizona State University Habitable Worlds project.",
+  "main": "index.js",
+  "author": "The TRG LLC <thetrg.org@gmail.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:thetrg/habitable-worlds-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thetrg/habitable-worlds-js/issues"
+  },
+  "scripts": {
+    "start": "npx live-server --port=4920 --browser=firefox --watch=src,public --open=src",
+    "secure": "./node_modules/.bin/live-server --port=4920 --watch=src,public --https=\"./https-mod.js\"",
+    "test": "npx cypress open"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "less": "^2.7.3",
+    "live-server": "^1.2.0",
+    "mocha": "^5.2.0"
+  },
+  "dependencies": {
+    "@thetrg/tamed-js": "1.13.0",
+    "animejs": "git+https://github.com/juliangarnier/anime.git",
+    "d3": "^4.13.0",
+    "handlebars": "^4.0.11",
+    "jquery": "^3.3.1",
+    "keypress.js": "git+https://github.com/dmauro/Keypress.git",
+    "numeral": "^2.0.6",
+    "pixi.js": "^4.8.1",
+    "tamed-js-handlebars": "git+https://github.com/thetrg/tamed-js-handlebars",
+    "tamed-js-loader": "git+https://github.com/thetrg/tamed-js-loader",
+    "vis": "^4.21.0"
+  }
+}

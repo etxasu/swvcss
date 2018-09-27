@@ -1,0 +1,59 @@
+http://territorystudio.com/projects/the-martian/
+https://blogsimages.adobe.com/creativecloud/files/2016/02/Martian_Sc261D7_NMC_MAV_Scr-C_MR_02_141112-copy_sized-1.jpg
+
+https://www.google.com/search?q=the+martian+ui+telemetry&safe=off&client=firefox-b-1-ab&source=lnms&tbm=isch&sa=X&ved=0ahUKEwidi5ONgprZAhVSt1MKHevVB6QQ_AUICigB&biw=1676&bih=909#imgrc=_
+
+---------------------------------------------
+Zooming in and out of timelines
+https://cushionapp.com/journal/zooming-in-on-the-timeline
+
+Visuals
+https://www.google.com/search?q=ux+design+zoom+in+and+out+timeline&safe=off&client=firefox-b-1-ab&source=lnms&tbm=isch&sa=X&ved=0ahUKEwihhrfY5_3YAhVLjK0KHe5zBXYQ_AUICygC&biw=1920&bih=1086
+
+http://timeglider.com/widget/
+http://www.simile-widgets.org/timeline/
+
+https://www.jqueryscript.net/tags.php?/Timeline/
+
+https://cushionapp.com/journal/zooming-in-on-the-timeline
+https://timeline.knightlab.com/#examples
+http://bashooka.com/coding/javascript-timeline-libraries/
+http://bashooka.com/coding/javascript-timeline-libraries/
+http://almende.github.io/chap-links-library/js/timeline/doc/#Example
+http://okfnlabs.org/blog/2012/12/04/javascript-timeline-libaries-a-review.html
+
+------------------------------------------------------
+https://dribbble.com/shots/2272358-The-Martian-Watney-Log-Freebie-Sketch
+http://www.iamag.co/features/the-martian-ui-reel/
+http://sciencefictioninterfaces.tumblr.com/
+https://www.noteloop.com/kit/fui/
+https://www.pinterest.com/shadow34965/sci-fi-graphic-user-interfaces/
+https://www.pinterest.com/julespo3d/scifi-gui/
+http://www.core77.com/posts/28183/Fantastical-UI-Design-from-Sci-Fi-Movies
+http://www.core77.com/posts/28182/where-dead-space-darth-vader-and-dieter-rams-meet-in-ui-designer-dino-ignacios-work-28182
+
+Original Email to Chris Heady:
+------------------------------------------------------
+Here is an approach I think you should take:
+
+This is what I mean. This page explains it all and you know 100% that the Martian is NASA driven. The link below even has a video that captures the ui in motion for everyone to get a sense of what you're shooting for.
+http://www.iamag.co/features/the-martian-ui-reel/
+
+This page is where I got the original link from. The guy wanted to create the Martian ui but with a theme called Ares. Read through it and I think you'll like what he's done. You don't have to take the same approach but try and do it in ReactJs (trust me you won't regret it).
+
+https://medium.com/@pixelcave/building-a-sci-fi-dashboard-in-less-than-4-hrs-44abe5a36a6b#.yo2yqmtvk
+
+Here is his final demo:
+http://demo.pixelcave.com/ares/
+
+My recommendation would be that since this is your first time working with a lot of these tools, heavily(copy) the Martian ui for your first pass. This way you can get used to the tools and begin worring about how to get the correct content and look. Then later on you can do a second pass to get more of a styled look for your project. Make sure you remember the second pass, but focus on getting it right on with the Martian.
+
+Here are some other inspiring references for fun.
+https://www.noteloop.com/kit/fui/movie/
+http://sciencefictioninterfaces.tumblr.com/
+http://www.designyourway.net/blog/inspiration/how-ui-will-be-in-the-future-showcase-of-fantasy-user-interfaces/
+https://dribbble.com/beneb/buckets/99468-Futuristic-Interfaces
+http://annualreport.airbusgroup.com/
+https://github.com/nygardk/react-scifi
+https://creativemarket.com/dannehr/163951-Orbit-SciFi-UI-Kit
+http://www.gsmlondon.ac.uk/global-oil-map/#1995-importers

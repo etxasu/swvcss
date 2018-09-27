@@ -1,0 +1,154 @@
+@shrinkXBy: 0.7;
+@shrinkYBy: 0.7 ;
+
+@color-00: #010101;
+@color-01: #bebbc1;
+
+.page {
+
+    .segment:nth-child(0) {
+        margin-top: 1em;
+    }
+    .segment:nth-child(1) {
+        margin-top: 1em;
+    }
+}
+
+.timeline {
+    &.controls {
+        overflow: auto;
+
+        button:first-child {
+            float: left;
+        }
+
+        button:not(first-child) {
+            float: right;
+        }
+    }
+
+    &.list {
+        max-height: 350px;
+        min-height: 350px;
+        overflow-y: scroll;
+
+        .card:nth-child(1) {
+            margin-right: -1em;
+            margin-left: 2em;
+        }
+
+        .card:first-child {
+            // For whatever reason, this fixes a bug that causes the first item in the layout to not respond to margin
+            // or padding settings.
+            display: none;
+            display: auto;
+        }
+    }
+
+    &.detail {
+        // max-height: 508px;
+        min-height: 388px;
+        margin-top: 0 !important;
+        max-height: 388px;
+        overflow-y: scroll;
+
+        h3 {
+            padding-top: 1em;
+        }
+    }
+
+    &.card {
+        color: black;
+        border: 1px solid grey;
+        height: 100px;
+        width: 45%;
+    }
+
+    &.graph {
+        border: solid lightgrey 1px;
+        margin-top: 1em;
+    }
+
+    &.counter {
+        height: 2.7em;
+        margin-top: -2em;
+        vertical-align: middle;
+    }
+
+    &.info {
+        width: 100%;
+    }
+}
+
+img.square {
+    width: 75px;
+    height: 75px;
+}
+
+img.pin {
+    border-radius: 100%;
+    display: none;
+}
+
+.hide {
+    display: none !important;
+}
+
+.pin {
+    background: white;
+    border: 2px solid lightgrey;
+    padding: 1em;
+    position: absolute;
+}
+
+svg {
+    border: none !important;
+}
+
+.fit {
+    // border: 2px solid red;
+    height: 100%;
+    left: 0px;
+    overflow-y: scroll;
+    position: absolute
+    top: 0px;
+    width: 100%;
+}
+
+.segment {
+    padding: 0 !important;
+}
+
+.column {
+    padding: 0 !important;
+}
+
+.minimap {
+    border: solid red 1px;
+}
+
+#tooltip {
+    border: 1px solid #616161;
+    background-color: @color-00;
+    color: @color-01;
+    padding: 1em;
+    position: absolute;
+
+    .content {
+        padding-top: 1em;
+    }
+
+    .image {
+        padding-top: 1em;
+    }
+}
+
+.x-axis {
+    border: solid 2px red;
+}
+
+.zoom {
+  cursor: move;
+  fill: none;
+  pointer-events: all;
+}

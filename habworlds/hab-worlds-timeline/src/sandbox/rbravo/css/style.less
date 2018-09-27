@@ -1,0 +1,157 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-size: auto 100%;
+    // background: black no-repeat center url('/public/img/background-00.jpg');
+    // padding: 20px;
+    // background-image: url('/public/img/background-00.jpg');
+    // background-repat: no-repeat;
+}
+
+body, html, .page {
+    min-height: 100%;
+}
+
+.ball {
+    @size: 50px;
+
+    background-color: #4968e7;
+    border-radius: 50%;
+    height: @size;
+    position: absolute;
+    top: 150px;
+    width: @size;
+}
+
+// ASU Habitable Worlds (hbw)
+.hbw {
+    // background-color: rgba(0, 0, 0, 0.1);
+    // opacity: 0.5;
+
+    &.page {
+        // background-color: rgba(0, 0, 0, 0.8);
+        background-color: #060606;
+        color: #d9d9d9;
+    }
+
+    // Blue set of ui elements
+    .blue {
+        @color-background-00: lighten(#0A1C31, 8%);
+        @color-background-01: #030916;
+        @color-background-02: #0c0f26;
+        // @color-background-03: lighten(#030916, 0%);
+
+        @color-font-00: #fff;
+        @color-font-01: #2c5f7a;
+
+        color: @color-font-00;
+        font-family: "Lucida Console", Monaco, monospace;
+        font-family: 'Share Tech Mono', monospace;
+
+        .column {
+            // border: 1px solid red;
+            padding: 3px !important;
+        }
+
+        .win {
+            @color-00: #6c6c6c;
+
+            // background-color: linear-gradient(90deg, blue, red);
+            background-color: @color-background-02;
+            background-image: linear-gradient(180deg, @color-background-02, @color-background-01);
+            border: 1px solid @color-00;
+            border-top: 5px solid @color-00;
+            margin-bottom: 2px;
+            min-height: 400px;
+            opacity: 0.8;
+            position: relative;
+
+            h1, h2, h3, h4, h5, h6 {
+                font-weight: 100 !important;
+                font-size: 12px;
+            }
+
+            &.telemetry {
+                padding: 5px;
+                .hd, .bd, .ft {
+                    background-color: transparent;
+                }
+
+                h3 {
+                    // sborder: 1px solid red;
+                }
+
+                .hd {
+                    background-image: linear-gradient(90deg, #33344a, rgba(0,0,0,0));
+                    margin-bottom: 5px;
+                    padding: 5px;
+                    // height: 0px;
+
+                    .dot {
+                        @color: lighten(#740935, 10%);;
+                        @size: 10px;
+
+                        background-color: @color;
+                        border-radius: 50%;
+                        color: @color;
+                        display: inline-block;
+                        height: @size;
+                        margin: 0 5px;
+                        width: @size;
+                    }
+
+                    .time {
+                        color: lighten(#740935, 10%);
+                        padding-left: 10px;
+                    }
+
+                    .info {
+                        display: inline-block;
+                        color: lighten(#4d4d4d,8%);
+                        float: right;
+                    }
+
+                    .extra {
+                        @size: 50px;
+                        border: 1px solid @color-00;
+                        height: @size;
+                        position: absolute;
+                        left: 5px;
+                        top: 50px;
+                        width: (@size - 25px);
+                    }
+
+                    .extra:before {
+                        background-color: @color-00;
+                        display: block;
+                        content: '';
+                        height: 5px;
+                        margin-top: -12px;
+                    }
+                }
+
+                .bd {
+                    background-image: linear-gradient(180deg, @color-background-00, @color-background-01);
+                    margin-left: 30px;
+                    margin-top: 20px;
+                    padding: 10px;
+                    table {
+                        color: @color-font-01;
+                    }
+                }
+
+                .bd:before {
+                    border-top: 1px solid @color-00;
+                    display: block;
+                    content: '';
+                    height: 5px;
+                    margin-top: -20px;
+                    margin-left: -10px;
+                    margin-right: -10px;
+                }
+            }
+        }
+    }
+}

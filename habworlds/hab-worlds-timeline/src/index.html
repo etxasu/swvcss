@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Habitable Worlds Simulations</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/public/lib/semantic-ui/semantic.min.css">
+
+        <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="/public/lib/semantic-ui/semantic.min.js"></script>
+        <script src="/public/lib/semantic-ui/components/transition.js"></script>
+
+        <link rel="stylesheet/less" type="text/css" href="/public/css/style.less" />
+        <script>
+        less = {
+            env: "development",
+            async: false,
+            fileAsync: false,
+            poll: 1000,
+            functions: {},
+            dumpLineNumbers: "comments",
+            relativeUrls: false,
+            rootpath: ":/a.com/"
+        };
+        </script>
+        <script src="/node_modules/less/dist/less.min.js"></script>
+        <script src="/node_modules/less/dist/less.min.js"></script>
+
+        <script src="/public/js/init.js"></script>
+        <script src="/node_modules/animejs/anime.min.js"></script>
+        <script src="/node_modules/d3/build/d3.min.js"></script>
+    </head>
+    <body class="asu-sese-etx">
+        <!-- Page Contents -->
+        <div class="page">
+            <div class="ui vertical stripe basic segment">
+                <div class="ui middle aligned container">
+                    <div class="ui segment section">
+                        <h1>Simulations</h1>
+                        <div class="ui menu">
+                            <!-- <a class="item">Browse</a> -->
+                            <div class="right menu">
+                                <a class="ui button black">Sandbox</a>
+                                <select class="ui dropdown">
+                                    <option value="">Select a sim...</option>
+                                    <option value="1">Timeline</option>
+                                    <option value="2">Atmospheric Chamber</option>
+                                    <option value="3">Greenhouse Effect</option>
+                                    <option value="4">Phases of the Moon</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="sim-area">
+                            <iframe src="/src/sim/timeline"></iframe> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="ui vertical stripe basic segment">
+                <div class="ui middle aligned container">
+                    <h1>Sandbox</h1>
+                    <div class="ui segment">
+                        <h3>Carl</h3>
+                        <a class="ui button" href="/src/sandbox/cpotter/index.html">General</a>
+                    </div>
+                    <div class="ui segment">
+                        <h3>Mike</h3>
+                        <a class="ui button" href="/src/sandbox/mpotter/sim/timeline/remake/timeline.html">Timeline V1</a>
+                        <a class="ui button" href="/src/sandbox/mpotter/sim/timeline-v2/index.html">Timeline V2</a>
+                        <a class="ui button" href="/src/sandbox/mpotter/sim/atmos/index.html">Atmospheric Chamber</a>
+                    </div>
+                    <div class="ui segment">
+                        <h3>Ron</h3>
+                        <a class="ui button" href="/src/sandbox/rbravo/index.html">General</a>
+                        <a class="ui button" href="/src/sandbox/rbravo/revision-00.html">Revision 00</a>
+                        <a class="ui button" href="/src/sandbox/rbravo/timeline/index.html">Sim: Timeine</a>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+
+        <!-- Scripts -->
+        <div>
+            <script src="/node_modules/@thetrg/ tamed-js/dist/tamed-full.js"></script>
+            <script src="/node_modules/keypress.js/keypress-2.1.4.min.js"></script>
+            <!-- <script src="/src/Boot.js"></script> -->
+        </div>
+    </body>
+</html>

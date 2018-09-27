@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Habitable Worlds Simulations</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/public/lib/semantic-ui/semantic.css">
+        <link rel="stylesheet/less" type="text/css" href="/public/css/style.less" />
+        <link rel="stylesheet/less" type="text/css" href="/src/sandbox/mpotter/sim/atmos-quiz/css/style.less" />
+
+        <script>
+            less = {
+                env: "development",
+                async: false,
+                fileAsync: false,
+                poll: 1000,
+                functions: {},
+                dumpLineNumbers: "comments",
+                relativeUrls: false,
+                rootpath: ":/a.com/"
+            };
+        </script>
+
+        <!-- 3rd party dependencies -->
+        <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="/node_modules/less/dist/less.min.js"></script>
+        <script src="/public/js/init.js"></script>
+        <script src="/public/lib/semantic-ui/semantic.min.js"></script>
+        <script src="/public/lib/semantic-ui/components/transition.js"></script>
+        <script src="/node_modules/animejs/anime.min.js"></script>
+        <script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
+
+        <!-- Temporary CAPI cdn dependancy. NOTE: Load this script local to the server later -->
+        <script src='https://lib.smartsparrow.com/simcapi-js-3.0.6.min.js'></script>
+
+        <!-- Tamed -->
+        <script src="/node_modules/@thetrg/tamed-js/dist/tamed-full.js"></script>
+        <script src="/node_modules/tamed-js-handlebars/dist/tamed-handlebars-full.js"></script>
+        <script src="/node_modules/tamed-js-loader/dist/tamed-loader-full.js"></script>
+        <script src="/node_modules/keypress.js/keypress-2.1.4.min.js"></script>
+    </head>
+
+    <body>
+        <div class="page">
+            <!-- Content -->
+            <div class="ui horizontal segments">
+                <div class="ui segment">
+                    Gases
+                    <div class='ui segment' id="gas-buttons">
+                    </div>
+                </div>
+                <div class='ui segment'>
+                    <div class="ui segments">
+                        <div class="ui segment" id="graph-type">
+                            <!-- Transmission/Absorption -->
+                        </div>
+                        <div class="ui segment" id="teacher-graph">
+                            Teacher Graph
+                        </div>
+                        <div class="ui segment" id="student-graph">
+                            Student Graph
+                        </div>
+                        <div class="ui segment" id="zoom-controls">
+                            <i class="search icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </page>
+        <div class="tooltip" id="transmission-tooltip"></div>
+        <div class="tooltip hide" id="absorbtion-tooltip"></div>
+    </body>
+
+    <!-- Scripts -->
+    <div>
+        <script src="/src/sandbox/mpotter/sim/atmos-quiz/Boot.js"></script>
+    </div>
+</html>

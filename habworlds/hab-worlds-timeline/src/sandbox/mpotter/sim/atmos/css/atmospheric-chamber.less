@@ -1,0 +1,506 @@
+text {
+    &.y-axis {
+        text-anchor: end;
+    }
+
+    &.x-axis {
+        text-anchor: middle;
+    }
+
+    &.y-axis, &.x-axis {
+        font-size: 0.7em;
+    }
+}
+
+.pusher {
+    background-color: black !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+.invisible {
+    visibility: hidden !important;
+}
+
+.sidebar {
+    background-color: white;
+
+    .segment {
+        overflow: auto;
+    }
+}
+
+.left-tab {
+    position: absolute;
+    left: -50px;
+    top: 20.3%;
+    // transform: rotate(-90deg);
+    z-index: 1000;
+}
+
+.right-tab {
+    background-color: transparent !important;
+    border: none !important;
+    position: absolute;
+    left: -50px;
+    padding: 0 !important;
+    top: 18.3%;
+    // transform: rotate(90deg);
+    z-index: 1000;
+
+    .ui.button {
+        border-right: none;
+        margin-right: -10px;
+        cursor: pointer;
+
+        &:first-child, &:last-child {
+            padding: 9px 0;
+            transform: rotate(-90deg);
+            width: 40px;
+        }
+    }
+}
+
+svg {
+    border: none !important;
+}
+
+
+#particle-view > svg {
+    margin-left: 24px;
+}
+
+.page > div:nth-child(2), #particle-view {
+    padding: 0;
+    padding-left: 14px;
+    margin: -25px;
+    height: 0;
+}
+
+.chamber-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+// .particle-view {
+//     margin-left: 50%;
+//     // margin-top: 0px;
+//     // position: absolute;
+//     // top: 0%;
+//     // left: 0;
+//     width: 100%;
+//
+//     svg {
+//     }
+// }
+
+.ui.button {
+    background-color: #1b1a20;
+    border: 1px solid #bebbc1;
+    border-radius: 0;
+    color: #bebbc1;
+
+    &:hover{
+        color: #bebbc1;
+        background-color: #737373;
+    }
+
+    &.icon {
+        color: #bebbc1;
+    }
+}
+
+.tooltip {
+    background-color: #1b1a20;
+    color: #bebbc1;
+    border: 1px solid #bebbc1;
+    min-height: 100px;
+    min-width: 100px;
+    padding: 20px;
+    position: absolute;
+    z-index: 100000;
+}
+
+.asu-atmos-sim {
+    background-color: #1b1a20;
+}
+
+#N₂-button, #N₂O-button, #NO₂-button, #NO-button, #NH₃-button, #O₂-button, #O₃-button, #H₂O-button, #CO-button, #CO₂-button, #CH₄-button, #H₂S-button, #SO₂-button, #He-button, #Ne-button, #Ar-button, #Kr-button, #Xe-button, #H₂-button, #absorbtion-button, #transmission-button, #reset-button, #reset-zoom-button, div.inverted:nth-child(1) > div:nth-child(2), div.inverted:nth-child(2) > div:nth-child(2) {
+    background-color: #1b1a20;
+    border: 1px solid #bebbc1;
+    border-top: 0;
+    border-radius: 0;
+    border-right: none;
+    color: #bebbc1;
+    padding: 5px;
+
+    &:hover, &.grey {
+        background-color: #737373;
+    }
+
+    &:last-child {
+        border-right: 1px solid #bebbc1;
+    }
+}
+
+#N₂-button, #N₂O-button, #NO₂-button, #NO-button, #NH₃-button, #O₂-button, #absorbtion-button, #transmission-button, #reset-button, #reset-zoom-button, div.inverted:nth-child(1) > div:nth-child(2), div.inverted:nth-child(2) > div:nth-child(2) {
+    border-top: 1px solid #bebbc1;
+}
+
+div.inverted:nth-child(1) > div:nth-child(2), div.inverted:nth-child(2) > div:nth-child(2) {
+    margin-top: 5px;
+}
+
+#gas-button-list {
+    >div {
+        border-top: none;
+        border-bottom: none;
+    }
+}
+
+.ui.horizontal.divider {
+    color: #939393;
+}
+
+div.ui.wide.left.sidebar.asu-atmos-sim.overlay.visible > div:nth-child(2) > div:nth-child(2),
+div.ui.wide.left.sidebar.asu-atmos-sim.overlay.visible > div:nth-child(2) > div:nth-child(4) {
+    margin-bottom: 0;
+}
+
+.ui.segment {
+    background-color: #1b1a20;
+    color: #939393;
+
+    span {
+        float: right;
+    }
+}
+
+.ui.button.right-tab, .ui.button.left-tab {
+    background-color: #1b1a20;
+    border: 1px solid #bebbc1;
+    border-radius: 0;
+    color: #bebbc1;
+
+    &:hover, &.grey {
+        background-color: #737373;
+    }
+}
+
+.ui.horizontal.segments {
+    background-color: #1b1a20;
+}
+
+#gas-settings {
+    border: 1px solid #505050;
+    border-left: none;
+    border-top: none;
+    margin-top: -8px;
+}
+
+#light-settings {
+    background-color: transparent;
+    border: 1px solid #505050;
+    border-left: none;
+    border-top: none;
+    margin-top: -7px;
+}
+
+#light-settings > div:nth-child(1) {
+    background-color: transparent;
+}
+
+div.horizontal:nth-child(3) {
+    margin-bottom: 0;
+    z-index: 9999;
+}
+
+div.wide:nth-child(1) > div:nth-child(2) {
+    padding: 1em;
+    padding-top: 0;
+}
+
+.ui.inverted.segment {
+    background-color: #010101;
+    color: #939393;
+    margin: 0;
+}
+
+#panel-header-left, #panel-header-left > i, #panel-header-right, #panel-header-right > i {
+    color: #939393;
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+div.basic:nth-child(4), div.basic:nth-child(4) > div:nth-child(2), div.segment:nth-child(5), div.segments:nth-child(2), div.center:nth-child(2), div.center:nth-child(2) > div:nth-child(1), div.ui:nth-child(8) {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+div.basic:nth-child(4) > div:nth-child(1) {
+    margin-top: 0;
+}
+
+#part-pressure-control, div.segment:nth-child(5), div.wide:nth-child(1) > div:nth-child(2) > div:nth-child(1), div.wide:nth-child(1) > div:nth-child(3) > div:nth-child(1) {
+    margin-bottom:  0;
+    padding-bottom: 0;
+}
+
+#part-pressure-control > div:nth-child(1) {
+    padding-right: 0;
+}
+
+#gas-settings {
+    padding-bottom: 0;
+}
+
+.ui.dropdown.selection {
+    margin-top: 14px;
+}
+
+.ui.dropdown.selection, div.ui.dropdown.selection > .menu {
+    color: #bebbc1;
+    background: #312e35;
+    width: 100%;
+}
+
+div.ui.dropdown.selection > .menu > .item {
+    color: #bebbc1;
+    border: none;
+    padding-top: 0;
+
+    &:hover {
+        background-color: #737373;
+    }
+}
+
+.ui.selection.visible.dropdown > .text:not(.default) {
+    color: #bebbc1;
+}
+
+div.center:nth-child(2) > div:nth-child(1) {
+    padding-top: 10px;
+}
+
+div.segments:nth-child(4) {
+    border: 1px solid #505050;
+    border-right: none;
+    border-top: none;
+    margin-top: -10px;
+    padding: 10px;
+    padding-top: 20px;
+}
+
+#graph-name {
+    margin-bottom: 0;
+}
+
+div.left:nth-child(3) {
+    padding: 0;
+}
+
+div.center:nth-child(2) > div:nth-child(1) {
+    margin-bottom: 0;
+}
+
+div.center:nth-child(2) > div:nth-child(2) {
+    border: 1px solid #505050;
+    border-right: none;
+    border-top: none;
+    margin-top: -10px;
+    padding: 10px;
+    padding-top: 20px;
+}
+
+#part-pressure-control > div:nth-child(1), #part-pressure-control > div:nth-child(2) {
+    padding: 0;
+}
+
+#part-pressure-control > div:nth-child(3) {
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 23.4px;
+}
+
+#light-settings > div:nth-child(1) > div:nth-child(3) > span {
+    width: 40px;
+}
+
+#right-tab {
+    border-top: 0;
+    &:hover {
+        background-color: #1b1a20;
+        cursor: default;
+    }
+}
+
+div.wide:nth-child(2) {
+    border-left: 1px solid #bebbc1
+}
+
+div.wide:nth-child(1) {
+    border-right: 1px solid #bebbc1
+}
+
+#gas-control > div:nth-child(1) {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+#gas-control > div.segments {
+    margin-top: 3px;
+}
+
+#part-pressure-control {
+    margin-top: 14px;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+#light-settings > div:nth-child(1) {
+    margin-bottom: 0;
+}
+
+#light-settings > div:nth-child(2) {
+    padding-bottom: 0;
+    padding-top: 14px;
+}
+
+#light-settings > div:nth-child(2) > div:nth-child(1) {
+    padding-top: 0;
+}
+
+#light-settings > .segment {
+    padding-bottom: 0;
+    margin-bottom: -10px;
+}
+
+#light-settings > .segment, #light-settings > .segments {
+    margin: 0;
+}
+
+#light-settings > div:nth-child(2) {
+    margin-top: 0px;
+    margin-bottom: -8px;
+    padding-top: 7px;
+}
+
+#light-settings > div:nth-child(2) > div:nth-child(1) {
+    padding-right: 0;
+}
+#light-settings > div:nth-child(2) > div:nth-child(2) {
+    padding-left: 0;
+}
+
+#light-settings > div:nth-child(3) {
+    margin-top: 5px;
+    // padding-top: 4px;
+}
+
+#part-pressure-control > div:nth-child(2) {
+    overflow: hidden;
+    width: 75px;
+}
+
+#partial-pressure-value, #light-wavelength-value {
+    background-color: #312e35;
+    border: 0.5px solid #bebbc1;
+    color: #bebbc1;
+    height: 30px;
+    text-align: center;
+    width: 80px;
+}
+
+#light-wavelength-value {
+    width: 50px;
+}
+
+//  Styling sliders
+
+div.segment:nth-child(7) {
+    padding: 0;
+    padding-top: 10px;
+    margin: 0;
+}
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+    border-radius: 100%;
+    -webkit-appearance: none;
+    background: #668ea1;
+    height: 10px;
+    margin-top: -4px;
+    width: 10px;
+}
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+    border-radius: 100%;
+    background: #668ea1;
+    height: 10px;
+    width: 10px;
+}
+
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+    border-radius: 100%;
+    background: #668ea1;
+    height: 10px;
+    width: 10px;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    background: #737373;
+    height: 1px;
+    width: 100%;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #737373;
+    height: 1px;
+    width: 100%;
+}
+
+input[type=range]::-moz-range-track {
+    background: #737373;
+    height: 1px;
+    width: 100%;
+}
+
+input[type=range]::-ms-track {
+    background: #737373;
+    height: 1px;
+    width: 100%;
+}
+
+#light-wavelength, #part-pressure {
+    width: 170px;
+}

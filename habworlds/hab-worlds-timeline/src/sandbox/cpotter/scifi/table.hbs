@@ -1,0 +1,16 @@
+{{#each table }}
+<div class="table vertical">
+    <h4>{{this.title}}</h4>
+    <table>
+      <tbody>
+         {{#each tableRow }}
+         <tr>
+            {{#each tableCell }}
+            <td colspan={{this.colspan}}>{{this.data}}</td>
+            {{/each }}
+        </tr>
+        {{/each }}
+      </tbody>
+    </table>
+</div>
+{{/each }}

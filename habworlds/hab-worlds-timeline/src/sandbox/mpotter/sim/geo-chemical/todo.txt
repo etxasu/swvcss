@@ -1,0 +1,101 @@
+2018/8/1
+    [v] Create the generic circle object (use SVG)
+        [v] Place five of these on screen
+    [v] Create the line object
+        - Can be given a state object that is structured as { nameOfState: 'color' }
+    [v] Create the follow line object
+        - Follows the mouse around while active
+    [v] Clicking on a circle creates a line
+        [v] Releasing mouse click deletes line
+        [v] Releasing mouse click on top of another circle connects them
+
+2018/8/2
+    [v] Put a triangle on the end of the line to show its direction
+
+2018/9/5
+    [ ] Create a slider-dropdown ui element
+    [v] When a circle is created, it creates slider ui
+        - Slider controls rate of flow at fixed intervals
+            - Seconds
+            - Minutes
+            - Hours
+            - Days
+            - Weeks
+            - Months
+            - Years
+            - Decades
+            - Centuries
+    [v] Setup a timed interval that determines when carbon should flow
+    [v] On timer event, have each bin send out carbon to any outgoing connections
+        - Prioritizes connections from oldest to newest
+        - Each interval rate always sends out a fixed amount of carbon
+            slider just determines how frequent timer event occur for that bin
+        - Incoming carbon is not used when determining how much outgoing carbon
+            is able to be used
+
+2018/9/5
+    [v] Create carbon visualization
+        - Dom elements that move from one bin to another
+        - Simply hit the target bin then disappear
+        - Target bin populates itself with its own carbon dom elements
+
+    [v] Have bins affected by time rates
+        - Lower time rates cause more carbon to be transferred per time-event
+
+???
+    [v] Update Graph Object to be more re-usable
+        - Should anticipate a potential second Y Axis Value that scales on its own
+
+        Steps
+        [v] Remove terminology/var names specific to any type of information being plotted
+        [v] Replace all references to the yAxis to yAxis.left
+            - If only the yAxis property is given on startup, store it under yAxis.left
+        [v] Add value labels to yAxis.right
+        [v] Update findValueOfX and findXOfValue to always return a value
+        [v] Graph respects given width
+        [v] Resize graph function takes a target width as opposed to assuming it should fill its container
+        [v] Remove padding field all-together
+            [v] Graph takes an X and Y coordinate
+                - Assume 30, 30
+            [v] Graph takes a width and a height
+        [v] Graph works again with only yAxis.left
+        [v] Add ability to disable zoom
+        [V] Allow a specifications for zoom to be made
+            [V] Location of zoom% label
+            [V] zoom% label visible
+            [v] Zoom enabled
+
+    [ ] Add visualization for Carbon inside of bins.
+        - Just randomly bounce about
+    [v] Add labels to bins
+
+---
+
+    [v] Add logic for carbon in air impacting planet temperature
+    [v] Add logic for plotting points on graphs
+    [ ] Have values on either Y Axis scale independently
+    [v] Add sensible function for adjusting values displayed on X Axis
+        - The current one is called updateLabelList... which does not explain very
+            well what it is used for.
+        - Plus, this function should be moved into the xAxis object.
+    [v] Plot some mock data
+        - Random values 10-90
+        - Add a new tick every time event
+        - delete the oldest tick event after 10 tick events are plotted
+            on each time event
+
+---
+
+    [ ] Find findYOfValue and findValueOfY functions
+        - Should do the same thing as their x-axis counterpart
+    [ ] Add time controls to graph
+    [v] Add second graph tab
+    [v] Add readout for greenhouse effect on temperature
+    [v] Add readout for CO2 greenhouse effect on temperature
+    [v] Add readout for surface temperature
+    [v] Make readouts functional
+
+---
+
+    [v] Have bin graph track percentage of carbons in bins
+        - Total carbon in all of sim, not per bin
