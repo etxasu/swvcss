@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Habitable Worlds Simulations</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/hab-worlds-timeline/public/lib/semantic-ui/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="/hab-worlds-timeline/node_modules/vis/dist/vis.min.css">
+        <link rel="stylesheet/less" type="text/css" href="/hab-worlds-timeline/public/css/style.less" />
+        <!-- <link rel="stylesheet/less" type="text/css" href="/public/css/style.css" /> -->
+        <link rel="stylesheet/less" type="text/css" href="/hab-worlds-timeline/src/sim/timeline/style.less" />
+        <!-- <link rel="stylesheet/less" type="text/css" href="/src/sim/timeline/style.css" /> -->
+
+        <script>
+            less = {
+                env: "development",
+                async: false,
+                fileAsync: false,
+                poll: 1000,
+                functions: {},
+                dumpLineNumbers: "comments",
+                relativeUrls: false,
+                rootpath: ":/a.com/"
+            };
+        </script>
+
+        <!-- 3rd party dependencies -->
+        <script src="/hab-worlds-timeline/node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="/hab-worlds-timeline/node_modules/less/dist/less.min.js"></script>
+        <script src="/hab-worlds-timeline/public/js/init.js"></script>
+        <script src="/hab-worlds-timeline/node_modules/d3/build/d3.min.js"></script>
+        <script src="/hab-worlds-timeline/public/lib/semantic-ui/semantic.min.js"></script>
+        <script src="/hab-worlds-timeline/public/libs/semantic-ui/components/transition.js"></script>
+        <script src="/hab-worlds-timeline/node_modules/animejs/anime.min.js"></script>
+        <script src="/hab-worlds-timeline/node_modules/handlebars/dist/handlebars.min.js"></script>
+
+        <!-- Temporary CAPI cdn dependancy. NOTE: Load this script local to the server later -->
+        <script src='https://lib.smartsparrow.com/simcapi-js-3.0.6.min.js'></script>
+
+        <!-- Tamed -->
+        <script src="/hab-worlds-timeline/node_modules/@thetrg/tamed-js/dist/tamed-full.js"></script>
+        <script src="/hab-worlds-timeline/node_modules/tamed-js-handlebars/dist/tamed-handlebars-full.js"></script>
+        <script src="/hab-worlds-timeline/node_modules/tamed-js-loader/dist/tamed-loader-full.js"></script>
+        <script src="/hab-worlds-timeline/node_modules/keypress.js/keypress-2.1.4.min.js"></script>
+    </head>
+
+    <body class="asu-sese-etx">
+        <!-- Page Contents -->
+        <div class="page fit">
+            <div class="">
+                <!-- <h1>Sandbox: Mike - Feedbacklayout</h1>
+                <div>
+                    <a class="ui button" href="/src">Back</a>
+                </div> -->
+
+                <!-- Master container for list Item Panel, item detail panel, timeline, and timeline scrollbar -->
+                <div class="ui center aligned basic segment timeline info">
+                    <div class="ui equal height stackable grid container top-section">
+                        <div class="eight wide stretched column timeline-area left-side">
+                            <h4>Events</h4>
+                            <div class="section timeline event-info">
+                                <div class="ui center aligned container segment timeline relaxed horizontal list" id="card-list">
+                                </div>
+                            </div>
+                            <div class="timeline counter">
+                                <div class="" id="event-label">
+                                    0/0 Events placed
+                                </div>
+                                <button class="ui labeled icon button" id="reset-event">
+                                    <i class="undo icon"></i>
+                                    Reset Events
+                                </button>
+                                <button class="ui labeled icon button" id="reset-zoom">
+                                    <i class="search minus icon"></i>
+                                    Reset Zoom
+                                </button>
+                            </div>
+                        </div>
+                        <div class="eight wide stretched column timeline-area right-side">
+                            <h4>Description</h4>
+                            <div class="ui container segment timeline detail" id="card-detail">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Timeline -->
+                    <div class="ui grid container timeline graph">
+                        <div class="sixteen wide stretched column">
+                            <div id="visualization"></div>
+                        </div>
+                        <div class="ui raised container segment">
+                            <div id="minimap"></div>
+                        </div>
+                        <!-- <div class="sixteen wide stretched column">
+                            <div class="ui segment timeline controls" id="control-panel">
+                                <button class="ui labeled icon button" id="reset-event">
+                                    <i class="trash icon"></i>
+                                    Reset Events
+                                </button>
+                                <button class="ui labeled icon button" onclick="window.timelineApp.zoom (0)" id="reset-zoom">
+                                    <i class="zoom out icon"></i>
+                                    Reset Zoom
+                                </button>
+                                <button class="ui icon button" onclick="window.timelineApp.zoomIn ()" id="zoom-in">
+                                    <i class="zoom icon"></i>
+                                </button>
+                                <button class="ui icon button" onclick="window.timelineApp.zoomOut ()" id="zoom-out">
+                                    <i class="zoom out icon"></i>
+                                </button>
+
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <div>
+            <!-- <script src="/src/sandbox/mpotter/sim/timeline/RawEventDataNoCategories.js"></script> -->
+            <script src="/hab-worlds-timeline/src/sandbox/mpotter/sim/timeline/remake/Boot.js"></script>
+        </div>
+    </body>
+</html>
