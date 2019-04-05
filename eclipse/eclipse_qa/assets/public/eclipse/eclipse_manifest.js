@@ -1284,7 +1284,8 @@ var locations = {
 		$.ajax({
 			type: 'GET',
 			dataType: "json",
-			url: "//maps.googleapis.com/maps/api/geocode/json?latlng="+latitude+","+longitude+"&sensor=false",
+            // url: "https://maps.googleapis.com/maps/api/geocode/json?&key=" + locations.google_api_key + "&address=" + address,
+			url: "//maps.googleapis.com/maps/api/geocode/json?key=" + locations.google_api_key + "&latlng="+latitude+","+longitude+"&sensor=false",
 			data: {},
 			success: function(data) {
 				var loc =  locations._getNameFromGoogleResults(data);
