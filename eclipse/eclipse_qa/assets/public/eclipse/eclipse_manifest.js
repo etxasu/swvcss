@@ -49,7 +49,7 @@ for(var i=0; i<self.properties.length; i++) {
 	var property = self.properties[i],
 		camelCased = StyleFix.camelCase(property),
 		PrefixCamelCased = self.prefixProperty(property, true);
-	
+
 	$.cssProps[camelCased] = PrefixCamelCased;
 }
 
@@ -94,12 +94,12 @@ $.fn.spin = function(opts) {
 
 var mb_utils = {
 
-  init: function() { 
+  init: function() {
       this._extendJquery();
       this._extendJavascript();
       this.initIOS7FocusBugFix();
     },
-    
+
   _extendJquery: function () {
     // exists function returns a boolean ... use example: $('body').exists();
     jQuery.fn.exists = function () { return this.length>0; };
@@ -146,7 +146,7 @@ var mb_utils = {
       toSlide.slideToggle(speed);
     });
   },
-  
+
   // Handle touch vs. click events
   touchclick: function (sel, fnc) {
     $(sel).on('touchstart click', function(event) {
@@ -160,10 +160,10 @@ var mb_utils = {
       }
     });
   },
-  
+
   initIOS7FocusBugFix: function () {
-    
-    // ios up to 7 has a bug that makes fixed elements no longer fixed when a form 
+
+    // ios up to 7 has a bug that makes fixed elements no longer fixed when a form
     // element is focused. This is part of a workaround for that. The other part
     // uses the fixfixed selector in the css. -JM
     // Requires Modernizr
@@ -174,7 +174,7 @@ var mb_utils = {
       $('input, select, textarea').blur(function() {
         $('body').removeClass('fixfixed');
       });
-    }   
+    }
   },
 
   /*
@@ -183,12 +183,12 @@ var mb_utils = {
    */
 
   /* Distance from top of document */
-  distanceFromTop: function ( element ) { 
+  distanceFromTop: function ( element ) {
     return $(element).offset().top;
   },
-  
+
   /* Distance from top of closest positioned parent */
-  distanceFromTopOfContainer: function ( element ) { 
+  distanceFromTopOfContainer: function ( element ) {
     return $(element).position().top;
   },
 
@@ -245,24 +245,24 @@ var mb_utils = {
 		}
 		$description_div.toggleClass("condensed");
 	},
-	
+
 	initExpandableElement: function () {
-	  
-	  /*  
+
+	  /*
 	  *   To use:
 	  *     The button:
 	  *     <a href="javascript:void(0)" class="expandable_element_btn" data-expand-index="0">+ more</a>
 	  *
 	  *   The target:
 	  *     <ul class="expandable_element" data-expand-index="0"> (Can be any type of html element)
-	  *   
+	  *
 	  *   â€¢Â Note that data-expand-index must be the same on both the button and the target element.
 	  *   â€¢Â This method allows for any number of independent expandable elements on a page.
 	  *   â€¢Â The button/link can have any text, but will only toggle if '+ more' or '- less' are used
-	  *   
+	  *
 	  *   -JM
-	  */  
-	  
+	  */
+
 	  $('.expandable_element_link').click(function(){
 	    var expandIndex = $(this).attr("data-expand-index");
 	    var $el = $('.expandable_element[data-expand-index="' + expandIndex + '"]');
@@ -273,7 +273,7 @@ var mb_utils = {
         $(this).text(txt);
       } else {
   	    var doToggleText = $(this).text().indexOf('+ more') >= 0 || $(this).text().indexOf('- less') >= 0
-  	    if (doToggleText) { 
+  	    if (doToggleText) {
     	    var txt = $el.is(':visible') ? '+ more' : '- less';
     	    $(this).text(txt);
   	    }
@@ -335,28 +335,28 @@ var mb_utils = {
 
   // Using JS, match citation <sup> to footnote <li>
   // usage: <sup>1</sup> will auto-link to <ol class="footnotes"><li>First footnote</li></ol>
-  
-  // I had to refactor this because it was breaking old footnotes by wrapping multiple <a> tags and 
-  // then also making all footnotes links, thereby obscuring the real links. 
+
+  // I had to refactor this because it was breaking old footnotes by wrapping multiple <a> tags and
+  // then also making all footnotes links, thereby obscuring the real links.
   // basically this is now wrapping divs with id's rather than <a> with name -JM
   linkCitationsToFootnotes: function() {
     var footnotes = $('.wysiwyg_content ol.footnotes li');
-    if (footnotes.exists()) {    
+    if (footnotes.exists()) {
       var citations = $('.wysiwyg_content sup').not('.math');  // exclude <sup> tags that have "math" class
 
       $.each(citations, function() {
-        // if there is a footnote in the DOM with the same index 
+        // if there is a footnote in the DOM with the same index
         // add an <a href> and <a name> to link them up
         // (i.e. the third footnote would match <sup>3</sup>)
         var citation_num = parseInt($(this).text());
         var footnoteElement = footnotes.get(citation_num - 1);
         var footnote = null;
         if (footnoteElement) footnote = $(footnoteElement);
-        
+
         if (citation_num && footnote) {
           // citation: change <sup>1</sup> to <a class="citation" href="#footnote_1"></a>
           $(this).wrap('<a class="citation" href="#footnote_' + citation_num + '"></a>');
-          
+
           // footnote: change <li>Ibid.</li> to <li class="footnote" id="footnote_3">Ibid.</li>
           if (footnote.hasClass("footnote") == false) {
             footnote.addClass("footnote");
@@ -366,9 +366,9 @@ var mb_utils = {
               return "<div id='footnote_" + citation_num + "'></div>";
             });
           }
-        }    
+        }
       });
-    }  
+    }
 
 		$('a.citation').click(function(e){
 			console.log('citation click');
@@ -384,13 +384,13 @@ var mb_utils = {
 
 
   // Brought from previous climate version to handle quizzes - bm
-  launch_sized_popup_window: function (desktopURL, w, h, layout, scrollbars ) 
+  launch_sized_popup_window: function (desktopURL, w, h, layout, scrollbars )
   {
     var layout_param = "";
     var scrollbars_param = "0";
     if (layout != undefined) {
       layout_param = "?layout=" + layout;
-    } 
+    }
     if (scrollbars != undefined) {
       scrollbars_param = scrollbars;
     }
@@ -465,10 +465,10 @@ var mb_utils = {
 		 var myEfficientFn = mb_utils.debounce(function() {
 		 // All the taxing stuff you do
 		 }, 250);
-	
+
 		 window.addEventListener('resize', myEfficientFn);
 	 */
-	
+
 	debounce: function(func, wait, immediate) {
 		var timeout;
 		return function() {
@@ -499,7 +499,7 @@ var mb_utils = {
     } while(Math.abs(bytes) >= thresh && u < units.length - 1);
     return bytes.toFixed(1)+' '+units[u];
   }
-  
+
  	//delete when justin says it's ok
 //	handleAnchor: function(){
 //		var at = mb_utils.getParam('at');
@@ -593,9 +593,9 @@ $.extend(mb_utils, {
 
 
 /*
- * ----- Base64 for encoding----- 
+ * ----- Base64 for encoding-----
  *
- * Usage: 
+ * Usage:
  *    mb_utils.createCookie("city", Base64.encode(locationString), 30);
  */
 
@@ -847,7 +847,7 @@ var actions = {
 		ranger_eclipse.update({setFOV: main.fov});
 		$('.zoom_in, .zoom_out').find('.button_hint').text('FOV: ' + main.fov)
 	},
-		
+
 	toggleFullscreen: function(btn){
 		var $target = $('#eclipse_module');
 		if (screenfull.enabled && btn.id == 'expand_screen') {
@@ -953,9 +953,9 @@ var actions = {
 	},
 
 	_updateDateDisplay: function(date){
-  	
+
 		$('#displayed_date_short').text(date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear());
-		
+
 		$('#displayed_date').text(this.monthNames[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear());
 		$('#display_time').text(main.timeFormat(date, true, true));
 	},
@@ -993,7 +993,7 @@ var actions = {
 		$('#max_label').text(max);
 		$('#min_label').text(min);
 	},
-	
+
 	setLabelDisplay: function(message){
 		ranger_eclipse.update({"setLabelDisplay": message});
 	},
@@ -1008,7 +1008,7 @@ var actions = {
 		ranger_eclipse.getTimeBounds(function(){
 			main.slider.updateOptions({range: {min: main.time_min, max: main.time_max}});
 			actions.setMinMaxSliderLabels(main.current_view != "earth_moon" && main.current_view != "earth_moon_sun");
-			if(main.playing) 
+			if(main.playing)
 			{
 				//actions.setTimeRate();
 			}
@@ -1023,7 +1023,8 @@ var locations = {
 	pinned_locations: [],
 	last_id: 2,
 	max_custom: 3,
-	google_api_key: "AIzaSyBZYgZ99Xo3Zt92ms6gtbtg2ZVXjYeMoKU", //Kevin Hussey's dev key. This must be changed before final go live!!!,
+	// google_api_key: "AIzaSyBZYgZ99Xo3Zt92ms6gtbtg2ZVXjYeMoKU", //Kevin Hussey's dev key. This must be changed before final go live!!!,
+	google_api_key: "AIzaSyD-ILk-ny3xs_whBFy0ULPXlDJDv7IYt6Q", //New API Key from NASA
 	error_fadeout_duration: 3000,
 	marker_display_popup: false,
 
@@ -1309,7 +1310,7 @@ var locations = {
 			}
 		});
 	}
-} 
+}
 ;
 var panels = {
 	togglePanel: function ( selectedPanel, btn, afterfade_fn ) {
@@ -1328,7 +1329,7 @@ var panels = {
 			$(selectedPanel).show();
 
 			$('#panels').fadeIn(main.panelFadeSpeed, afterfade_fn);
-		
+
 			// Remove the .active class from all ui buttons (except grid button and buttons with active_persist class)
 			$('.ui_button').not('.active_persist').removeClass('active');
 			// Add the .active class the the button
@@ -1558,7 +1559,7 @@ var ranger_eclipse = {
 			}
 		}
 	},
-	
+
 	getCameraTransform: function(_done)
 	{
 		var _value = $.Deferred();
@@ -1574,14 +1575,14 @@ var ranger_eclipse = {
 	locationClicked: function(location_arr){
 		console.log("Clicked " +  location_arr  + " from ranger.");
 		locations.getLocationFromCoordinates(location_arr[0], location_arr[1], locations.addPin);
-		
+
 		ranger_eclipse.update({getInfo: { "cameraState": { "id": "mainWindow"}}}, null, function(ack)
 		{
 			console.log(ack.message);
-			
+
 			//console.log(ack.message.orientation);
 		});
-		
+
 		receiveValueFromRanger("System.Locations.Last Clicked.Latitude", typeof location_arr[0], location_arr[0]);
 		receiveValueFromRanger("System.Locations.Last Clicked.Longitude", typeof location_arr[1], location_arr[1]);
 	},
@@ -1738,7 +1739,7 @@ var main = {
 			'width': '100%'
 		}
 	},
-	
+
 	tooltip_opts_fs: {
 		delay: 200,
 		offset: [-10,-10],
@@ -1782,7 +1783,7 @@ var main = {
 	noWebglDetected: function(){
 		$('#loader .browser_fail').show();
 	},
-	
+
 	padZero: function(val){
 		if(val < 10){
 			return "0" + val.toString();
@@ -1790,12 +1791,12 @@ var main = {
 			return val.toString();
 		}
 	},
-	
+
 	initListeners: function(){
 		$('.fullscreen_option').click(function (e) {
 			actions.toggleFullscreen(this);
-		});			
-		
+		});
+
 		$('.play_pause.ui_button').click(function(e){
 			actions.togglePlayPause(this);
 		});
@@ -1820,7 +1821,7 @@ var main = {
 			e.stopPropagation();
 			panels.toggleSettings(this);
 		});
-		
+
 
 		$('.webgl_toolbar_container .show_add_location').click(function(e){
 			e.stopPropagation();
@@ -1851,7 +1852,7 @@ var main = {
 			panels.closePanels();
 			panels._checkIfMobileLocationListAndReinitListener();
 		});
-		
+
 		$('.warning_area').click(function(e){
 			$('.warning_area').fadeOut(main.panelFadeSpeed)
 		});
@@ -1862,17 +1863,17 @@ var main = {
 				$('.selected_wrapper').removeClass('open');
 			})
 		});
-		
+
 		//this is the mobile/tablet info button
 		$('.info_btn').click(function(e){
 			e.stopPropagation();
 			panels.toggleInfoMode();
 		});
-		
+
 		$('.selected_location').click(function(e){
 			panels.toggleMobileToolbar($('.location_list'))
 		});
-		
+
 		// Changed this so that entire header is tappable -JM
 		// $('.location_list .toggle_arrow').click(function(e){
 		// 	panels.toggleMobileToolbar($('.location_list'));
@@ -1911,7 +1912,7 @@ var main = {
 				main.close_modal_fn(e);
 			}
 		})
-		
+
 		// close settings modal and mobile navs - this needs a refactor - jh
 		// $(document).on('click', function(event) {
      //  if (!$(event.target).closest('.settings_container').length) {
@@ -1939,7 +1940,7 @@ var main = {
 		// }
 		//
 		// });
-    
+
 
 		if (screenfull && screenfull.enabled) {
 			document.addEventListener(screenfull.raw.fullscreenchange, function(){
@@ -1957,15 +1958,15 @@ var main = {
 		$('.webgl_toolbar .mobile_expander').click(function() {
 			$('.webgl_toolbar').addClass('open');
 			$('.webgl_toolbar_container').removeClass('options_mode info_mode');
-			
+
 //			$('.mobile_menu_selector .info_btn, .mobile_menu_selector .options_btn').removeClass('current');
 			$('.mobile_menu_selector').removeClass('open')
 		});
-		
+
 		$('.map_controls_container .mobile_expander').click(function() {
 			panels.expandTimeLabel();
 		});
-		
+
 		$('.map_controls_container .arrow_container, .time_label.expanded').click(function() {
   		//console.log('time label? event label: ' + event.target);
 			$('.group2, .mobile_expander').removeClass('expanded');
@@ -2006,10 +2007,10 @@ var main = {
 		$('#eclipse_viewport_mode').change(function(e){
 			ranger_eclipse.update({setEclipseViewportMode: $(this).prop('checked')})
 		})
-		
+
 		$('#moon_lighting').change(function(e){
 			ranger_eclipse.update({headLightEnabled: $(this).prop('checked')});
-		});		
+		});
 
 		$('.field_of_view .minus_btn').click(function(e){
 			 actions.zoomOut(this)
@@ -2018,7 +2019,7 @@ var main = {
 		$('.field_of_view .plus_btn').click(function(e){
 			 actions.zoomIn(this)
 		});
-		
+
 		$('#now_btn').click(function(e){
 			actions.updateTimeToNow();
 		})
@@ -2027,8 +2028,8 @@ var main = {
 			e.preventDefault();
 			$('#help_text').toggle();
 		});
-		
-		onMouseUp_ = function (e) 
+
+		onMouseUp_ = function (e)
 		{
 			ranger_eclipse.update({getInfo: { "cameraState": { "id": "mainWindow"}}}, null, function(ack)
 			{
@@ -2043,14 +2044,14 @@ var main = {
 				ack.message.position[2].toString(), ",",
 				ack.message.fov.toString()
 				);
-				
+
 				console.log(_message);
-				
+
 				//receiveValueFromRanger("System.Camera.UpdateTransform", typeof _message, _message);
 				//console.log(ack.message.orientation);
 			});
 		};
-		
+
 		window.addEventListener("mouseup", onMouseUp_);
 
 	},
@@ -2066,11 +2067,11 @@ var main = {
 	initTooltips: function(){
 		$('.tooltip_left').not('.has_tip').tooltipsy(main.tooltip_opts_left).addClass('has_tip');
 		$('.tooltip_bottom').not('.has_tip').tooltipsy(main.tooltip_opts_bottom).addClass('has_tip');
-		$('.tooltip_bottom_right').not('.has_tip').tooltipsy(main.tooltip_opts_bottom_right).addClass('has_tip');		
-		$('.tooltip_fs').tooltipsy(main.tooltip_opts_fs).addClass('has_tip');		
+		$('.tooltip_bottom_right').not('.has_tip').tooltipsy(main.tooltip_opts_bottom_right).addClass('has_tip');
+		$('.tooltip_fs').tooltipsy(main.tooltip_opts_fs).addClass('has_tip');
 		$('[title]').not('.has_tip').not('.tooltip_left').tooltipsy(main.tooltip_opts).addClass('has_tip');
 	},
-	
+
 	pulseTooltip: function(){
   	$('.noUi-handle').trigger('mouseenter');
   	$('.noUi-handle').one('mouseenter', function(e){
@@ -2117,7 +2118,7 @@ var main = {
 		$('#max_label').text();
 		$('#min_label').text();
 	},
-	
+
 	timeFormat: function(d, include_sec, include_tz) {
 		ret_val = "";
 		var hr = d.getHours();
@@ -2184,7 +2185,7 @@ var main = {
 		// set up a listener to close the intro panel, but just want to do it once
 		$('#loader .button').on('click touchstart', function(){
 			$('body').addClass('eclipse_loaded');
-			$('#loader').fadeOut(main.panelFadeSpeed, function () 
+			$('#loader').fadeOut(main.panelFadeSpeed, function ()
 			{
 				main.onGotIt();
 				//$('#panels .intro_modal').fadeIn();
@@ -2219,12 +2220,12 @@ var main = {
 		});
 		locations.createLocations();
 		actions.setFov(main.fov);
-		
+
 		ranger_eclipse.update({"shadowLabelsEnabled": false});
 		ranger_eclipse.update({eclipseShadowEnabled: false});
 		//ranger_eclipse.update({setUmbraColor: [0,0,0,0]});
 		//ranger_eclipse.update({setPenumbraColor: [0,0,0,0]});
-		
+
 		actions.checkEclipseToday(new Date());
 		//main.initTooltips();
 		main.pulseTooltip();
@@ -2235,25 +2236,9 @@ var main = {
 		panels.closePanels();
 		$(".handle_hint").addClass('pulse');
 		//actions.setTimeRate();
-		
+
 		window.setInterval(main.getTimeLoop, main.get_time_interval);
 		UpdateScreenAtSPR("Advancing screen");
 	}
 }
 ;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
