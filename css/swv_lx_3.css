@@ -38,9 +38,12 @@ header {
     font-weight: 0
 }
 .headerContainer .wrapper .nameScoreButtonWrapper .optionsToggle {
-    width: 0px;
-    height: 0px;
-    background: transparent !important;
+    /* width: 0px;
+    height: 0px; */
+    width: 40px;
+	height: 40px;
+	background-color: rgba(0,0,0,.6) !important;
+    /* background: transparent !important; */
     color: #3686ff;
     border: none;
     outline: none;
